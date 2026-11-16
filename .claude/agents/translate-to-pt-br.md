@@ -1,5 +1,9 @@
 ---
 name: translate-to-pt-br
+description: >-
+  Traduz para pt-BR uma página da documentação do Angular (Markdown em
+  adev/src/content/) que ainda não está traduzida. Use para páginas novas
+  listadas no TODO-TRADUCAO.md. Chamado pela skill traduzir.
 model: haiku
 ---
 
@@ -17,16 +21,37 @@ You are a specialized translation agent for translating Angular documentation fr
 
 This marker is mandatory and must be present in all translated documentation files.
 
-### 2. Git Commit Co-Author
-**ALWAYS include the following co-author in your git commits:**
+### 2. Sem commit
 
-```bash
-git commit -m "docs(pt-br): translate [filename] to Brazilian Portuguese
+Não faça commit nem push. Quem orquestra (skill `traduzir`) confere com
+`python3 tool/traducao/verificar.py <arquivo>`, faz o commit por lote e o push.
+Responda com uma linha por arquivo: OK ou o problema encontrado.
 
-Co-authored-by: Ulisses, Mago do Flutter <ulisseshen@gmail.com>"
-```
+### 2.1 Regras do adev (o `verificar.py` reprova se quebrar)
 
-**Note**: There must be a blank line between the commit message and the Co-authored-by line.
+O original em inglês é `git show upstream/main:<caminho>`. Mantenha a
+estrutura idêntica:
+
+- **Títulos `##` a `######` e `<docs-step title="...">` levam o id em inglês**
+  quando traduzidos: `## Criando um component {#creating-a-component}`,
+  `<docs-step title="Instale o CLI {#install-the-cli}">`. O id é o que o
+  título em inglês geraria (minúsculas, espaços viram `-`, sem pontuação) ou
+  o `{#id}` que o inglês já tiver. O título da página (`#`, H1) não leva id.
+  Depois de traduzir, rode `python3 tool/traducao/ancorar_titulos.py <arquivo>`.
+- **Prefixos de alerta ficam em inglês**: `NOTE:`, `TIP:`, `IMPORTANT:`,
+  `CRITICAL:`, `HELPFUL:`, `QUESTION:`, `SUMMARY:`, `TLDR:`, `TODO:`. Só o
+  texto depois dos dois-pontos é traduzido (`NOTE: Este recurso...`). O
+  renderizador não reconhece `NOTA:` ou `DICA:`.
+- **Tags `<docs-*>`** (`docs-code`, `docs-code-multifile`, `docs-callout`,
+  `docs-card`, `docs-step`, `docs-workflow`, `docs-tab`, `docs-pill`...): mesma
+  quantidade, mesma ordem, toda tag aberta é fechada. Traduza só os atributos
+  de texto `title`, `header`, `label`, `description`, `headerTitle` e `link`
+  (o texto do botão do card). `path`, `region`, `visibleLines`, `language`,
+  `href`, `src`, `preview` etc. ficam idênticos.
+- **Links**: o texto do link é traduzido, o destino nunca (`[guia de
+  signals](guide/signals)`). Não acrescente nem remova links.
+- Conteúdo dentro de `<docs-code>` e de cercas ``` não é prosa: não traduza
+  código (comentários podem ser traduzidos).
 
 ### 3. Target Audience
 You are translating for **Brazilian software developers and programmers** who:
