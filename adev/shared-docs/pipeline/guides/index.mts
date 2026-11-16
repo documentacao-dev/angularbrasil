@@ -12,6 +12,7 @@ import {parseMarkdownAsync} from '../shared/marked/parse.mjs';
 import {ApiEntries} from '../shared/linking.mjs';
 import {initHighlighter} from '../shared/shiki.mjs';
 import {hasUnknownAnchors} from './helpers.mjs';
+import {inserirAvisoDeTraducao} from './aviso-traducao.mjs';
 
 type ApiManifest = ApiManifestPackage[];
 interface ApiManifestPackage {
@@ -66,12 +67,15 @@ async function main() {
         );
       }
 
-      const htmlOutputContent = await parseMarkdownAsync(markdownContent, {
+      const htmlParsed = await parseMarkdownAsync(markdownContent, {
         markdownFilePath: filePath,
         apiEntries: mapManifestToEntries(apiManifest),
         highlighter,
         definedRoutes,
       });
+
+      // Angular Brasil: aviso no topo das páginas ainda sem tradução.
+      const htmlOutputContent = inserirAvisoDeTraducao(htmlParsed, markdownContent, filePath);
 
       // The expected file name structure is the [name of the file].md.html.
       const htmlFileName = filePath + '.html';

@@ -71,4 +71,35 @@
       color: var(--electric-violet);
     }
   }
+
+  // Angular Brasil: aviso de página ainda não traduzida
+  // (pipeline/guides/aviso-traducao.mts).
+  .docs-aviso-traducao {
+    padding-block: 0.75rem;
+
+    &::before {
+      content: 'translate';
+      margin-top: 0.75rem;
+      margin-inline-start: 0.75rem;
+    }
+
+    p {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  .docs-aviso-traducao-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
