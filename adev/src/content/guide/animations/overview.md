@@ -1,7 +1,7 @@
 <!-- ia-translate: true -->
 # Introdução às animations do Angular
 
-IMPORTANTE: O pacote `@angular/animations` agora está depreciado. A equipe Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animations em todo código novo. Saiba mais no novo [guia de animation](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animations CSS puras em suas aplicações.
+IMPORTANT: O pacote `@angular/animations` agora está depreciado. A equipe Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animations em todo código novo. Saiba mais no novo [guia de animation](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animations CSS puras em suas aplicações.
 
 Animation fornece a ilusão de movimento: elementos HTML mudam de estilo ao longo do tempo.
 Animations bem projetadas podem tornar sua aplicação mais intuitiva e envolvente, mas elas não são apenas cosméticas.
@@ -77,7 +77,7 @@ Em HTML, esses atributos são definidos usando estilos CSS comuns, como color e 
 No Angular, use a função `style()` para especificar um conjunto de estilos CSS para uso com animations.
 Reúna um conjunto de estilos em um estado de animation e dê ao estado um nome, como `open` ou `closed`.
 
-ÚTIL: Vamos criar um novo component `open-close` para animar com transições simples.
+HELPFUL: Vamos criar um novo component `open-close` para animar com transições simples.
 
 Execute o seguinte comando no terminal para gerar o component:
 
@@ -168,7 +168,7 @@ Por exemplo, `ease-in` faz com que a animation comece devagar e ganhe velocidade
   Use uma curva de aceleração para começar devagar e terminar em velocidade máxima:
   `'0.2s ease-in'`
 
-ÚTIL: Veja o tópico do site Material Design sobre [curvas de easing naturais](https://material.io/design/motion/speed.html#easing) para informações gerais sobre curvas de easing.
+HELPFUL: Veja o tópico do site Material Design sobre [curvas de easing naturais](https://material.io/design/motion/speed.html#easing) para informações gerais sobre curvas de easing.
 
 Este exemplo fornece uma transição de estado de `open` para `closed`, com uma transição de 1 segundo entre os estados.
 
@@ -182,7 +182,7 @@ Este exemplo adiciona uma transição de estado do estado `closed` para o estado
 
 <docs-code header="open-close.ts" path="adev/src/content/examples/animations/src/app/open-close.ts" region="transition2"/>
 
-ÚTIL: Algumas notas adicionais sobre o uso de estilos dentro das funções [`state`](api/animations/state) e `transition`.
+HELPFUL: Algumas notas adicionais sobre o uso de estilos dentro das funções [`state`](api/animations/state) e `transition`.
 
 - Use [`state()`](api/animations/state) para definir estilos que são aplicados ao final de cada transição; eles persistem após a conclusão da animation
 - Use `transition()` para definir estilos intermediários, que criam a ilusão de movimento durante a animation
@@ -205,7 +205,7 @@ Essas ações podem ser transições ou outras funções, como veremos mais adia
 Neste exemplo, vamos nomear o trigger `openClose` e anexá-lo ao elemento `button`.
 O trigger descreve os estados open e closed, e os timings das duas transições.
 
-ÚTIL: Dentro de cada chamada da função `trigger()`, um elemento só pode estar em um estado em um dado momento.
+HELPFUL: Dentro de cada chamada da função `trigger()`, um elemento só pode estar em um estado em um dado momento.
 No entanto, é possível que múltiplos triggers estejam ativos ao mesmo tempo.
 
 ### Definindo animations e anexando-as ao template HTML {#defining-animations-and-attaching-them-to-the-html-template}
@@ -234,7 +234,7 @@ Cabe então ao código de `openClose` tratar a mudança de estado e iniciar uma 
 Para elementos que entram ou saem de uma página (inseridos ou removidos do DOM), você pode tornar as animations condicionais.
 Por exemplo, use `*ngIf` com o trigger de animation no template HTML.
 
-ÚTIL: No arquivo do component, defina o trigger que define as animations como o valor da propriedade `animations:` no decorator `@Component()`.
+HELPFUL: No arquivo do component, defina o trigger que define as animations como o valor da propriedade `animations:` no decorator `@Component()`.
 
 No arquivo de template HTML, use o nome do trigger para anexar as animations definidas ao elemento HTML a ser animado.
 
@@ -279,7 +279,7 @@ Veja a [referência da API](api?package=angular_animations&status=8) para uma li
 
 ## Mais sobre animations do Angular {#more-on-angular-animations}
 
-ÚTIL: Confira esta [apresentação](https://www.youtube.com/watch?v=rnTK9meY5us), exibida na conferência AngularConnect em novembro de 2017, e o [código-fonte](https://github.com/matsko/animationsftw.in) que a acompanha.
+HELPFUL: Confira esta [apresentação](https://www.youtube.com/watch?v=rnTK9meY5us), exibida na conferência AngularConnect em novembro de 2017, e o [código-fonte](https://github.com/matsko/animationsftw.in) que a acompanha.
 
 Você também pode se interessar pelo seguinte:
 

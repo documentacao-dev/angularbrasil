@@ -1,7 +1,7 @@
 <!-- ia-translate: true -->
 # Transições e triggers de animação
 
-IMPORTANTE: O pacote `@angular/animations` agora está depreciado. A equipe do Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animações em todos os códigos novos. Saiba mais no novo [guia de animação](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animações CSS puras em suas aplicações.
+IMPORTANT: O pacote `@angular/animations` agora está depreciado. A equipe do Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animações em todos os códigos novos. Saiba mais no novo [guia de animação](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animações CSS puras em suas aplicações.
 
 Este guia aprofunda os estados de transição especiais, como o wildcard `*` e o `void`. Ele também mostra como esses estados são usados para elementos que entram e saem de uma view.
 Esta seção também explora múltiplos triggers de animação, callbacks de animação e animações baseadas em sequência usando keyframes.
@@ -100,7 +100,7 @@ Use os aliases `:enter` e `:leave` para segmentar elementos HTML que são inseri
 
 A transição `:enter` é executada quando quaisquer views de `*ngIf` ou `*ngFor` são colocadas na página, e `:leave` é executada quando essas views são removidas da página.
 
-IMPORTANTE: Os comportamentos de entrada e saída às vezes podem ser confusos.
+IMPORTANT: Os comportamentos de entrada e saída às vezes podem ser confusos.
 Como regra prática, considere que qualquer elemento adicionado ao DOM pelo Angular passa pela transição `:enter`. Apenas elementos removidos diretamente do DOM pelo Angular passam pela transição `:leave`. Por exemplo, a view de um elemento é removida do DOM porque seu pai está sendo removido do DOM.
 
 Este exemplo tem um trigger especial para a animação de entrada e saída chamado `myInsertRemoveTrigger`.
@@ -119,7 +119,7 @@ Observe que este exemplo não precisa usar [`state()`](api/animations/state).
 A função `transition()` aceita outros valores de seletor, `:increment` e `:decrement`.
 Use-os para iniciar uma transição quando um valor numérico aumentar ou diminuir.
 
-ÚTIL: O exemplo a seguir usa os métodos `query()` e `stagger()`.
+HELPFUL: O exemplo a seguir usa os métodos `query()` e `stagger()`.
 Para mais informações sobre esses métodos, veja a página sobre [sequências complexas](guide/legacy-animations/complex-sequences).
 
 <docs-code header="hero-list-page.ts" path="adev/src/content/examples/animations/src/app/hero-list-page.ts" region="increment"/>
@@ -273,7 +273,7 @@ Para propriedades com valor numérico, defina uma unidade fornecendo o valor com
 Você também pode fornecer o valor como número. Nesses casos, o Angular assume a unidade padrão de pixels, ou `px`.
 Expressar 50 pixels como `50` é o mesmo que escrever `'50px'`.
 
-ÚTIL: A string `"50"` não seria considerada válida\).
+HELPFUL: A string `"50"` não seria considerada válida\).
 
 ### Cálculo automático de propriedades com wildcards {#automatic-property-calculation-with-wildcards}
 

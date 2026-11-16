@@ -239,7 +239,7 @@ Vamos encontrar uma forma de implementar uma verificação de tipos mais estrita
 <docs-card title="Melhorar a integração do Angular DevTools com o framework" link="Concluído no T1 2022" href="tools/devtools">
 Para melhorar a integração do Angular DevTools com o framework, estamos trabalhando para mover a base de código para o monorepo angular/angular. Isso inclui fazer a transição do Angular DevTools para o Bazel e integrá-lo aos processos existentes e ao pipeline de CI.
 </docs-card>
-<docs-card title="Lançar diagnósticos avançados do compilador" link="Concluído no T1 2022" href="reference/extended-diagnostics">
+<docs-card title="Lançar diagnósticos avançados do compilador" link="Concluído no T1 2022" href="extended-diagnostics">
 Estender os diagnósticos do compilador Angular para além da verificação de tipos. Introduzir outras verificações de correção e conformidade para garantir ainda mais a correção e as boas práticas.
 </docs-card>
 <docs-card title="Atualizar nossa estratégia de testes e2e" link="Concluído no T3 2021" href="guide/testing">

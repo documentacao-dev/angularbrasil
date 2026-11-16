@@ -29,7 +29,7 @@ Os nós do grafo representam os nós reativos que participam do component seleci
 
 As linhas entre os nós mostram as dependências reativas: cada nó está conectado aos produtores dos quais ele lê (upstream) e aos dependentes que o leem (downstream).
 
-DICA: Os nós são rotulados com o `debugName` do nó reativo. Dar aos seus signals, computeds e, principalmente, aos effects — que geralmente não são atribuídos a um membro da classe — um `debugName` torna o grafo bem mais fácil de ler:
+TIP: Os nós são rotulados com o `debugName` do nó reativo. Dar aos seus signals, computeds e, principalmente, aos effects — que geralmente não são atribuídos a um membro da classe — um `debugName` torna o grafo bem mais fácil de ler:
 
 ```ts
 effect(

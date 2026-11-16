@@ -68,7 +68,7 @@ const userModel = signal<UserFormModel>({
 });
 ```
 
-IMPORTANTE: Instâncias de classe, `Map` e `Set` **não são suportados na camada estrutural**, mesmo que o TypeScript os aceite. Signal Forms não valida o formato do model em tempo de execução, então o framework aceita esses valores sem lançar erro e produz comportamentos incorretos de formas diferentes, dependendo do formato:
+IMPORTANT: Instâncias de classe, `Map` e `Set` **não são suportados na camada estrutural**, mesmo que o TypeScript os aceite. Signal Forms não valida o formato do model em tempo de execução, então o framework aceita esses valores sem lançar erro e produz comportamentos incorretos de formas diferentes, dependendo do formato:
 
 - **Instâncias de classe** perdem seu prototype na primeira escrita, porque Signal Forms faz uma cópia rasa dos objetos pai durante a atualização. Métodos, getters e verificações com `instanceof` deixam de funcionar depois disso.
 - **Objetos não extensíveis ou congelados dentro de arrays** lançam erro quando Signal Forms atribui um símbolo de rastreamento para preservar a identidade dos itens durante reordenações.

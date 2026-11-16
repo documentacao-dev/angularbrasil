@@ -71,7 +71,7 @@ export class UserProfile {
 }
 ```
 
-DICA: Quer saber mais sobre Angular Signals? Consulte o [guia detalhado de Signals](guide/signals) para todos os detalhes.
+TIP: Quer saber mais sobre Angular Signals? Consulte o [guia detalhado de Signals](guide/signals) para todos os detalhes.
 
 ## Próximo Passo {#next-step}
 

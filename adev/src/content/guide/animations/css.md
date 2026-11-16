@@ -91,7 +91,7 @@ Animar um elemento quando ele sai da view é semelhante a animar quando ele entr
     <docs-code header="remove.css" path="adev/src/content/examples/animations/src/app/native-css/remove.css"  />
 </docs-code-multifile>
 
-NOTA: Animações `animate.leave` de elementos filhos disparam apenas dentro do mesmo template de component. Animações `animate.leave` de components aninhados não disparam quando um elemento pai é removido.
+NOTE: Animações `animate.leave` de elementos filhos disparam apenas dentro do mesmo template de component. Animações `animate.leave` de components aninhados não disparam quando um elemento pai é removido.
 
 Para mais informações sobre `animate.enter` e `animate.leave`, veja o [guia de animações Enter e Leave](guide/animations).
 
@@ -140,7 +140,7 @@ Se você tem ações que quer executar em certos pontos durante as animações, 
 
 A Web Animations API tem muita funcionalidade adicional. [Dê uma olhada na documentação](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) para ver todas as APIs de animação disponíveis.
 
-NOTA: Esteja ciente de problemas de bubbling com esses callbacks. Se você está animando filhos e pais, os eventos sobem dos filhos para os pais. Considere parar a propagação ou olhar mais detalhes dentro do evento para determinar se você está respondendo ao evento alvo desejado em vez de um evento subindo de um nó filho. Você pode examinar a propriedade `animationname` ou as propriedades sendo transicionadas para verificar se você tem os nós certos.
+NOTE: Esteja ciente de problemas de bubbling com esses callbacks. Se você está animando filhos e pais, os eventos sobem dos filhos para os pais. Considere parar a propagação ou olhar mais detalhes dentro do evento para determinar se você está respondendo ao evento alvo desejado em vez de um evento subindo de um nó filho. Você pode examinar a propriedade `animationname` ou as propriedades sendo transicionadas para verificar se você tem os nós certos.
 
 ## Sequências complexas {#complex-sequences}
 

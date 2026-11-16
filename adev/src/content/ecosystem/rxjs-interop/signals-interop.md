@@ -26,7 +26,7 @@ export class Ticker {
 
 Assim como o pipe `async`, o `toSignal` se inscreve no Observable imediatamente, o que pode disparar efeitos colaterais. A inscrição criada pelo `toSignal` cancela automaticamente a inscrição no Observable quando o component ou service que chama o `toSignal` é destruído.
 
-IMPORTANTE: o `toSignal` cria uma inscrição. Evite chamá-lo repetidamente para o mesmo Observable e, em vez disso, reutilize o signal que ele retorna.
+IMPORTANT: o `toSignal` cria uma inscrição. Evite chamá-lo repetidamente para o mesmo Observable e, em vez disso, reutilize o signal que ele retorna.
 
 ### Contexto de injeção {#injection-context}
 

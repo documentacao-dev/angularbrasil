@@ -26,8 +26,8 @@ Você pode usar a trilha Angular para entender melhor como seu código é execut
 
 Você pode habilitar o profiling do Angular de duas maneiras:
 
-1. Execute `ng.enableProfiling()` no painel de console do Chrome, ou
-1. Inclua uma chamada para `enableProfiling()` no código de inicialização da sua aplicação (importado de `@angular/core`).
+1. Execute [`ng.enableProfiling()`](api/core/enableProfiling) no painel de console do Chrome, ou
+1. Inclua uma chamada para [`enableProfiling()`](api/core/enableProfiling) no código de inicialização da sua aplicação (importado de `@angular/core`).
 
 NOTE: O profiling do Angular funciona exclusivamente em modo de desenvolvimento.
 

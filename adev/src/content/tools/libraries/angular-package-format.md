@@ -9,7 +9,7 @@ APF permite que um pacote funcione perfeitamente nos cenários mais comuns que u
 Pacotes que usam APF são compatíveis com as ferramentas oferecidas pela equipe Angular, bem como com o ecossistema JavaScript mais amplo.
 Recomenda-se que desenvolvedores de bibliotecas de terceiros sigam o mesmo formato de pacote npm.
 
-ÚTIL: APF é versionado junto com o restante do Angular, e cada versão principal melhora o formato do pacote.
+HELPFUL: APF é versionado junto com o restante do Angular, e cada versão principal melhora o formato do pacote.
 Você pode encontrar as versões da especificação anteriores à v13 neste [google doc](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview).
 
 ## Por que especificar um formato de pacote? {#why-specify-a-package-format}

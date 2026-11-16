@@ -1,7 +1,7 @@
 <!-- ia-translate: true -->
 # Sequências complexas de animação
 
-IMPORTANTE: O package `@angular/animations` agora está deprecado. O time do Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animações em todo código novo. Saiba mais no novo [guia de animação](/guide/animations) de enter e leave. Veja também [Migrando do package de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animações CSS puras em suas aplicações.
+IMPORTANT: O package `@angular/animations` agora está deprecado. O time do Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animações em todo código novo. Saiba mais no novo [guia de animação](/guide/animations) de enter e leave. Veja também [Migrando do package de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animações CSS puras em suas aplicações.
 
 Até agora, aprendemos animações simples de elementos HTML individuais.
 O Angular também permite animar sequências coordenadas, como uma grade inteira ou lista de elementos conforme eles entram e saem de uma página.
@@ -64,7 +64,7 @@ Mas você também pode querer configurar animações que acontecem em paralelo.
 Por exemplo, você pode querer animar duas propriedades CSS do mesmo elemento, mas usar uma função de `easing` diferente para cada uma.
 Para isso, você pode usar a função de animação [`group()`](api/animations/group).
 
-ÚTIL: A função [`group()`](api/animations/group) é usada para agrupar _etapas_ de animação, em vez de elementos animados.
+HELPFUL: A função [`group()`](api/animations/group) é usada para agrupar _etapas_ de animação, em vez de elementos animados.
 
 O exemplo a seguir usa [`group()`](api/animations/group)s tanto em `:enter` quanto em `:leave` para duas configurações de tempo diferentes, aplicando assim duas animações independentes ao mesmo elemento em paralelo.
 
@@ -118,7 +118,7 @@ Isso ocorre porque ele perderá o rastreamento de qual elemento é qual, resulta
 A única maneira de ajudar o Angular a rastrear esses elementos é atribuindo uma `TrackByFunction` à diretiva `NgForOf`.
 Isso garante que o Angular sempre saiba qual elemento é qual, permitindo que ele aplique as animações corretas aos elementos corretos o tempo todo.
 
-IMPORTANTE: Se você precisar animar os itens de uma lista `*ngFor` e houver possibilidade de que a ordem de tais itens mude durante a execução, sempre use uma `TrackByFunction`.
+IMPORTANT: Se você precisar animar os itens de uma lista `*ngFor` e houver possibilidade de que a ordem de tais itens mude durante a execução, sempre use uma `TrackByFunction`.
 
 ## Animações e view encapsulation de component {#animations-and-component-view-encapsulation}
 

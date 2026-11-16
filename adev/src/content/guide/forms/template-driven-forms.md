@@ -323,7 +323,7 @@ Para responder a este evento, execute as seguintes etapas.
 <docs-workflow>
 
 <docs-step title="Escutar ngOnSubmit {#listen-to-ngonsubmit}">
-Vincule a propriedade de evento [`ngSubmit`](api/forms/NgForm#properties) do formulário ao método `onSubmit()` do component actor-form.
+Vincule a propriedade de evento [`ngSubmit`](api/forms/NgForm#ngSubmit) do formulário ao método `onSubmit()` do component actor-form.
 
 <docs-code header="actor-form.component.html (ngSubmit)" path="adev/src/content/examples/forms/src/app/actor-form/actor-form.component.html" region="ngSubmit"/>
 </docs-step>

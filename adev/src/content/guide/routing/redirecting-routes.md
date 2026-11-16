@@ -74,7 +74,7 @@ Neste exemplo, toda vez que o usuário visita a URL raiz (ou seja, `''`), o rout
 
 Quaisquer páginas subsequentes (por exemplo, `/login`, `/about`, `/product/id`, etc.), são ignoradas e não disparam um redirecionamento.
 
-DICA: Tenha cuidado ao configurar um redirecionamento na página raiz (ou seja, `"/"` ou `""`). Se você não definir `pathMatch: 'full'`, o router redirecionará todas as URLs.
+TIP: Tenha cuidado ao configurar um redirecionamento na página raiz (ou seja, `"/"` ou `""`). Se você não definir `pathMatch: 'full'`, o router redirecionará todas as URLs.
 
 Para ilustrar ainda mais isso, se o exemplo de `news` da seção anterior usasse `pathMatch: 'full'` em vez disso:
 

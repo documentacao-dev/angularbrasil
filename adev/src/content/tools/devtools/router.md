@@ -22,7 +22,7 @@ Quando você seleciona uma rota específica na árvore, o Angular DevTools exibe
 - **Auxiliary**: Indica se a rota é uma rota auxiliar (por exemplo, em um outlet nomeado).
 - **Lazy**: Indica se a rota é carregada de forma lazy.
 
-NOTA: Propriedades como Path Match, Data, Resolvers, Guards, Providers, Title e RunGuardsAndResolvers só aparecem na barra lateral quando estão configuradas na rota selecionada.
+NOTE: Propriedades como Path Match, Data, Resolvers, Guards, Providers, Title e RunGuardsAndResolvers só aparecem na barra lateral quando estão configuradas na rota selecionada.
 
 ### Navegar para uma rota específica {#navigate-to-a-specific-route}
 

@@ -131,7 +131,7 @@ O modo `'follow'` seleciona automaticamente o item focado, oferecendo uma intera
 | `'follow'`   | Seleciona automaticamente o item focado, oferecendo uma interação mais rápida quando a seleção muda com frequência         |
 | `'explicit'` | Exige Space ou Enter para confirmar a seleção, evitando mudanças acidentais durante a navegação                             |
 
-DICA: Padrões de dropdown normalmente usam o modo `'follow'` para seleção única.
+TIP: Padrões de dropdown normalmente usam o modo `'follow'` para seleção única.
 
 ## Testes {#testing}
 
