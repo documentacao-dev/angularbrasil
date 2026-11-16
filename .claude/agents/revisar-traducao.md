@@ -19,6 +19,12 @@ Uma lista de caminhos em `adev/src/content/` e o commit do upstream
 
 Leia `.claude/agents/translate-to-pt-br.md`: é a régua das convenções.
 
+## Como ler
+
+Leia **100% da prosa**, parágrafo por parágrafo, lado a lado com o inglês.
+Não use amostragem, contagem ou script no lugar da leitura. Se não der para
+ler tudo, diga exatamente quais arquivos ou trechos ficaram de fora.
+
 ## O que procurar
 
 **Grave** (bloqueia o merge):
@@ -53,5 +59,12 @@ Uma linha por problema, agrupada por arquivo, no formato:
   LEVE   L<linha>: <sugestão>
 ```
 
-Arquivo sem problema: `<caminho>  OK`. Termine com uma linha
-`RESUMO: <n> arquivos, <g> graves, <l> leves`.
+Arquivo sem problema: `<caminho>  OK`. Termine com as linhas:
+
+```
+RESUMO: <n> arquivos, <g> graves, <l> leves
+COBERTURA: <x>% da prosa lida lado a lado
+```
+
+Abaixo da linha `COBERTURA`, liste o que não foi lido. Review com cobertura
+abaixo de 100% não conta como OK, nem mesmo com 0 graves.

@@ -108,7 +108,13 @@ inteiras em inglês nos arquivos "mesclados automaticamente" do
 Dispare o subagente `revisar-traducao` (`.claude/agents/revisar-traducao.md`,
 `model: "sonnet"`) passando **só** a lista de arquivos traduzidos ou alterados
 neste ciclo e o commit do upstream. Não passe sua opinião nem o resumo do que
-foi feito. Até 5 revisores em paralelo para listas grandes.
+foi feito. Lotes de no máximo **~1.500 linhas por revisor**, até 5
+revisores em paralelo.
+
+Cada revisor termina com `COBERTURA: <x>% da prosa lida lado a lado`. Se
+algum declarar cobertura abaixo de 100% (ou não declarar), o pedaço que
+faltou volta para **outro** revisor antes da etapa 8. Review sem 100% de
+cobertura não conta como OK.
 
 O revisor devolve, por arquivo, `OK` ou problemas classificados como
 **grave** (sentido trocado, trecho faltando, código/link/âncora/atributo
@@ -129,7 +135,7 @@ arquivos corrigidos**. No máximo 2 voltas de review + correção.
 Auto-merge **só** se as três condições valerem:
 
 1. `verificar.py` com 0 erros;
-2. o último review sem nenhum problema grave em aberto;
+2. o último review sem nenhum problema grave em aberto e com 100% de cobertura;
 3. o argumento `sem-merge` não foi passado.
 
 Então:
