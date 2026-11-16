@@ -13,7 +13,6 @@ ts_project(
     deps = [
         "//adev/shared-docs/components/algolia-icon",
         "//adev/shared-docs/components/breadcrumb",
-        "//adev/shared-docs/components/cookie-popup",
         "//adev/shared-docs/components/copy-source-code-button",
         "//adev/shared-docs/components/icon",
         "//adev/shared-docs/components/navigation-list",
