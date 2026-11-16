@@ -49,6 +49,12 @@ ERROS
 - pendente:     .traducao-pendente/ ainda tem arquivos para resolver.
 - workflow:     workflow do ciclo ausente, ou com `if: github.repository`
                 que não inclui documentacao-dev/angularbrasil.
+- analytics:    Google Analytics ou banner de cookies do angular.dev de volta em
+                adev/ (fora de src/content/ e node_modules/): G-XB6NEVW32B,
+                googleAnalyticsId, gtag, googletagmanager, cookie-popup,
+                setCookieConsent. O fork removeu (PR #69); um sync que traga
+                código do site (--escopo adev/src/app/ etc.) deve removê-los
+                de novo.
 
 AVISOS
 - parcial:      proporção de inglês entre 0.3 e 0.7 (tradução incompleta).
@@ -276,6 +282,22 @@ def marcados():
     return [p for p in saida.split() if p.endswith('.md')]
 
 
+# Analytics do angular.dev que o fork removeu (PR #69): visitante daqui não
+# pode virar dado na conta do Google/Angular.
+ANALYTICS_UPSTREAM = ('G-XB6NEVW32B', 'googleAnalyticsId', 'gtag', 'googletagmanager',
+                      'cookie-popup', 'setCookieConsent')
+
+
+def analytics_do_upstream():
+    """Linhas `arquivo:linha` de adev/ (fora de src/content e node_modules)
+    com algum termo de ANALYTICS_UPSTREAM."""
+    args = ['grep', '-nIF']
+    for termo in ANALYTICS_UPSTREAM:
+        args += ['-e', termo]
+    saida = git(*args, '--', 'adev/', ':!adev/src/content/', ':!**/node_modules/**') or ''
+    return [l for l in saida.splitlines() if l.strip()]
+
+
 def problemas_de_workflow():
     res = []
     pasta = ROOT / '.github' / 'workflows'
@@ -336,6 +358,14 @@ def main():
             print('✗ .github/workflows/')
             for msg in wf:
                 print(f'    erro  [workflow] {msg}')
+            total_erros += 1
+        achados = analytics_do_upstream()
+        if achados:
+            print('✗ adev/ (analytics do upstream)')
+            for l in achados[:20]:
+                print(f'    erro  [analytics] {l[:140]}')
+            print('    É o Google Analytics/banner de cookies do angular.dev, que voltou '
+                  'pelo upstream: remova no sync (ver CLAUDE.md, regra do sync).')
             total_erros += 1
 
     print(f'{len(arquivos)} arquivo(s) conferido(s): {total_erros} com erro, '
