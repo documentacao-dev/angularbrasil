@@ -142,6 +142,18 @@ Em toda sincronização:
 Nunca resolva um conflito trocando a página pela versão em inglês e mantendo
 a marca, nem descartando o texto novo do upstream.
 
+**Analytics do upstream não volta.** O fork removeu o Google Analytics e o
+banner de cookies do angular.dev (PR #69): visitante do angularbrasil.dev não
+pode virar dado na conta do Google/Angular. O sync padrão só traz
+`adev/src/content/`, mas um sync com `--escopo` que inclua código do site
+(`adev/src/app/`, `adev/shared-docs/`) pode trazê-los de volta. O
+`verificar.py` acusa como erro `analytics` qualquer ocorrência, em `adev/`
+fora de `src/content/` e `node_modules/`, de `G-XB6NEVW32B`,
+`googleAnalyticsId`, `gtag`, `googletagmanager`, `cookie-popup` ou
+`setCookieConsent`. Remova no próprio sync, como no PR #69 (serviço
+`AnalyticsService`, ID no `environment.ts`, `<docs-cookie-popup />` e o
+componente `cookie-popup`).
+
 ## Scripts de `tool/traducao/`
 
 | Script | Para quê |
@@ -167,8 +179,9 @@ do inglês), `tags` (tag pareada sem fechar: derruba o build), `atributos`
 pt-BR é aceito), `ancora` (título traduzido sem `{#id}` do inglês),
 `id-duplicado`, `link-interno` (âncora da própria página inexistente),
 `defasada` (o inglês mudou desde o último sync), `pendente`
-(`.traducao-pendente/` com arquivos) e `workflow` (workflow do ciclo ausente
-ou preso a outro repositório; usa `REPO_FORK`).
+(`.traducao-pendente/` com arquivos), `workflow` (workflow do ciclo ausente
+ou preso a outro repositório; usa `REPO_FORK`) e `analytics` (Google
+Analytics ou banner de cookies do angular.dev de volta em `adev/`).
 
 **Avisos** (só falham com `--estrito`): `parcial` (30% a 70% em inglês) e
 `orfa` (arquivo marcado que não existe no upstream, como as cópias antigas em
