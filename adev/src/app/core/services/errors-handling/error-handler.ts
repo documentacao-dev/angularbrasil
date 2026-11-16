@@ -9,14 +9,12 @@
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {ErrorHandler, PLATFORM_ID, inject} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {AnalyticsService} from '../analytics/analytics.service';
 import {ErrorSnackBar, ErrorSnackBarData} from './error-snack-bar';
 
 export class CustomErrorHandler implements ErrorHandler {
   private readonly snackBar = inject(MatSnackBar);
   private readonly document = inject(DOCUMENT);
   private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
-  private readonly analyticsService = inject(AnalyticsService);
 
   get isOnline(): boolean {
     if (this.isServer) return false;
@@ -34,7 +32,6 @@ export class CustomErrorHandler implements ErrorHandler {
         // Trying to load a chunk that doesn't exist anymore
         // Users should reload the app.
         this.openErrorSnackBar();
-        this.analyticsService.reportError('Chunk loading error');
       }
     }
 

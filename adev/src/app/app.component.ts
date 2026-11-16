@@ -9,7 +9,6 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {Component, inject, isDevMode, PLATFORM_ID, signal} from '@angular/core';
 import {
-  CookiePopup,
   getActivatedRouteSnapshotFromRouter,
   IS_SEARCH_DIALOG_OPEN,
   SearchDialog,
@@ -28,8 +27,7 @@ import {HeaderService} from './core/services/header.service';
 @Component({
   selector: 'adev-root',
   imports: [
-    CookiePopup,
-    Navigation,
+      Navigation,
     Footer,
     SecondaryNavigation,
     RouterOutlet,

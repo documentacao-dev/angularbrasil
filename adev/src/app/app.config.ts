@@ -7,12 +7,7 @@
  */
 
 import {DOCUMENT} from '@angular/common';
-import {
-  ApplicationConfig,
-  ErrorHandler,
-  inject,
-  provideEnvironmentInitializer,
-} from '@angular/core';
+import {ApplicationConfig, ErrorHandler} from '@angular/core';
 import {UrlSerializer} from '@angular/router';
 import {
   DOCS_CONTENT_LOADER,
@@ -26,7 +21,6 @@ import {
 import {provideClientHydration} from '@angular/platform-browser';
 import environment from './environment';
 import {PREVIEWS_COMPONENTS_MAP} from './../assets/previews/previews';
-import {AnalyticsService} from './core/services/analytics/analytics.service';
 import {ContentLoader} from './core/services/content-loader.service';
 import {CustomErrorHandler} from './core/services/errors-handling/error-handler';
 import {ExampleContentLoader} from './core/services/example-content-loader.service';
@@ -38,7 +32,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     routerProviders,
     provideClientHydration(),
-    provideEnvironmentInitializer(() => inject(AnalyticsService)),
     provideAlgoliaSearchClient(environment),
     {provide: ENVIRONMENT, useValue: environment},
     {provide: ErrorHandler, useClass: CustomErrorHandler},

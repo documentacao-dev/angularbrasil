@@ -7,7 +7,6 @@
  */
 
 export * from './viewers/docs-viewer/docs-viewer.component';
-export * from './cookie-popup/cookie-popup.component';
 export * from './navigation-list/navigation-list.component';
 export * from './select/select.component';
 export * from './slide-toggle/slide-toggle.component';
