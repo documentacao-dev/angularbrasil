@@ -1,7 +1,7 @@
 <!-- ia-translate: true -->
 # Inspecione seus injectors
 
-NOTA: A árvore de injectors está disponível para aplicações Angular construídas com a versão 17 ou superior.
+NOTE: A árvore de injectors está disponível para aplicações Angular construídas com a versão 17 ou superior.
 
 ## Visualizar a hierarquia de injectors da sua aplicação {#view-the-injector-hierarchy-of-your-application}
 

@@ -21,7 +21,7 @@ Nesta etapa, você atualizará a classe `Home` para armazenar dados em uma nova 
 
 1. Em `src/app/home/home.ts`, adicione uma nova propriedade à classe chamada `filteredLocationList`.
 
-   <docs-code header="Adicione a propriedade filteredLocationList em home.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[27]"/>
+   <docs-code header="Adicione a propriedade filteredLocationList em home.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[28]"/>
 
    A `filteredLocationList` armazenará os valores que correspondem aos critérios de busca inseridos pelo usuário.
 

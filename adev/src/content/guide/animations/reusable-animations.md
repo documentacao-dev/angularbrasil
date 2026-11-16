@@ -1,7 +1,7 @@
 <!-- ia-translate: true -->
 # Animations reutilizáveis
 
-IMPORTANTE: O pacote `@angular/animations` agora está depreciado. A equipe Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animations em todo código novo. Saiba mais no novo [guia de animations](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animations CSS puras em suas aplicações.
+IMPORTANT: O pacote `@angular/animations` agora está depreciado. A equipe Angular recomenda usar CSS nativo com `animate.enter` e `animate.leave` para animations em todo código novo. Saiba mais no novo [guia de animations](guide/animations) de entrada e saída. Veja também [Migrando do pacote de Animations do Angular](guide/animations/migration) para aprender como você pode começar a migrar para animations CSS puras em suas aplicações.
 
 Este tópico fornece exemplos de como criar animations reutilizáveis.
 
@@ -14,7 +14,7 @@ Você pode então importar e reutilizar esta animation nos components da sua apl
 
 No trecho de código anterior, `transitionAnimation` se torna reutilizável ao ser declarada como uma variável exportada.
 
-ÚTIL: Os inputs `height`, `opacity`, `backgroundColor` e `time` são substituídos durante o runtime.
+HELPFUL: Os inputs `height`, `opacity`, `backgroundColor` e `time` são substituídos durante o runtime.
 
 Você também pode exportar parte de uma animation.
 Por exemplo, o trecho a seguir exporta o `trigger` da animation.

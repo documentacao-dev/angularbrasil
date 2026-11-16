@@ -10,7 +10,7 @@ Instale o Angular DevTools pela [Chrome Web Store](https://chrome.google.com/web
 Você pode abrir o Chrome ou o Firefox DevTools em qualquer página web pressionando <kbd>F12</kbd> ou <kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></kbd> (Windows ou Linux) e <kbd><kbd>Fn</kbd>+<kbd>F12</kbd></kbd> ou <kbd><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd></kbd> (Mac).
 Quando as DevTools do navegador estiverem abertas e o Angular DevTools estiver instalado, você poderá encontrá-lo na aba "Angular".
 
-DICA: A nova aba do Chrome não executa extensões instaladas, então a aba Angular não aparecerá nas DevTools. Visite qualquer outra página para vê-la.
+HELPFUL: A nova aba do Chrome não executa extensões instaladas, então a aba Angular não aparecerá nas DevTools. Visite qualquer outra página para vê-la.
 
 <img src="assets/images/guide/devtools/devtools.png" alt="Visão geral do Angular DevTools mostrando uma árvore de components de uma aplicação.">
 

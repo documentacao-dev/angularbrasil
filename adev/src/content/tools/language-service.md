@@ -59,7 +59,7 @@ Você pode então clicar em "Go to definition" ou pressionar F12 para ir diretam
 
 O Angular Language Service está atualmente disponível como extensão para [Visual Studio Code](https://code.visualstudio.com), [WebStorm](https://www.jetbrains.com/webstorm), [Sublime Text](https://www.sublimetext.com), [Zed](https://zed.dev), [Neovim](https://neovim.io) e [Eclipse IDE](https://www.eclipse.org/eclipseide).
 
-NOTA: A equipe do Angular mantém e distribui a extensão do Visual Studio Code, que é compatível com o Visual Studio Code e com editores baseados nele, como Cursor e Antigravity. As integrações para outros editores são mantidas pelos respectivos fornecedores ou pela comunidade. Reporte problemas específicos dessas integrações aos seus mantenedores.
+NOTE: A equipe do Angular mantém e distribui a extensão do Visual Studio Code, que é compatível com o Visual Studio Code e com editores baseados nele, como Cursor e Antigravity. As integrações para outros editores são mantidas pelos respectivos fornecedores ou pela comunidade. Reporte problemas específicos dessas integrações aos seus mantenedores.
 
 ### Visual Studio Code
 

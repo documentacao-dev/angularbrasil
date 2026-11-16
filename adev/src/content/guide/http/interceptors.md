@@ -73,7 +73,7 @@ export function loggingInterceptor(
 }
 ```
 
-DICA: Interceptors naturalmente associam respostas com suas requisições de saída, porque eles transformam o stream de resposta em um closure que captura o objeto da requisição.
+TIP: Interceptors naturalmente associam respostas com suas requisições de saída, porque eles transformam o stream de resposta em um closure que captura o objeto da requisição.
 
 ## Modificando requisições {#modifying-requests}
 

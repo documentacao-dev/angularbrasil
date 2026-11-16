@@ -33,7 +33,7 @@ Ele também é uma ótima indicação para os consumidores do registro diferenci
 
 O comando `ng generate` cria a pasta `projects/my-lib` no seu workspace, que contém um component.
 
-ÚTIL: Para mais detalhes sobre como um projeto de biblioteca é estruturado, consulte a seção [Arquivos do projeto de biblioteca](reference/configs/file-structure#library-project-files) do guia [Estrutura de arquivos do projeto](reference/configs/file-structure).
+HELPFUL: Para mais detalhes sobre como um projeto de biblioteca é estruturado, consulte a seção [Arquivos do projeto de biblioteca](reference/configs/file-structure#library-project-files) do guia [Estrutura de arquivos do projeto](reference/configs/file-structure).
 
 Use o modelo monorepo para usar o mesmo workspace com vários projetos.
 Veja [Configurando para um workspace multiprojeto](reference/configs/file-structure#multiple-projects).
@@ -144,7 +144,7 @@ O `ng-package.json` secundário configura apenas o próprio entry point:
 }
 ```
 
-IMPORTANTE: Um `ng-package.json` secundário aceita apenas as opções de `lib`. Opções válidas para o pacote inteiro, como `dest` e `assets`, ficam no `ng-package.json` da raiz da biblioteca e se aplicam a todos os entry points.
+IMPORTANT: Um `ng-package.json` secundário aceita apenas as opções de `lib`. Opções válidas para o pacote inteiro, como `dest` e `assets`, ficam no `ng-package.json` da raiz da biblioteca e se aplicam a todos os entry points.
 
 Você não precisa registrar o entry point secundário em nenhum outro lugar.
 Durante o build, o `ng-packagr` descobre automaticamente todos os `ng-package.json` dentro da raiz da biblioteca e deriva o subcaminho de import a partir do caminho do diretório (por exemplo, `button/` vira `my-lib/button`, e `testing/harness/` vira `my-lib/testing/harness`).
@@ -163,7 +163,7 @@ Por padrão, `ng generate library` mapeia apenas a raiz do pacote, o que não co
 }
 ```
 
-IMPORTANTE: Ao importar código de outro entry point da mesma biblioteca, sempre use o caminho de import do pacote (por exemplo, `import {ThemeService} from 'my-lib'`) em vez de um caminho relativo. O `ng-packagr` compila cada entry point separadamente, em ordem de dependência, então imports relativos entre entry points e dependências circulares entre entry points farão o build falhar.
+IMPORTANT: Ao importar código de outro entry point da mesma biblioteca, sempre use o caminho de import do pacote (por exemplo, `import {ThemeService} from 'my-lib'`) em vez de um caminho relativo. O `ng-packagr` compila cada entry point separadamente, em ordem de dependência, então imports relativos entre entry points e dependências circulares entre entry points farão o build falhar.
 
 ## Refatorando partes de uma aplicação em uma biblioteca {#refactoring-parts-of-an-application-into-a-library}
 
@@ -239,7 +239,7 @@ npm publish
 Na sua biblioteca Angular, o distribuível pode incluir assets adicionais, como arquivos de tema, mixins Sass ou documentação \(como um changelog\).
 Para mais informações, [copie assets para a sua biblioteca como parte do build](https://github.com/ng-packagr/ng-packagr/blob/main/docs/copy-assets.md) e [incorpore assets em estilos de component](https://github.com/ng-packagr/ng-packagr/blob/main/docs/embed-assets-css.md).
 
-IMPORTANTE: Ao incluir assets adicionais, como mixins Sass ou CSS pré-compilado.
+IMPORTANT: Ao incluir assets adicionais, como mixins Sass ou CSS pré-compilado.
 Você precisa adicioná-los manualmente aos ["exports"](tools/libraries/angular-package-format#exports) condicionais do `package.json` do entry point primário.
 
 O `ng-packagr` vai mesclar os `"exports"` escritos à mão com os gerados automaticamente, permitindo que os autores da biblioteca configurem subcaminhos de exportação adicionais ou condições personalizadas.
@@ -292,7 +292,7 @@ import {myExport} from 'my-lib';
 A etapa de build é importante se você não publicou sua biblioteca como pacote npm e depois a instalou de volta na sua aplicação a partir do npm.
 Por exemplo, se você clonar seu repositório git e executar `npm install`, seu editor mostrará os imports de `my-lib` como ausentes se você ainda não tiver construído a biblioteca.
 
-ÚTIL: Quando você importa algo de uma biblioteca em uma aplicação Angular, o Angular procura um mapeamento entre o nome da biblioteca e uma localização no disco.
+HELPFUL: Quando você importa algo de uma biblioteca em uma aplicação Angular, o Angular procura um mapeamento entre o nome da biblioteca e uma localização no disco.
 Ao instalar um pacote de biblioteca, o mapeamento fica na pasta `node_modules`.
 Ao construir a sua própria biblioteca, ele precisa encontrar o mapeamento nos paths do seu `tsconfig`.
 
@@ -314,7 +314,7 @@ ng build my-lib --watch
 
 ```
 
-IMPORTANTE: O comando `build` da CLI usa um builder diferente e invoca uma ferramenta de build diferente para bibliotecas do que para aplicações.
+IMPORTANT: O comando `build` da CLI usa um builder diferente e invoca uma ferramenta de build diferente para bibliotecas do que para aplicações.
 
 - O sistema de build para aplicações, `@angular/build`, é baseado em `esbuild` e está incluído em todos os novos projetos do Angular CLI
 - O sistema de build para bibliotecas é baseado em `ng-packagr`.
@@ -422,4 +422,4 @@ Exemplo de integração do plugin em um build [webpack](https://webpack.js.org) 
 
 <docs-code header="webpack.config.mjs" path="adev/src/content/examples/angular-linker-plugin/webpack.config.mjs" region="webpack-config"/>
 
-ÚTIL: O Angular CLI integra o plugin do linker automaticamente. Assim, se os consumidores da sua biblioteca estiverem usando a CLI, eles podem instalar bibliotecas Ivy nativas do npm sem nenhuma configuração adicional.
+HELPFUL: O Angular CLI integra o plugin do linker automaticamente. Assim, se os consumidores da sua biblioteca estiverem usando a CLI, eles podem instalar bibliotecas Ivy nativas do npm sem nenhuma configuração adicional.

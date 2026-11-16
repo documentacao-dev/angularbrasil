@@ -65,7 +65,7 @@ Atualize `app.ts` para incluir um bloco `@loading` com um parâmetro `minimum` d
 }
 ```
 
-NOTA: este exemplo usa dois parâmetros, separados pelo caractere ;.
+NOTE: este exemplo usa dois parâmetros, separados pelo caractere ;.
 
 </docs-step>
 

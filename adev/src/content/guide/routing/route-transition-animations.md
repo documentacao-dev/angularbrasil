@@ -4,8 +4,6 @@
 
 As animações de transição de routes melhoram a experiência do usuário ao oferecer transições visuais suaves ao navegar entre diferentes views na sua aplicação Angular. O [Angular Router](/guide/routing) inclui suporte nativo à API View Transitions do navegador, o que permite animações fluidas entre as mudanças de route em navegadores compatíveis.
 
-HELPFUL: A integração nativa de View Transitions do Router está atualmente em [developer preview](/reference/releases#developer-preview). View Transitions nativas são um recurso relativamente novo dos navegadores, com suporte limitado entre eles.
-
 ## Como funcionam as View Transitions {#how-view-transitions-work}
 
 As view transitions usam a API nativa do navegador [`document.startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) para criar animações suaves entre diferentes estados da sua aplicação. A API funciona da seguinte forma:

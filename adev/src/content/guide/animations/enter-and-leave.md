@@ -22,7 +22,7 @@ Você pode usar `animate.enter` para animar elementos conforme eles _entram_ no 
 
 Quando a animação é concluída, o Angular remove do DOM a classe ou classes que você especificou em `animate.enter`. As classes de animação ficam presentes apenas enquanto a animação está ativa.
 
-NOTA: Ao usar múltiplas animações de keyframe ou propriedades de transition em um elemento, o Angular remove todas as classes somente _depois_ que a animação mais longa for concluída.
+NOTE: Ao usar múltiplas animações de keyframe ou propriedades de transition em um elemento, o Angular remove todas as classes somente _depois_ que a animação mais longa for concluída.
 
 Você pode usar `animate.enter` com quaisquer outros recursos do Angular, como control flow ou expressões dinâmicas. `animate.enter` aceita tanto uma única string de classe (com múltiplas classes separadas por espaços) quanto um array de strings de classe.
 
@@ -46,7 +46,7 @@ Você pode usar `animate.leave` para animar elementos conforme eles _saem_ do DO
 
 Quando a animação é concluída, o Angular remove automaticamente o elemento animado do DOM.
 
-NOTA: Ao usar múltiplas animações de keyframe ou propriedades de transition em um elemento, o Angular aguarda para remover o elemento somente _depois_ que a mais longa dessas animações for concluída.
+NOTE: Ao usar múltiplas animações de keyframe ou propriedades de transition em um elemento, o Angular aguarda para remover o elemento somente _depois_ que a mais longa dessas animações for concluída.
 
 `animate.leave` também pode ser usado com signals e outros bindings. Você pode usar `animate.leave` com uma única classe ou com múltiplas classes. Especifique como uma string simples com espaços ou como um array de strings.
 
@@ -66,7 +66,7 @@ Há algumas nuances em como as animações `animate.leave` são executadas e em 
     <docs-code header="leave-parent.css" path="adev/src/content/examples/animations/src/app/enter-and-leave/leave-parent.css"/>
 </docs-code-multifile>
 
-IMPORTANTE: Animações de filhos disparam apenas para elementos dentro do mesmo template de component. Se um elemento que está sendo removido contiver components filhos, quaisquer animações `animate.leave` definidas dentro dos templates desses components filhos **não** serão executadas antes de o pai ser removido. Para animar um component filho na remoção, aplique `animate.leave` diretamente ao elemento host do component filho dentro do template pai, ou trate programaticamente o disparo da animação no component filho e atrase a remoção do pai até que essa animação seja concluída.
+IMPORTANT: Animações de filhos disparam apenas para elementos dentro do mesmo template de component. Se um elemento que está sendo removido contiver components filhos, quaisquer animações `animate.leave` definidas dentro dos templates desses components filhos **não** serão executadas antes de o pai ser removido. Para animar um component filho na remoção, aplique `animate.leave` diretamente ao elemento host do component filho dentro do template pai, ou trate programaticamente o disparo da animação no component filho e atrase a remoção do pai até que essa animação seja concluída.
 
 ## Event bindings, funções e bibliotecas de terceiros {#event-bindings-functions-and-third-party-libraries}
 
@@ -80,7 +80,7 @@ Tanto `animate.enter` quanto `animate.leave` suportam a sintaxe de event binding
 
 O objeto `$event` tem o tipo `AnimationCallbackEvent`. Ele inclui o elemento como `target` e fornece uma função `animationComplete()` para notificar o framework quando a animação terminar.
 
-IMPORTANTE: Você **deve** chamar a função `animationComplete()` ao usar `animate.leave` para que o Angular remova o elemento.
+IMPORTANT: Você **deve** chamar a função `animationComplete()` ao usar `animate.leave` para que o Angular remova o elemento.
 
 Se você não chamar `animationComplete()` ao usar `animate.leave`, o Angular a chama automaticamente após um delay de quatro segundos. Você pode configurar a duração desse delay fornecendo o token `MAX_ANIMATION_TIMEOUT`, em milissegundos.
 
@@ -104,7 +104,7 @@ TestBed.configureTestingModule({animationsEnabled: true});
 
 Isso configurará as animações no seu ambiente de teste para se comportarem normalmente.
 
-NOTA: Alguns ambientes de teste não emitem eventos de animação como `animationstart`, `animationend` e seus equivalentes de eventos de transition.
+NOTE: Alguns ambientes de teste não emitem eventos de animação como `animationstart`, `animationend` e seus equivalentes de eventos de transition.
 
 ## Mais sobre animações do Angular {#more-on-angular-animations}
 

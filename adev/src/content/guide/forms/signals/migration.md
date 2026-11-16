@@ -475,7 +475,7 @@ Qualquer [Signal Form Control customizado](guide/forms/signals/custom-controls) 
 Forms exatamente como está. Isso permite migrar implementações existentes de `ControlValueAccessor` para
 `FormValueControl`/`FormCheckboxControl` sem quebrar os usos existentes.
 
-IMPORTANTE: **não** implemente `ControlValueAccessor` e `FormValueControl`/`FormCheckboxControl` no mesmo component. Implemente
+IMPORTANT: **não** implemente `ControlValueAccessor` e `FormValueControl`/`FormCheckboxControl` no mesmo component. Implemente
 um ou outro.
 
 Dado o seguinte custom control:

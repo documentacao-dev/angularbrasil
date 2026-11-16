@@ -60,7 +60,7 @@ Em seguida, atualize o template para incluir um botão com o rótulo "Show all c
 }
 ```
 
-NOTA: para mais informações sobre [variáveis de template, confira a documentação](/guide/templates/variables#declaring-a-template-reference-variable).
+NOTE: para mais informações sobre [variáveis de template, confira a documentação](/guide/templates/variables#declaring-a-template-reference-variable).
 
 </docs-step>
 

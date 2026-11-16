@@ -73,4 +73,4 @@ Adicionar [`provideBrowserGlobalErrorListeners()`](/api/core/provideBrowserGloba
 
 Ao usar [Angular com SSR](guide/ssr), o Angular adiciona automaticamente os listeners `'unhandledRejection'` e `'uncaughtException'` ao processo do servidor. Esses handlers impedem que o servidor trave e, em vez disso, registram os erros capturados no console.
 
-IMPORTANTE: Se a aplicação estiver usando Zone.js, apenas o handler `'unhandledRejection'` é adicionado. Quando o Zone.js está presente, erros dentro da Zone da aplicação já são encaminhados para o `ErrorHandler` da aplicação e não atingem o processo do servidor.
+IMPORTANT: Se a aplicação estiver usando Zone.js, apenas o handler `'unhandledRejection'` é adicionado. Quando o Zone.js está presente, erros dentro da Zone da aplicação já são encaminhados para o `ErrorHandler` da aplicação e não atingem o processo do servidor.
