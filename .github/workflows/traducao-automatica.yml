@@ -1,5 +1,9 @@
 name: Tradução automática
 
+# Só disparo manual (Actions → Tradução automática). O ciclo semanal roda por
+# rotina agendada do Claude na nuvem, que executa a skill `traduzir`
+# diretamente, sem este workflow e sem secret.
+#
 # Duas fases:
 #
 # 1. preparar (sem Claude, custo zero): detecta se o upstream mexeu em
@@ -10,16 +14,13 @@ name: Tradução automática
 #    com a skill `traduzir` (tradução em Haiku, PR, review em Sonnet, correção
 #    e auto-merge). Sem páginas para traduzir, só abre o PR e liga o merge.
 #
-# Precisa do secret CLAUDE_CODE_OAUTH_TOKEN (gerado com `claude setup-token`)
-# e do app do Claude instalado na org documentacao-dev.
+# A fase `claude` precisa do secret CLAUDE_CODE_OAUTH_TOKEN (gerado com
+# `claude setup-token`) e do app do Claude instalado na org documentacao-dev.
 #
 # O angular/angular é enorme: os dois jobs fazem checkout raso do fork e o
 # setup.sh busca o upstream com --filter=blob:none --depth.
 
 on:
-  schedule:
-    # Toda segunda às 11h UTC (8h em Brasília).
-    - cron: '0 11 * * 1'
   workflow_dispatch:
     inputs:
       paginas:
