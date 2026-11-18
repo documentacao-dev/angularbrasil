@@ -1,40 +1,31 @@
-# Advanced component configuration
+<!-- ia-translate: true -->
+# Configuração avançada de components
 
-TIP: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
+TIP: Este guia pressupõe que você já leu o [Guia de Fundamentos](essentials). Leia-o primeiro se você é novo no Angular.
 
 ## ChangeDetectionStrategy
 
-The `@Component` decorator accepts a `changeDetection` option that controls the component's **change
-detection mode**. There are two change detection mode options.
+O decorator `@Component` aceita uma opção `changeDetection` que controla o **modo de detecção de mudanças** do component. Há dois modos de detecção de mudanças disponíveis.
 
-**`ChangeDetectionStrategy.Eager`** is an optional mode. In this mode,
-Angular checks whether the component's DOM needs an update whenever any activity may have occurred
-application-wide. Activities that trigger this checking include user interaction, network response,
-timers, and more.
+**`ChangeDetectionStrategy.Eager`** é um modo opcional. Neste modo, o Angular verifica se o DOM do component precisa de uma atualização sempre que alguma atividade possa ter ocorrido em toda a aplicação. Atividades que disparam essa verificação incluem interação do usuário, resposta de rede, timers e outras.
 
-**`ChangeDetectionStrategy.OnPush`** is the default strategy (since v22). This mode reduces the amount of checking Angular
-needs to perform. In this mode, the framework only checks if a component's DOM needs an update when:
+**`ChangeDetectionStrategy.OnPush`** é a estratégia padrão (desde a v22). Este modo reduz a quantidade de verificações que o Angular precisa realizar. Neste modo, o framework verifica se o DOM de um component precisa de uma atualização apenas quando:
 
-- A component input has changes as a result of a binding in a template, or
-- An event listener in this component runs
-- The component is explicitly marked for check, via `ChangeDetectorRef.markForCheck` or something which wraps it, like `AsyncPipe`.
-- A signal read in the component's template changes.
+- Um input do component sofre mudanças como resultado de um binding em um template, ou
+- Um event listener neste component é executado
+- O component é explicitamente marcado para verificação, via `ChangeDetectorRef.markForCheck` ou algo que o envolva, como o `AsyncPipe`.
+- Um signal lido no template do component muda.
 
-In the first three cases, Angular _also_ checks all of the component's ancestor
-components, traversing upwards through the application tree. When a signal changes, Angular only
-refreshes the components whose templates read it.
+Nos três primeiros casos, o Angular _também_ verifica todos os ancestrais do component, percorrendo a árvore da aplicação para cima. Quando um signal muda, o Angular atualiza apenas os components cujos templates o leem.
 
 ## PreserveWhitespaces
 
-By default, Angular removes and collapses superfluous whitespace in templates, most commonly from
-newlines and indentation. You can change this setting by explicitly setting `preserveWhitespaces` to
-`true` in a component's metadata.
+Por padrão, o Angular remove e colapsa espaços em branco supérfluos nos templates, mais comumente provenientes de quebras de linha e indentação. Você pode alterar esta configuração definindo explicitamente `preserveWhitespaces` como
+`true` nos metadados de um component.
 
-## Custom element schemas
+## Schemas de elementos customizados {#custom-element-schemas}
 
-By default, Angular throws an error when it encounters an unknown HTML element. You can
-disable this behavior for a component by including `CUSTOM_ELEMENTS_SCHEMA` in the `schemas`
-property in your component metadata.
+Por padrão, o Angular lança um erro quando encontra um elemento HTML desconhecido. Você pode desabilitar esse comportamento para um component incluindo `CUSTOM_ELEMENTS_SCHEMA` na propriedade `schemas` dos metadados do seu component.
 
 ```angular-ts
 import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
@@ -47,4 +38,4 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 export class ComponentWithCustomElements { }
 ```
 
-Angular also provides `NO_ERRORS_SCHEMA`, which allows any element and any property.
+O Angular também fornece `NO_ERRORS_SCHEMA`, que permite qualquer elemento e qualquer propriedade.
