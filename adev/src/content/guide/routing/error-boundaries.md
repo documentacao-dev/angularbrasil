@@ -1,20 +1,21 @@
-# Error boundaries in routing
+<!-- ia-translate: true -->
+# Error boundaries no roteamento
 
-IMPORTANT: Router error boundaries are in [developer preview](reference/releases#developer-preview).
+IMPORTANT: Os error boundaries do Router estão em [developer preview](reference/releases#developer-preview).
 
-When building web applications, runtime errors can occur during component initialization, data loading, or rendering. Angular Router allows you to isolate these failures to individual routes using **error boundaries**, preventing a single failing component from crashing the entire application shell.
+Ao criar aplicações web, erros de runtime podem acontecer durante a inicialização de components, o carregamento de dados ou a renderização. O Angular Router permite isolar essas falhas em rotas individuais usando **error boundaries**, evitando que um único component com problema derrube toda a estrutura da aplicação.
 
-NOTE: This guide covers error handling at the route level. For catching errors within specific sections of a component's template, refer to the [template `@boundary` block guide](/guide/templates/error-boundaries).
+NOTE: Este guia trata do tratamento de erros no nível da rota. Para capturar erros em seções específicas do template de um component, consulte o [guia do bloco `@boundary` no template](/guide/templates/error-boundaries).
 
-## What are router error boundaries?
+## O que são error boundaries do router? {#what-are-router-error-boundaries}
 
-Router error boundaries provide declarative error handling at the route outlet level. When a component within a route throws an error—such as a failed network resource, an unexpected null reference in a template, or an error during dependency injection—Angular Router catches the error and displays a dedicated fallback component (`errorComponent`) in place of the failing view.
+Os error boundaries do router oferecem tratamento declarativo de erros no nível do outlet de rota. Quando um component dentro de uma rota lança um erro, como um recurso de rede que falhou, uma referência nula inesperada em um template ou um erro durante a injeção de dependência, o Angular Router captura o erro e exibe um component de fallback dedicado (`errorComponent`) no lugar da view que falhou.
 
-Sibling outlets, parent layout components, and global navigation headers remain fully interactive and intact.
+Outlets irmãos, components de layout pai e cabeçalhos de navegação global continuam totalmente interativos e intactos.
 
-## Configure an error component
+## Configure um error component {#configure-an-error-component}
 
-To display a custom fallback UI when a route fails, add the `errorComponent` property to your route definition:
+Para exibir uma UI de fallback personalizada quando uma rota falhar, adicione a propriedade `errorComponent` à definição da rota:
 
 ```ts {header:"app.routes.ts"}
 import {Routes} from '@angular/router';
@@ -30,21 +31,21 @@ export const routes: Routes = [
 ];
 ```
 
-When you navigate to `/products/123`, if `ProductDetails` throws an error during creation or rendering, Angular Router instantiates `ProductErrorFallback` inside the `<router-outlet>` instead.
+Quando você navegar para `/products/123` e `ProductDetails` lançar um erro durante a criação ou a renderização, o Angular Router instanciará `ProductErrorFallback` dentro do `<router-outlet>`.
 
-NOTE: `errorComponent` only takes effect after you enable error boundaries. See [Global error boundary configuration](#global-error-boundary-configuration).
+NOTE: `errorComponent` só tem efeito depois que você ativa os error boundaries. Veja [Configuração global de error boundaries](#global-error-boundary-configuration).
 
-NOTE: Unlike route components which can be lazily loaded using `loadComponent`, the `errorComponent` must be eagerly loaded in your route configuration.
+NOTE: Diferente dos route components, que podem ser carregados de forma lazy com `loadComponent`, o `errorComponent` precisa ser carregado de forma eager na configuração de rotas.
 
 ---
 
-## Create an error fallback component
+## Crie um component de fallback de erro {#create-an-error-fallback-component}
 
-An error fallback component is a standard Angular component that can receive the details of the caught error.
+Um component de fallback de erro é um component Angular comum, que pode receber os detalhes do erro capturado.
 
-### Access error details with an input
+### Acesse os detalhes do erro com um input {#access-error-details-with-an-input}
 
-You can accept the caught error object by declaring an `error` input:
+Você pode receber o objeto de erro capturado declarando um input `error`:
 
 ```angular-ts {header:"product-error-fallback.ts"}
 import {Component, input} from '@angular/core';
@@ -63,13 +64,13 @@ export class ProductErrorFallback {
 }
 ```
 
-NOTE: If your route configuration includes parameters, query parameters, or route data named `error`, the caught runtime `Error` always takes precedence on the `error` input of an error component.
+NOTE: Se a configuração da rota incluir parâmetros, query params ou dados de rota chamados `error`, o `Error` de runtime capturado sempre tem precedência sobre o input `error` do error component.
 
-IMPORTANT: If the `errorComponent` itself throws an error during its creation or rendering, the `RouterOutlet` will not catch it again. The exception will bubble out of the outlet to the root `ErrorHandler` (or an enclosing [template `@boundary` block](/guide/templates/error-boundaries)) to prevent infinite error loops.
+IMPORTANT: Se o `errorComponent` lançar um erro durante a sua criação ou renderização, o `RouterOutlet` não o captura novamente. A exceção sobe para fora do outlet até o `ErrorHandler` raiz (ou até um [bloco `@boundary` do template](/guide/templates/error-boundaries) que o envolva), para evitar loops infinitos de erro.
 
-## Route parameter and data binding
+## Binding de parâmetros e dados da rota {#route-parameter-and-data-binding}
 
-When using `withComponentInputBinding()`, Angular Router binds route parameters and static data to inputs on the `errorComponent` as well. This allows you to display contextual information in your error UI:
+Ao usar `withComponentInputBinding()`, o Angular Router também faz o binding de parâmetros de rota e dados estáticos nos inputs do `errorComponent`. Assim, você pode exibir informações contextuais na UI de erro:
 
 ```angular-ts {header:"product-error-fallback.ts"}
 import {Component, input} from '@angular/core';
@@ -89,9 +90,9 @@ export class ProductErrorFallback {
 }
 ```
 
-## Global error boundary configuration
+## Configuração global de error boundaries {#global-error-boundary-configuration}
 
-Enable router error boundaries for your application with the `withErrorBoundaries` feature in `provideRouter`. Without it, a route's `errorComponent` is ignored:
+Ative os error boundaries do router na sua aplicação com a feature `withErrorBoundaries` dentro de `provideRouter`. Sem ela, o `errorComponent` de uma rota é ignorado:
 
 ```ts {header:"app.config.ts"}
 import {ApplicationConfig, inject} from '@angular/core';
@@ -106,10 +107,10 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withErrorBoundaries({
-        // Default fallback component for routes that do not define their own errorComponent
+        // Component de fallback padrão para rotas que não definem o próprio errorComponent
         defaultErrorComponent: GlobalErrorFallback,
 
-        // Global telemetry hook invoked whenever a route error is caught
+        // Hook global de telemetria, invocado sempre que um erro de rota é capturado
         onError: (error, details) => {
           inject(AnalyticsService).logException(error, details);
         },
@@ -119,18 +120,18 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-### Options
+### Opções {#options}
 
-| Option                  | Type                                             | Description                                                                                                                          |
-| ----------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `defaultErrorComponent` | `Type<unknown>`                                  | Default fallback component to render when a route without its own `errorComponent` throws an error.                                  |
-| `onError`               | `(error: Error, details?: ErrorDetails) => void` | Global callback invoked whenever any error is caught by a router error boundary. Ideal for sending telemetry to monitoring services. |
+| Opção                   | Tipo                                             | Descrição                                                                                                                              |
+| ----------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultErrorComponent` | `Type<unknown>`                                  | Component de fallback padrão a ser renderizado quando uma rota sem `errorComponent` próprio lançar um erro.                             |
+| `onError`               | `(error: Error, details?: ErrorDetails) => void` | Callback global invocado sempre que qualquer erro for capturado por um error boundary do router. Ideal para enviar telemetria a serviços de monitoramento. |
 
 ---
 
-## Redirecting with `RedirectCommand`
+## Redirecionando com `RedirectCommand` {#redirecting-with-redirectcommand}
 
-When an authentication failure or data condition requires navigating to another page, components and route resources can throw a `RedirectCommand`:
+Quando uma falha de autenticação ou uma condição nos dados exige navegar para outra página, components e resources de rota podem lançar um `RedirectCommand`:
 
 ```angular-ts {header:"user-profile.ts"}
 import {Component, inject, resource} from '@angular/core';
@@ -147,7 +148,7 @@ export class UserProfile {
     loader: async () => {
       const response = await fetch('/api/user');
       if (response.status === 401) {
-        // Automatically redirects to /login when unauthorized
+        // Redireciona automaticamente para /login quando não autorizado
         throw new RedirectCommand(this.router.parseUrl('/login'));
       }
       return response.json();
@@ -156,28 +157,28 @@ export class UserProfile {
 }
 ```
 
-When a `RedirectCommand` is thrown:
+Quando um `RedirectCommand` é lançado:
 
-1. `RouterOutlet` catches the command and initiates navigation to the specified redirect destination.
-2. If nested outlets or template error boundaries exist, Angular deduplicates the command to ensure the navigation is only triggered once.
-3. The error component (if configured) renders during the transition.
+1. O `RouterOutlet` captura o comando e inicia a navegação para o destino de redirecionamento.
+2. Se existirem outlets aninhados ou error boundaries de template, o Angular deduplica o comando para garantir que a navegação seja disparada apenas uma vez.
+3. O error component (se configurado) é renderizado durante a transição.
 
-NOTE: If a `RedirectCommand` is thrown and no `errorComponent` is configured, the router initiates the navigation and intentionally swallows the error to prevent it from being logged as a crash by the global `ErrorHandler`.
+NOTE: Se um `RedirectCommand` for lançado e nenhum `errorComponent` estiver configurado, o router inicia a navegação e descarta intencionalmente o erro, para evitar que ele seja registrado como crash pelo `ErrorHandler` global.
 
-## Error boundary scope vs. navigation errors
+## Escopo dos error boundaries x erros de navegação {#error-boundary-scope-vs-navigation-errors}
 
-It is helpful to understand the distinction between **view-layer errors** and **navigation pipeline errors**:
+Vale entender a diferença entre **erros da camada de view** e **erros do pipeline de navegação**:
 
-- **View-layer errors (Error boundaries)**: Occur inside component constructors, dependency injection, lifecycle hooks (`ngOnInit`), template expressions, and component `resource()` loaders. These are caught by `RouterOutlet` and display the `errorComponent`.
-- **Navigation pipeline errors (`NavigationError`)**: Occur before route activation, such as failing `canActivate` / `canMatch` guards or route `resolve` data functions. These halt the navigation transition before reaching the outlet and can be customized using `withNavigationErrorHandler`.
+- **Erros da camada de view (error boundaries)**: ocorrem dentro de construtores de components, na injeção de dependência, em lifecycle hooks (`ngOnInit`), em expressões de template e nos loaders de `resource()` dos components. Eles são capturados pelo `RouterOutlet`, que exibe o `errorComponent`.
+- **Erros do pipeline de navegação (`NavigationError`)**: ocorrem antes da ativação da rota, como a falha de guards `canActivate` / `canMatch` ou de funções `resolve` de dados. Eles interrompem a transição de navegação antes de chegar ao outlet e podem ser personalizados com `withNavigationErrorHandler`.
 
-NOTE: When an error boundary displays an `errorComponent`, `canDeactivate` guards configured for that route run when navigating away. The guard receives the active `errorComponent` instance as its `component` parameter. If your guard accesses component-specific properties or methods, verify the component type or safely handle the error component instance.
+NOTE: Quando um error boundary exibe um `errorComponent`, os guards `canDeactivate` configurados para essa rota são executados ao sair dela. O guard recebe a instância ativa do `errorComponent` como parâmetro `component`. Se o seu guard acessar propriedades ou métodos específicos do component, verifique o tipo da instância ou trate com segurança a instância do error component.
 
-## Next steps
+## Próximos passos {#next-steps}
 
 <docs-pill-row>
-  <docs-pill href="/guide/templates/error-boundaries" title="Template error boundaries"/>
-  <docs-pill href="/guide/routing/show-routes-with-outlets" title="Show routes with outlets"/>
-  <docs-pill href="/guide/routing/redirecting-routes" title="Redirecting routes"/>
-  <docs-pill href="/guide/routing/data-fetching-with-resources" title="Data fetching with resources"/>
+  <docs-pill href="/guide/templates/error-boundaries" title="Error boundaries em templates"/>
+  <docs-pill href="/guide/routing/show-routes-with-outlets" title="Mostrando rotas com outlets"/>
+  <docs-pill href="/guide/routing/redirecting-routes" title="Redirecionando rotas"/>
+  <docs-pill href="/guide/routing/data-fetching-with-resources" title="Busca de dados com resources"/>
 </docs-pill-row>
