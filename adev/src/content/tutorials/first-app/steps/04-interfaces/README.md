@@ -49,7 +49,7 @@ Este passo adiciona as propriedades à interface que sua aplicação precisa par
 1. No painel **Edit** do seu IDE, abra o arquivo `src/app/housinglocation.ts`.
 1. Em `housinglocation.ts`, substitua o conteúdo padrão com o seguinte código para fazer sua nova interface corresponder a este exemplo.
 
-<docs-code header="Atualize src/app/housinglocation.ts para corresponder a este código" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/housinglocation.ts" visibleLines="[1,10]" />
+      <docs-code header="Atualize src/app/housinglocation.ts para corresponder a este código" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/housinglocation.ts" visibleLines="[1,10]" />
 
 1. Salve suas alterações e confirme que a aplicação não exibe nenhum erro. Corrija quaisquer erros antes de continuar para o próximo passo.
 
@@ -67,15 +67,15 @@ Há mais algumas lições para completar antes que isso aconteça.
 1. No painel **Edit** do seu IDE, abra `src/app/home/home.ts`.
 1. Em `src/app/home/home.ts`, adicione esta declaração de import após as declarações `import` existentes para que `Home` possa usar a nova interface.
 
-<docs-code language="angular-ts" header="Importe Home em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[3]"/>
+      <docs-code language="angular-ts" header="Importe Home em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[3]"/>
 
 1. Em `src/app/home/home.ts`, substitua a definição vazia `export class Home {}` com este código para criar uma única instância da nova interface no component.
 
-<docs-code language="angular-ts" header="Adicione dados de exemplo a src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[21,34]"/>
+      <docs-code language="angular-ts" header="Adicione dados de exemplo a src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[21,34]"/>
 
 1. Confirme que seu arquivo `home.ts` corresponde a este exemplo.
 
-   <docs-code language="angular-ts" header="src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[1,34]" />
+      <docs-code language="angular-ts" header="src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/05-inputs/src/app/home/home.ts" visibleLines="[1,34]" />
 
    Ao adicionar a propriedade `housingLocation` do tipo `HousingLocation` à classe `Home`, somos capazes de confirmar que os dados correspondem à descrição da interface. Se os dados não satisfizessem a descrição da interface, o IDE tem informação suficiente para nos dar erros úteis.
 

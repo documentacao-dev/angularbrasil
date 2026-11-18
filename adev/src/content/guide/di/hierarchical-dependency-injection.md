@@ -399,11 +399,9 @@ A view renderizada mais básica se pareceria com elementos HTML aninhados, como 
 No entanto, nos bastidores, o Angular usa uma representação lógica da view da seguinte forma ao resolver requisições de injeção:
 
 ```html
-<app-root @ApplicationConfig
-        @Inject(FlowerService) flower=>"🌺">
+<app-root> <!-- App selector -->
   <#VIEW>
-    <p>Emoji from FlowerService: {{flower.emoji}} (🌺)</p>
-    <app-child>
+    <app-child> <!-- Child selector -->
       <#VIEW>
       </#VIEW>
     </app-child>

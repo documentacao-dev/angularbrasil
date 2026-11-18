@@ -58,7 +58,7 @@ O template foi atualizado para vincular a função `filterResults` ao evento `cl
 
     <docs-code header="Adicione a implementação da função filterResults" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[35,44]"/>
 
-    Esta função usa a função `filter` de `String` para comparar o valor do parâmetro `text` com a propriedade `housingLocation.city`. Você pode atualizar esta função para corresponder a qualquer propriedade ou múltiplas propriedades como um exercício divertido.
+    Esta função usa a função `filter` de `Array` para comparar o valor do parâmetro `text` com a propriedade `housingLocation.city`. Você pode atualizar esta função para corresponder a qualquer propriedade ou múltiplas propriedades como um exercício divertido.
 
 1.  Salve seu código.
 

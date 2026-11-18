@@ -34,7 +34,7 @@
 | `NG0750`  | [Dependências de @defer falharam ao carregar](errors/NG0750)                                |
 | `NG0751`  | [Comportamento de @defer quando HMR está habilitado](errors/NG0751)                         |
 | `NG0904`  | [Valor não seguro usado em um contexto de URL de recurso](errors/NG0904)                    |
-| `NG0910`  | [Bindings inseguros em um elemento iframe](errors/NG0910)                                  |
+| `NG0910`  | [Bindings inseguros em um elemento](errors/NG0910)                                       |
 | `NG0912`  | [Colisão na geração de ID do component](errors/NG0912)                                     |
 | `NG0913`  | [Avisos de desempenho em tempo de execução](errors/NG0913)                                  |
 | `NG0919`  | [Dependência Circular Detectada](errors/NG0919)                                             |

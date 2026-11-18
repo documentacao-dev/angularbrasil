@@ -110,7 +110,7 @@ Em uma lição anterior você atualizou o template `App` para incluir um `router
 
       <docs-code language="angular-ts" header="Confirme o routerLink em app.ts" path="adev/src/content/tutorials/first-app/steps/12-forms/src/app/app.ts" visibleLines="[7,18]"/>
 
-        Seu código já deve estar atualizado, mas confirme para ter certeza.
+    Seu código já deve estar atualizado, mas confirme para ter certeza.
 
     </docs-step>
 

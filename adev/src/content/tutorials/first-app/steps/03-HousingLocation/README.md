@@ -48,15 +48,15 @@ No painel **Edit** do seu IDE:
 1. Abra `home.ts` no editor.
 1. Em `home.ts`, importe `HousingLocation` adicionando esta linha aos imports no nível do arquivo.
 
-<docs-code header="Importe HousingLocation em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[2]"/>
+      <docs-code header="Importe HousingLocation em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[2]"/>
 
 1. Em seguida, atualize a propriedade `imports` dos metadados do `@Component` adicionando `HousingLocation` ao array.
 
-<docs-code  header="Adicione HousingLocation ao array de imports em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[6]"/>
+      <docs-code  header="Adicione HousingLocation ao array de imports em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[6]"/>
 
 1. Agora o component está pronto para uso no template do `Home`. Atualize a propriedade `template` dos metadados do `@Component` para incluir uma referência à tag `<app-housing-location>`.
 
-<docs-code language="angular-ts" header="Adicione housing location ao template do component em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[7,17]"/>
+      <docs-code language="angular-ts" header="Adicione housing location ao template do component em src/app/home/home.ts" path="adev/src/content/tutorials/first-app/steps/04-interfaces/src/app/home/home.ts" visibleLines="[7,17]"/>
 
 </docs-step>
 
