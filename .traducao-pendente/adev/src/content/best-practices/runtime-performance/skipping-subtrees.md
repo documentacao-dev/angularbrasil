@@ -9,18 +9,10 @@ A change detection é rápida o suficiente para a maioria das aplicações. No e
 
 OnPush é a estratégia de change detection padrão no Angular (desde a v22). Ela instrui o Angular a executar change detection para uma subárvore de components **apenas** quando:
 
-<<<<<<< pt
 - O component raiz da subárvore recebe novos inputs como resultado de um template binding. O Angular compara o valor atual e o valor anterior do input com `Object.is`.
 - O Angular trata um evento _(por exemplo, usando event binding, output binding ou `@HostListener`)_ no component raiz da subárvore ou em qualquer um de seus filhos, estejam eles usando change detection OnPush ou não.
-||||||| base_en
-- The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `Object.is`.
-- Angular handles an event _(for example using event binding, output binding, or `@HostListener` )_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
-=======
-- The root component of the subtree receives new inputs as the result of a template binding. Angular compares the current and past value of the input with `Object.is`.
-- Angular handles an event _(for example using event binding, output binding, or `@HostListener` )_ in the subtree's root component or any of its children whether they are using OnPush change detection or not.
-- A component in the subtree is marked for check, for example with `ChangeDetectorRef.markForCheck` or by `AsyncPipe`.
-- A signal read in the template of a component in the subtree changes. Angular then refreshes only the components that read the signal.
->>>>>>> new_en
+- Um component da subárvore é marcado para verificação, por exemplo com `ChangeDetectorRef.markForCheck` ou pelo `AsyncPipe`.
+- Um signal lido no template de um component da subárvore muda. Então, o Angular atualiza apenas os components que leem o signal.
 
 ## Cenários comuns de change detection {#common-change-detection-scenarios}
 
