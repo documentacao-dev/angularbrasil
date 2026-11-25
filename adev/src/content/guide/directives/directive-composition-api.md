@@ -177,10 +177,10 @@ Se uma directive corresponde a um elemento uma vez por meio de um **seletor de t
 
 O modelo mental é que uma correspondência de host directive representa `Partial<YourDirective>`, uma aplicação parcial em que apenas os inputs e outputs explicitamente listados em `hostDirectives` são expostos, enquanto uma correspondência de template representa a directive completa, com toda a sua API pública.
 
+```ts
 @Directive({selector: '[hoverable]'})
 export class Hoverable {}
 
-```ts
 @Component({
   selector: 'app-button',
   hostDirectives: [Hoverable],

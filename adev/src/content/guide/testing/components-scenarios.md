@@ -151,7 +151,7 @@ O component `Welcome` exibe uma mensagem de boas-vindas ao usuário logado.
 Ele sabe quem é o usuário com base em uma propriedade do `UserAuthentication` injetado:
 
 ```angular-ts
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {UserAuthentication} from '../model/user.authentication';
 
 @Component({
@@ -160,7 +160,7 @@ import {UserAuthentication} from '../model/user.authentication';
 })
 export class Welcome {
   private userAuth = inject(UserAuthentication);
-  welcome = signal(
+  welcome = computed(() =>
     this.userAuth.isLoggedIn() ? `Welcome, ${this.userAuth.user().name}` : 'Please log in.',
   );
 }

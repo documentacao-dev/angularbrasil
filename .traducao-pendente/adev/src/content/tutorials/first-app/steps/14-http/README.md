@@ -1,0 +1,244 @@
+<!-- ia-translate: true -->
+# Adicione comunicação HTTP à sua aplicação
+
+Este tutorial demonstra como integrar HTTP e uma API à sua aplicação.
+
+Até este ponto, sua aplicação leu dados de um array estático em um service Angular. O próximo passo é usar um JSON server com o qual sua aplicação se comunicará via HTTP. A requisição HTTP simulará a experiência de trabalhar com dados de um servidor.
+
+<docs-video src="https://www.youtube.com/embed/5K10oYJ5Y-E?si=TiuNKx_teR9baO7k"/>
+
+IMPORTANT: Recomendamos usar seu ambiente local para esta etapa do tutorial.
+
+## O que você aprenderá {#what-youll-learn}
+
+Sua aplicação usará dados de um JSON server
+
+<docs-workflow>
+
+<docs-step title="Configure o JSON server {#configure-the-json-server}">
+JSON Server é uma ferramenta de código aberto usada para criar APIs REST simuladas. Você a usará para servir os dados de locais de moradia que estão atualmente armazenados no housing service.
+
+1. Instale o `json-server` do npm usando o seguinte comando.
+
+   ```bash
+   npm install -g json-server
+   ```
+
+1. Na raiz do seu projeto, crie um arquivo chamado `db.json`. É aqui que você armazenará os dados para o `json-server`.
+
+1. Abra `db.json` e copie o seguinte código para o arquivo
+
+   ```json
+   {
+     "locations": [
+       {
+         "id": 0,
+         "name": "Acme Fresh Start Housing",
+         "city": "Chicago",
+         "state": "IL",
+         "photo": "https://angular.dev/assets/images/tutorials/common/bernard-hermant-CLKGGwIBTaY-unsplash.jpg",
+         "availableUnits": 4,
+         "wifi": true,
+         "laundry": true
+       },
+       {
+         "id": 1,
+         "name": "A113 Transitional Housing",
+         "city": "Santa Monica",
+         "state": "CA",
+         "photo": "https://angular.dev/assets/images/tutorials/common/brandon-griggs-wR11KBaB86U-unsplash.jpg",
+         "availableUnits": 0,
+         "wifi": false,
+         "laundry": true
+       },
+       {
+         "id": 2,
+         "name": "Warm Beds Housing Support",
+         "city": "Juneau",
+         "state": "AK",
+         "photo": "https://angular.dev/assets/images/tutorials/common/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg",
+         "availableUnits": 1,
+         "wifi": false,
+         "laundry": false
+       },
+       {
+         "id": 3,
+         "name": "Homesteady Housing",
+         "city": "Chicago",
+         "state": "IL",
+         "photo": "https://angular.dev/assets/images/tutorials/common/ian-macdonald-W8z6aiwfi1E-unsplash.jpg",
+         "availableUnits": 1,
+         "wifi": true,
+         "laundry": false
+       },
+       {
+         "id": 4,
+         "name": "Happy Homes Group",
+         "city": "Gary",
+         "state": "IN",
+         "photo": "https://angular.dev/assets/images/tutorials/common/krzysztof-hepner-978RAXoXnH4-unsplash.jpg",
+         "availableUnits": 1,
+         "wifi": true,
+         "laundry": false
+       },
+       {
+         "id": 5,
+         "name": "Hopeful Apartment Group",
+         "city": "Oakland",
+         "state": "CA",
+         "photo": "https://angular.dev/assets/images/tutorials/common/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
+         "availableUnits": 2,
+         "wifi": true,
+         "laundry": true
+       },
+       {
+         "id": 6,
+         "name": "Seriously Safe Towns",
+         "city": "Oakland",
+         "state": "CA",
+         "photo": "https://angular.dev/assets/images/tutorials/common/phil-hearing-IYfp2Ixe9nM-unsplash.jpg",
+         "availableUnits": 5,
+         "wifi": true,
+         "laundry": true
+       },
+       {
+         "id": 7,
+         "name": "Hopeful Housing Solutions",
+         "city": "Oakland",
+         "state": "CA",
+         "photo": "https://angular.dev/assets/images/tutorials/common/r-architecture-GGupkreKwxA-unsplash.jpg",
+         "availableUnits": 2,
+         "wifi": true,
+         "laundry": true
+       },
+       {
+         "id": 8,
+         "name": "Seriously Safe Towns",
+         "city": "Oakland",
+         "state": "CA",
+         "photo": "https://angular.dev/assets/images/tutorials/common/saru-robert-9rP3mxf8qWI-unsplash.jpg",
+         "availableUnits": 10,
+         "wifi": false,
+         "laundry": false
+       },
+       {
+         "id": 9,
+         "name": "Capital Safe Towns",
+         "city": "Portland",
+         "state": "OR",
+         "photo": "https://angular.dev/assets/images/tutorials/common/webaliser-_TPTXZd9mOo-unsplash.jpg",
+         "availableUnits": 6,
+         "wifi": true,
+         "laundry": true
+       }
+     ]
+   }
+   ```
+
+1. Salve este arquivo.
+
+1. Hora de testar sua configuração. Na linha de comando, na raiz do seu projeto, execute os seguintes comandos.
+
+   ```bash
+   json-server --watch db.json
+   ```
+
+1. No seu navegador web, navegue até `http://localhost:3000/locations` e confirme que a resposta inclui os dados armazenados em `db.json`.
+
+Se você tiver algum problema com sua configuração, pode encontrar mais detalhes na [documentação oficial](https://www.npmjs.com/package/json-server).
+</docs-step>
+
+<docs-step title="Atualize o service para usar o web server em vez do array local {#update-service-to-use-web-server-instead-of-local-array}">
+A fonte de dados foi configurada. O próximo passo é atualizar sua aplicação web para se conectar a ela e usar os dados.
+
+<<<<<<< pt
+1.  Em `src/app/housing.service.ts`, faça as seguintes alterações:
+||||||| base_en
+1.  In `src/app/housing.service.ts`, make the following changes:
+=======
+1.  In `src/app/housing-service.ts`, make the following changes:
+>>>>>>> new_en
+
+1.  Atualize o código para remover a propriedade `housingLocationList`, o array que contém os dados e a propriedade `baseUrl`.
+
+1.  Adicione uma propriedade string chamada `url` e defina seu valor como `'http://localhost:3000/locations'`
+
+<<<<<<< pt
+    <docs-code header="Adicione a propriedade url ao housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[6]"/>
+||||||| base_en
+    <docs-code header="Add url property to housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[6]"/>
+=======
+    <docs-code header="Add url property to housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[6]"/>
+>>>>>>> new_en
+
+    Este código resultará em erros no restante do arquivo porque depende da propriedade `housingLocationList`. Vamos atualizar os métodos do service em seguida.
+
+1.  Atualize a função `getAllHousingLocations` para fazer uma chamada ao web server que você configurou.
+
+<<<<<<< pt
+     <docs-code header="Atualize o método getAllHousingLocations em housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[8,11]"/>
+||||||| base_en
+     <docs-code header="Update the getAllHousingLocations method in housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[8,11]"/>
+=======
+     <docs-code header="Update the getAllHousingLocations method in housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[8,11]"/>
+>>>>>>> new_en
+
+    O código agora usa código assíncrono para fazer uma requisição **GET** via HTTP.
+
+    HELPFUL: Para este exemplo, o código usa `fetch`. Para casos de uso mais avançados, considere usar o `HttpClient` fornecido pelo Angular.
+
+1.  Atualize a função `getHousingLocationById` para fazer uma chamada ao web server que você configurou.
+
+    HELPFUL: Observe que a URL do `fetch` agora anexa o `id` como segmento de caminho (`${this.url}/${id}`) para requisitar a location com um valor de propriedade `id` correspondente.
+
+<<<<<<< pt
+     <docs-code header="Atualize o método getHousingLocationById em housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[13,17]"/>
+||||||| base_en
+     <docs-code header="Update the getHousingLocationById method in housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[13,17]"/>
+=======
+     <docs-code header="Update the getHousingLocationById method in housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[13,17]"/>
+>>>>>>> new_en
+
+1.  Quando todas as atualizações estiverem concluídas, seu service deve corresponder ao seguinte código.
+
+<<<<<<< pt
+     <docs-code header="Versão final de housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[1,23]" />
+||||||| base_en
+     <docs-code header="Final version of housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[1,23]" />
+=======
+     <docs-code header="Final version of housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[1,23]" />
+>>>>>>> new_en
+
+</docs-step>
+
+<docs-step title="Atualize os componentes para usar chamadas assíncronas ao housing service {#update-the-components-to-use-asynchronous-calls-to-the-housing-service}">
+O servidor agora está lendo dados da requisição HTTP, mas os componentes que dependem do service agora têm erros porque foram programados para usar a versão síncrona do service.
+
+1.  Em `src/app/home/home.ts`, atualize o `constructor` para usar a nova versão assíncrona do método `getAllHousingLocations`. Como não usamos signals para nosso estado, você precisa notificar o Angular de que houve uma mudança que exige sincronização. Chame `this.changeDetectorRef.markForCheck()` para isso.
+
+      <docs-code header="Atualize o constructor em home.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/home/home.ts" visibleLines="[30,38]"/>
+
+1.  Em `src/app/details/details.ts`, atualize o `constructor` para usar a nova versão assíncrona do método `getHousingLocationById`. Como antes, você também deve chamar `this.changeDetectorRef.markForCheck()` para notificar o Angular das mudanças.
+
+      <docs-code header="Atualize o constructor em details.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/details/details.ts" visibleLines="[60,66]"/>
+
+1.  Salve seu código.
+
+1.  Abra a aplicação no navegador e confirme que ela funciona sem nenhum erro.
+    </docs-step>
+
+</docs-workflow>
+
+NOTE: Esta lição depende da API `fetch` do navegador. Para o suporte a interceptors, consulte a [documentação do HTTP client](/guide/http)
+
+<<<<<<< pt
+SUMMARY: Nesta lição, você atualizou sua aplicação para usar um web server local (`json-server`) e usar métodos de service assíncronos para recuperar dados.
+||||||| base_en
+SUMMARY: In this lesson, you updated your app to use a local web server (`json-server`), and use asynchronous service methods to retrieve data.
+=======
+SUMMARY: In this lesson, you used a local web server (`json-server`) and asynchronous service methods to retrieve data.
+>>>>>>> new_en
+
+Parabéns! Você concluiu com sucesso este tutorial e está pronto para continuar sua jornada construindo aplicações Angular ainda mais complexas.
+
+Se você quiser aprender mais, considere completar alguns dos outros [tutoriais](tutorials) e [guias](overview) de desenvolvedor do Angular.

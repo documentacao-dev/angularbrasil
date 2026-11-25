@@ -1,21 +1,19 @@
-<!-- ia-translate: true -->
+# Test requests
 
-# Requisições de teste
+As for any external dependency, you must mock the HTTP backend so your tests can simulate interaction with a remote server. The `@angular/common/http/testing` library provides tools to capture requests made by the application, make assertions about them, and mock the responses to emulate your backend's behavior.
 
-Como para qualquer dependência externa, você deve fazer mock do backend HTTP para que seus testes possam simular a interação com um servidor remoto. A biblioteca `@angular/common/http/testing` fornece ferramentas para capturar as requisições feitas pela aplicação, fazer assertions sobre elas e fazer mock das respostas para emular o comportamento do seu backend.
+The testing library is designed for a pattern where the app executes code and makes requests first. The test then expects that certain requests have or have not been made, performs assertions against those requests, and finally provides responses by "flushing" each expected request.
 
-A biblioteca de teste é projetada para um padrão no qual a aplicação executa código e faz requisições primeiro. O teste então espera que certas requisições tenham ou não sido feitas, executa assertions contra essas requisições e, por fim, fornece respostas "liberando" (flushing) cada requisição esperada.
+Finally, tests can verify that the app made no unexpected requests.
 
-Por último, os testes podem verificar que a aplicação não fez requisições inesperadas.
+## Setup for testing
 
-## Configuração para teste {#setup-for-testing}
-
-Para começar a testar o uso do `HttpClient`, configure o `TestBed` e inclua `provideHttpClientTesting()` na configuração do seu teste. O `HttpClient` é fornecido pelo ambiente de testes do Angular, e `provideHttpClientTesting()` o configura para usar um backend de teste em vez da rede real. Ele também fornece o `HttpTestingController`, que você usará para interagir com o backend de teste, definir expectativas sobre quais requisições foram feitas e liberar respostas para essas requisições. O `HttpTestingController` pode ser injetado a partir do `TestBed` depois de configurado.
+To begin testing usage of `HttpClient`, configure `TestBed` and include `provideHttpClientTesting()` in your test's setup. `HttpClient` is provided by Angular's test environment, and `provideHttpClientTesting()` configures it to use a test backend instead of the real network. It also provides `HttpTestingController`, which you'll use to interact with the test backend, set expectations about which requests have been made, and flush responses to those requests. `HttpTestingController` can be injected from `TestBed` once configured.
 
 ```ts
 TestBed.configureTestingModule({
   providers: [
-    // ... outros providers de teste
+    // ... other test providers
     provideHttpClientTesting(),
   ],
 });
@@ -23,12 +21,12 @@ TestBed.configureTestingModule({
 const httpTesting = TestBed.inject(HttpTestingController);
 ```
 
-Agora, quando seus testes fizerem requisições, elas atingirão o backend de teste em vez do normal. Você pode usar `httpTesting` para fazer assertions sobre essas requisições.
+Now when your tests make requests, they will hit the testing backend instead of the normal one. You can use `httpTesting` to make assertions about those requests.
 
-### Configurando o `HttpClient` em testes {#configuring-httpclient-in-tests}
+### Configuring `HttpClient` in tests
 
-Se um teste precisar configurar recursos do `HttpClient`, como interceptors, inclua `provideHttpClient(...)` antes de `provideHttpClientTesting()`.
-IMPORTANT: Lembre-se de fornecer `provideHttpClient()` **antes** de `provideHttpClientTesting()`, pois `provideHttpClientTesting()` sobrescreve partes de `provideHttpClient()`. Fazer o contrário pode quebrar seus testes.
+If a test needs to configure `HttpClient` features, such as interceptors, include `provideHttpClient(...)` before `provideHttpClientTesting()`.
+IMPORTANT: Keep in mind to provide `provideHttpClient()` **before** `provideHttpClientTesting()`, as `provideHttpClientTesting()` will overwrite parts of `provideHttpClient()`. Doing it the other way around can potentially break your tests.
 
 ```ts
 TestBed.configureTestingModule({
@@ -36,9 +34,9 @@ TestBed.configureTestingModule({
 });
 ```
 
-## Esperando e respondendo requisições {#expecting-and-answering-requests}
+## Expecting and answering requests
 
-Por exemplo, você pode escrever um teste que espera que uma requisição GET ocorra e fornece uma resposta mock:
+For example, you can write a test that expects a GET request to occur and provides a mock response:
 
 ```ts
 TestBed.configureTestingModule({
@@ -47,34 +45,34 @@ TestBed.configureTestingModule({
 
 const httpTesting = TestBed.inject(HttpTestingController);
 
-// Carrega o `ConfigService` e solicita a configuração atual.
+// Load `ConfigService` and request the current configuration.
 const service = TestBed.inject(ConfigService);
 const config$ = service.getConfig<Config>();
 
-// `firstValueFrom` se inscreve no `Observable`, o que faz a requisição HTTP,
-// e cria uma `Promise` da resposta.
+// `firstValueFrom` subscribes to the `Observable`, which makes the HTTP request,
+// and creates a `Promise` of the response.
 const configPromise = firstValueFrom(config$);
 
-// Neste ponto, a requisição está pendente, e podemos verificar que ela foi feita
-// através do `HttpTestingController`:
+// At this point, the request is pending, and we can assert it was made
+// via the `HttpTestingController`:
 const req = httpTesting.expectOne('/api/config', 'Request to load the configuration');
 
-// Podemos verificar várias propriedades da requisição, se desejado.
+// We can assert various properties of the request if desired.
 expect(req.request.method).toBe('GET');
 
-// Liberar a requisição faz com que ela seja concluída, entregando o resultado.
+// Flushing the request causes it to complete, delivering the result.
 req.flush(DEFAULT_CONFIG);
 
-// Podemos então verificar que a resposta foi entregue com sucesso pelo `ConfigService`:
+// We can then assert that the response was successfully delivered by the `ConfigService`:
 expect(await configPromise).toEqual(DEFAULT_CONFIG);
 
-// Por fim, podemos verificar que nenhuma outra requisição foi feita.
+// Finally, we can assert that no other requests were made.
 httpTesting.verify();
 ```
 
-NOTE: `expectOne` falhará se o teste tiver feito mais de uma requisição que corresponda aos critérios fornecidos.
+NOTE: `expectOne` will fail if the test has made more than one request which matches the given criteria.
 
-Como alternativa a fazer assertion sobre `req.method`, você pode usar uma forma expandida de `expectOne` para também corresponder ao método da requisição:
+As an alternative to asserting on `req.method`, you could instead use an expanded form of `expectOne` to also match the request method:
 
 ```ts
 const req = httpTesting.expectOne(
@@ -86,76 +84,76 @@ const req = httpTesting.expectOne(
 );
 ```
 
-HELPFUL: As APIs de expectativa correspondem à URL completa das requisições, incluindo quaisquer parâmetros de query.
+HELPFUL: The expectation APIs match against the full URL of requests, including any query parameters.
 
-A última etapa, verificar que não há requisições pendentes, é comum o suficiente para que você a mova para um passo `afterEach()`:
+The last step, verifying that no requests remain outstanding, is common enough for you to move it into an `afterEach()` step:
 
 ```ts
 afterEach(() => {
-  // Verifica que nenhum dos testes faz requisições HTTP extras.
+  // Verify that none of the tests make any extra HTTP requests.
   TestBed.inject(HttpTestingController).verify();
 });
 ```
 
-## Lidando com mais de uma requisição por vez {#handling-more-than-one-request-at-once}
+## Handling more than one request at once
 
-Se você precisar responder a requisições duplicadas em seu teste, use a API `match()` em vez de `expectOne()`. Ela aceita os mesmos argumentos, mas retorna um array de requisições correspondentes. Depois de retornadas, essas requisições são removidas das correspondências futuras, e você é responsável por liberá-las e verificá-las.
+If you need to respond to duplicate requests in your test, use the `match()` API instead of `expectOne()`. It takes the same arguments but returns an array of matching requests. Once returned, these requests are removed from future matching and you are responsible for flushing and verifying them.
 
 ```ts
 const allGetRequests = httpTesting.match({method: 'GET'});
 for (const req of allGetRequests) {
-  // Trata a resposta de cada requisição.
+  // Handle responding to each request.
 }
 ```
 
-## Correspondência avançada {#advanced-matching}
+## Advanced matching
 
-Todas as funções de correspondência aceitam uma função predicado para lógica de correspondência personalizada:
+All matching functions accept a predicate function for custom matching logic:
 
 ```ts
-// Procura uma requisição que tenha um corpo de requisição.
+// Look for one request that has a request body.
 const requestsWithBody = httpTesting.expectOne((req) => req.body !== null);
 ```
 
-A função `expectNone` faz assertion de que nenhuma requisição corresponde aos critérios fornecidos.
+The `expectNone` function asserts that no requests match the given criteria.
 
 ```ts
-// Verifica que nenhuma requisição de mutação foi emitida.
+// Assert that no mutation requests have been issued.
 httpTesting.expectNone((req) => req.method !== 'GET');
 ```
 
-## Testando tratamento de erros {#testing-error-handling}
+## Testing error handling
 
-Você deve testar as respostas da sua aplicação quando requisições HTTP falham.
+You should test your app's responses when HTTP requests fail.
 
-### Erros de backend {#backend-errors}
+### Backend errors
 
-Para testar o tratamento de erros de backend (quando o servidor retorna um código de status sem sucesso), libere as requisições com uma resposta de erro que emule o que seu backend retornaria quando uma requisição falha.
+To test handling of backend errors (when the server returns a non-successful status code), flush requests with an error response that emulates what your backend would return when a request fails.
 
 ```ts
 const req = httpTesting.expectOne('/api/config');
 req.flush('Failed!', {status: 500, statusText: 'Internal Server Error'});
 
-// Verifica que a aplicação tratou o erro de backend com sucesso.
+// Assert that the application successfully handled the backend error.
 ```
 
-### Erros de rede {#network-errors}
+### Network errors
 
-Requisições também podem falhar devido a erros de rede, que aparecem como erros `ProgressEvent`. Eles podem ser entregues com o método `error()`:
+Requests can also fail due to network errors, which `HttpClient` reports as an `HttpErrorResponse` with a `status` of `0`. These can be simulated with the `error()` method, which wraps the given `ProgressEvent` in such a response:
 
 ```ts
 const req = httpTesting.expectOne('/api/config');
 req.error(new ProgressEvent('network error!'));
 
-// Verifica que a aplicação tratou o erro de rede com sucesso.
+// Assert that the application successfully handled the network error.
 ```
 
-## Testando um interceptor {#testing-an-interceptor}
+## Testing an Interceptor
 
-Você deve testar que seus interceptors funcionam nas circunstâncias desejadas.
+You should test that your interceptors work under the desired circumstances.
 
-Por exemplo, uma aplicação pode precisar adicionar um token de autenticação gerado por um service a cada requisição de saída.
-Esse comportamento pode ser imposto com o uso de um interceptor:
+For example, an application may be required to add an authentication token generated by a service to each outgoing request.
+This behavior can be enforced with the use of an interceptor:
 
 ```ts
 export function authInterceptor(
@@ -171,26 +169,26 @@ export function authInterceptor(
 }
 ```
 
-A configuração do `TestBed` para este interceptor deve depender do recurso `withInterceptors`.
+The `TestBed` configuration for this interceptor should rely on the `withInterceptors` feature.
 
 ```ts
 TestBed.configureTestingModule({
   providers: [
     AuthService,
-    // Recomenda-se testar um interceptor por vez.
+    // Testing one interceptor at a time is recommended.
     provideHttpClient(withInterceptors([authInterceptor])),
     provideHttpClientTesting(),
   ],
 });
 ```
 
-O `HttpTestingController` pode recuperar a instância da requisição, que pode então ser inspecionada para garantir que a requisição foi modificada.
+The `HttpTestingController` can retrieve the request instance that can then be inspected to ensure that the request was modified.
 
 ```ts
 const service = TestBed.inject(AuthService);
 const http = TestBed.inject(HttpClient);
 
-// Faz uma requisição HTTP.
+// Make an HTTP request.
 const response = firstValueFrom(http.get('/api/config'));
 
 const req = httpTesting.expectOne('/api/config');
@@ -198,7 +196,7 @@ const req = httpTesting.expectOne('/api/config');
 expect(req.request.headers.get('X-Authentication-Token')).toEqual(service.getAuthToken());
 ```
 
-Um interceptor semelhante poderia ser implementado com interceptors baseados em classe:
+A similar interceptor could be implemented with class-based interceptors:
 
 ```ts
 @Injectable()
@@ -214,7 +212,7 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 ```
 
-Para testá-lo, a configuração do `TestBed` deve ser, em vez disso:
+In order to test it, the `TestBed` configuration should instead be:
 
 ```ts
 TestBed.configureTestingModule({
@@ -222,7 +220,7 @@ TestBed.configureTestingModule({
     AuthService,
     provideHttpClient(withInterceptorsFromDi()),
     provideHttpClientTesting(),
-    // Contamos com o token HTTP_INTERCEPTORS para registrar o AuthInterceptor como um HttpInterceptor
+    // We rely on the HTTP_INTERCEPTORS token to register the AuthInterceptor as an HttpInterceptor
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
 });

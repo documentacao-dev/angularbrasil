@@ -1,0 +1,59 @@
+<!-- ia-translate: true -->
+# Adicione um property binding ao template de um component
+
+Esta lição do tutorial demonstra como adicionar property binding a um template e usá-lo para passar dados dinâmicos a components.
+
+<docs-video src="https://www.youtube.com/embed/eM3zi_n7lNs?si=AsiczpWnMz5HhJqB&amp;start=599"/>
+
+## O que você vai aprender {#what-youll-learn}
+
+<<<<<<< pt
+- Sua aplicação tem data bindings no template `Home`.
+- Sua aplicação envia dados do `Home` para o `HousingLocation`.
+||||||| base_en
+- Your app has data bindings in the `Home` template.
+- Your app sends data from the `Home` to the `HousingLocation`.
+=======
+- Your app will have data bindings in the `Home` template.
+- Your app will send data from the `Home` to the `HousingLocation`.
+>>>>>>> new_en
+
+## Prévia conceitual de Inputs {#conceptual-preview-of-inputs}
+
+Nesta lição, você continuará o processo de compartilhar dados do component pai para o component filho vinculando dados a essas propriedades no template usando property binding.
+
+Property binding permite que você conecte uma variável a um `Input` em um template Angular. Os dados são então vinculados dinamicamente ao `Input`.
+
+Para uma explicação mais detalhada, consulte o guia [Property binding](/guide/templates/binding#binding-dynamic-properties-and-attributes).
+
+<docs-workflow>
+
+<docs-step title="Atualize o template `Home` {#update-the-home-template}">
+Este passo adiciona property binding à tag `<app-housing-location>`.
+
+No editor de código:
+
+1.  Navegue até `src/app/home/home.ts`
+1.  Na propriedade template do decorator `@Component`, atualize o código para corresponder ao código abaixo:
+    <docs-code language="angular-ts" header="Adicione property binding de housingLocation" path="adev/src/content/tutorials/first-app/steps/07-dynamic-template-values/src/app/home/home.ts" visibleLines="[15,17]"/>
+
+    Ao adicionar um property binding a uma tag de component, usamos a sintaxe `[attribute] = "value"` para notificar o Angular de que o valor atribuído deve ser tratado como uma propriedade da classe do component e não como um valor string.
+
+    O valor do lado direito é o nome da propriedade do `Home`.
+
+</docs-step>
+
+<docs-step title="Confirme que o código ainda funciona {#confirm-the-code-still-works}">
+1.  Salve suas alterações e confirme que a aplicação não tem nenhum erro.
+1.  Corrija quaisquer erros antes de continuar para o próximo passo.
+</docs-step>
+
+</docs-workflow>
+
+SUMMARY: Nesta lição, você adicionou um novo property binding e passou uma referência a uma propriedade de classe. Agora, o `HousingLocation` tem acesso aos dados que pode usar para customizar a exibição do component.
+
+Para mais informações sobre os tópicos cobertos nesta lição, visite:
+
+<docs-pill-row>
+  <docs-pill href="/guide/templates/binding#binding-dynamic-properties-and-attributes" title="Property binding"/>
+</docs-pill-row>

@@ -1,40 +1,43 @@
-<!-- ia-translate: true -->
-# Elementos host de components
+# Component host elements
 
-TIP: Este guia pressupõe que você já leu o [Guia de Fundamentos](essentials). Leia-o primeiro se você é novo no Angular.
+TIP: This guide assumes you've already read the [Essentials Guide](essentials). Read that first if you're new to Angular.
 
-O Angular cria uma instância de component para cada elemento HTML que corresponde ao seletor do component. O elemento DOM que corresponde ao seletor de um component é o **elemento host** desse component. O conteúdo do template de um component é renderizado dentro do seu elemento host.
+Angular creates an instance of a component for every HTML element that matches the component's
+selector. The DOM element that matches a component's selector is that component's **host element**.
+The contents of a component's template are rendered inside its host element.
 
 ```angular-ts
-// Código-fonte do component
+// Component source
 @Component({
   selector: 'profile-photo',
-  template: `<img src="profile-photo.jpg" alt="Sua foto de perfil" />`,
+  template: `<img src="profile-photo.jpg" alt="Your profile photo" />`,
 })
 export class ProfilePhoto {}
 ```
 
 ```angular-html
-<!-- Usando o component -->
-<h3>Sua foto de perfil</h3>
+<!-- Using the component -->
+<h3>Your profile photo</h3>
 <profile-photo />
-<button>Envie uma nova foto de perfil</button>
+<button>Upload a new profile photo</button>
 ```
 
 ```angular-html
-<!-- DOM renderizado -->
-<h3>Sua foto de perfil</h3>
+<!-- Rendered DOM -->
+<h3>Your profile photo</h3>
 <profile-photo>
-  <img src="profile-photo.jpg" alt="Sua foto de perfil" />
+  <img src="profile-photo.jpg" alt="Your profile photo" />
 </profile-photo>
-<button>Envie uma nova foto de perfil</button>
+<button>Upload a new profile photo</button>
 ```
 
-No exemplo acima, `<profile-photo>` é o elemento host do component `ProfilePhoto`.
+In the above example, `<profile-photo>` is the host element of the `ProfilePhoto` component.
 
-## Binding ao elemento host {#binding-to-the-host-element}
+## Binding to the host element
 
-Um component pode vincular propriedades, atributos, estilos e eventos ao seu elemento host. Isso se comporta de forma idêntica aos bindings em elementos dentro do template do component, mas é definido na propriedade `host` do decorator `@Component`:
+A component can bind properties, attributes, styles and events to its host element. This behaves
+identically to bindings on elements inside the component's template, but instead defined with
+the `host` property in the `@Component` decorator:
 
 ```angular-ts
 @Component({
@@ -59,15 +62,19 @@ export class CustomSlider {
 }
 ```
 
-NOTE: Os nomes de alvos globais que podem ser usados como prefixo de um nome de evento são `document:`, `window:` e `body:`.
+NOTE: The global target names that can be used to prefix an event name are `document:`, `window:` and `body:`.
 
-NOTE: Nomes de teclas como `'(keydown.enter)'` são comparados com `KeyboardEvent.key`, que depende do layout do teclado e do idioma de entrada do usuário. Para comparar uma tecla física independentemente do layout, use o modificador `code`, por exemplo `'(keydown.code.Enter)'`. Consulte [Usando modificadores de tecla](guide/templates/event-listeners#using-key-modifiers) para mais detalhes.
+NOTE: Key names like `'(keydown.enter)'` are matched against `KeyboardEvent.key`, which depends on
+the user's keyboard layout and input language. To match a physical key regardless of layout, use
+the `code` modifier instead, e.g. `'(keydown.code.Enter)'`. See
+[Using key modifiers](guide/templates/event-listeners#using-key-modifiers) for details.
 
-## Os decorators `@HostBinding` e `@HostListener` {#the-hostbinding-and-hostlistener-decorators}
+## The `@HostBinding` and `@HostListener` decorators
 
-Alternativamente, você pode vincular ao elemento host aplicando os decorators `@HostBinding` e `@HostListener` aos membros da classe.
+You can alternatively bind to the host element by applying the `@HostBinding` and `@HostListener`
+decorator to class members.
 
-`@HostBinding` permite vincular propriedades e atributos do host a propriedades e getters:
+`@HostBinding` lets you bind host properties and attributes to properties and getters:
 
 ```ts
 @Component({/* ... */})
@@ -84,7 +91,8 @@ export class CustomSlider {
 }
 ```
 
-`@HostListener` permite vincular event listeners ao elemento host. O decorator aceita um nome de evento e um array opcional de argumentos:
+`@HostListener` lets you bind event listeners to the host element. The decorator accepts an event
+name and an optional array of arguments:
 
 ```ts
 export class CustomSlider {
@@ -95,38 +103,41 @@ export class CustomSlider {
 }
 ```
 
-<docs-callout critical title="Prefira usar a propriedade `host` em vez dos decorators">
-  **Sempre prefira usar a propriedade `host` em vez de `@HostBinding` e `@HostListener`.** Esses decorators existem exclusivamente para compatibilidade com versões anteriores.
+<docs-callout critical title="Prefer using the `host` property over the decorators">
+  **Always prefer using the `host` property over `@HostBinding` and `@HostListener`.** These
+decorators exist exclusively for backwards compatibility.
 </docs-callout>
 
-## Colisões de binding {#binding-collisions}
+## Binding collisions
 
-Quando você usa um component em um template, pode adicionar bindings ao elemento dessa instância do component. O component também pode definir bindings de host para as mesmas propriedades ou atributos.
+When using a component in a template, you can apply bindings to that component's element. The component (or directives applied to it) may also define host bindings for the same properties, attributes, classes, or styles.
 
-```angular-ts
-@Component({
-  ...,
-  host: {
-    'role': 'presentation',
-    '[id]': 'id',
-  }
-})
-export class ProfilePhoto { /* ... */ }
-```
+How Angular handles these collisions depends on the type of binding:
 
-```angular-html
-<profile-photo role="group" [id]="otherId" />
-```
+### Class and style bindings
 
-Nesses casos, as seguintes regras determinam qual valor prevalece:
+Class and style bindings have a defined precedence order. Bindings defined in the template take priority over host bindings defined on directives or components:
 
-- Se ambos os valores forem estáticos, o binding da instância prevalece.
-- Se um valor for estático e o outro dinâmico, o valor dinâmico prevalece.
-- Se ambos os valores forem dinâmicos, o binding de host do component prevalece.
+1. **Template bindings** (e.g., `[class.active]` or `[style.color]`)
+2. **Static template values** (e.g., `class="..."` or `style="..."` in the template)
+3. **Directive host bindings**
+4. **Component host bindings**
+5. **Static host values** (e.g., `host: {class: '...'}`)
 
-## Estilização com propriedades personalizadas CSS {#styling-with-css-custom-properties}
+If a binding's value is `undefined`, Angular falls back to the next level. A `null` value removes the class or style without falling back.
 
-Desenvolvedores frequentemente dependem de [Propriedades Personalizadas CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) para permitir uma configuração flexível dos estilos de seus components. Você pode definir essas propriedades personalizadas em um elemento host com um [binding de estilo](guide/templates/binding#css-style-properties).
+### Property and attribute collisions
+
+For non-styling properties and attributes (such as `id`, `role`, or `[attr.aria-*]`):
+
+- **Static attributes:** If both the template and the component declare a static attribute (e.g., `<my-cmp id="parent">` and `host: {id: 'child'}`), the attribute set in the template wins.
+- **Static and dynamic:** If one value is static and the other is dynamic, the dynamic value wins.
+- **Dynamic bindings:** Avoid binding to the same DOM property or attribute both in the template and via host bindings. Angular does not reconcile duplicate property bindings; overlapping dynamic bindings can lead to unexpected overwrites based on change detection execution order.
+
+## Styling with CSS custom properties
+
+Developers often rely on [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) to enable a flexible configuration of their component's styles.
+You can set such custom properties on a host element with a [style binding](guide/templates/binding#css-style-properties).
 
 ```angular-ts
 @Component({
@@ -140,11 +151,11 @@ export class MyComponent {
 }
 ```
 
-Neste exemplo, a propriedade personalizada CSS `--my-background` está vinculada ao signal `color`. O valor da propriedade personalizada é atualizado automaticamente sempre que o signal `color` muda. Isso afeta o component atual e todos os seus filhos que dependem dessa propriedade personalizada.
+In this example, the `--my-background` CSS custom property is bound to the `color` signal. The value of the custom property will automatically update whenever the `color` signal changes. This will affect the current component and all its children that rely on this custom property.
 
-### Definindo propriedades personalizadas em components filhos {#setting-custom-properties-on-children-components}
+### Setting custom properties on children components
 
-Alternativamente, também é possível definir propriedades personalizadas CSS no elemento host de components filhos com um [binding de estilo](guide/templates/binding#css-style-properties).
+Alternatively, it is also possible to set css custom properties on the host element of children components with a [style binding](guide/templates/binding#css-style-properties).
 
 ```angular-ts
 @Component({
@@ -156,9 +167,9 @@ export class MyComponent {
 }
 ```
 
-## Injetando atributos do elemento host {#injecting-host-element-attributes}
+## Injecting host element attributes
 
-Components e directives podem ler atributos estáticos do seu elemento host usando `HostAttributeToken` em conjunto com a função [`inject`](api/core/inject).
+Components and directives can read static attributes from their host element by using `HostAttributeToken` together with the [`inject`](api/core/inject) function.
 
 ```ts
 import { Component, HostAttributeToken, inject } from '@angular/core';
@@ -173,7 +184,7 @@ export class Button {
 ```
 
 ```angular-html
-<app-button variation="primary">Clique aqui</app-button>
+<app-button variation="primary">Click me</app-button>
 ```
 
-HELPFUL: `HostAttributeToken` lança um erro se o atributo estiver ausente, a menos que a injeção seja marcada como opcional.
+HELPFUL: `HostAttributeToken` throws an error if the attribute is missing, unless the injection is marked as optional.
