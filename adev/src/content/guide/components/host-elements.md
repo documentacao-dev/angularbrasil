@@ -103,21 +103,21 @@ export class CustomSlider {
 
 Quando você usa um component em um template, pode aplicar bindings ao elemento desse component. O component (ou as directives aplicadas a ele) também pode definir bindings de host para as mesmas propriedades, atributos, classes ou estilos.
 
-How Angular handles these collisions depends on the type of binding:
+Como o Angular trata essas colisões depende do tipo de binding:
 
-### Class and style bindings
+### Bindings de class e style {#class-and-style-bindings}
 
-Class and style bindings have a defined precedence order. Bindings defined in the template take priority over host bindings defined on directives or components:
+Bindings de class e style têm uma ordem de precedência definida. Bindings definidos no template têm prioridade sobre os bindings de host definidos em directives ou components:
 
-1. **Template bindings** (e.g., `[class.active]` or `[style.color]`)
-2. **Static template values** (e.g., `class="..."` or `style="..."` in the template)
-3. **Directive host bindings**
-4. **Component host bindings**
-5. **Static host values** (e.g., `host: {class: '...'}`)
+1. **Bindings do template** (por exemplo, `[class.active]` ou `[style.color]`)
+2. **Valores estáticos do template** (por exemplo, `class="..."` ou `style="..."` no template)
+3. **Bindings de host de directives**
+4. **Bindings de host de components**
+5. **Valores estáticos de host** (por exemplo, `host: {class: '...'}`)
 
-If a binding's value is `undefined`, Angular falls back to the next level. A `null` value removes the class or style without falling back.
+Se o valor de um binding for `undefined`, o Angular recorre ao próximo nível. Um valor `null` remove a class ou o style sem recorrer ao nível seguinte.
 
-### Property and attribute collisions
+### Colisões de propriedades e atributos {#property-and-attribute-collisions}
 
 Para propriedades e atributos que não são de estilo (como `id`, `role` ou `[attr.aria-*]`):
 

@@ -61,9 +61,9 @@ Em vez disso, suas regras de validação são executadas inteiramente no Angular
 
 Quando um campo está vinculado a um elemento nativo de formulário, algumas regras de validação embutidas espelham sua restrição no atributo nativo correspondente: `required()`, `min()`, `max()`, `minLength()` e `maxLength()` definem os atributos `required`, `min`, `max`, `minlength` e `maxlength` quando o elemento suporta esses atributos. Uma exceção é `pattern()`, que não define o atributo nativo `pattern`. O Signal Forms define esses atributos para controlar o comportamento da entrada e melhorar a acessibilidade, **e não para acionar a validação nativa**.
 
-NOTE: Há um caso em que o Signal Forms lê o estado de validade nativo: quando o navegador não consegue interpretar o valor de uma entrada nativa (por exemplo, uma data parcialmente digitada). Mesmo nesse caso, o erro aparece pelo signal `errors()` do campo, como qualquer outro erro de validação. Veja [Transformação de valor](guide/forms/signals/custom-controls#value-transformation) para detalhes.
+NOTE: Há um caso em que o Signal Forms lê o estado de validade nativo: quando o navegador não consegue interpretar o valor de uma entrada nativa (por exemplo, uma data parcialmente digitada), o Signal Forms o reporta como um erro de parse. Mesmo nesse caso, o erro aparece pelo signal `errors()` do campo, como qualquer outro erro de validação. Veja [Transformação de valor](guide/forms/signals/custom-controls#value-transformation) para detalhes.
 
-IMPORTANT: Não dependa de recursos de validade nativa, como os pseudo-classes CSS `:valid` e `:invalid`, a propriedade `validity` do elemento ou `validationMessage`. O navegador pode marcar algumas entradas como inválidas como efeito colateral dos atributos espelhados (por exemplo, um input do tipo number com valor abaixo do seu `min`), mas esse comportamento varia conforme a regra de validação e o tipo de entrada, e não é uma forma suportada de observar o estado de validação.
+IMPORTANT: Não dependa de recursos de validade nativa, como as pseudoclasses CSS `:valid` e `:invalid`, a propriedade `validity` do elemento ou `validationMessage`. O navegador pode marcar algumas entradas como inválidas como efeito colateral dos atributos espelhados (por exemplo, um input do tipo number com valor abaixo do seu `min`), mas esse comportamento varia conforme a regra de validação e o tipo de entrada, e não é uma forma suportada de observar o estado de validação.
 
 Para estilizar controles com base no estado de validação, vincule classes aos signals de estado do campo (veja [Gerenciamento de estado do campo](guide/forms/signals/field-state-management#conditional-error-display)) ou configure classes de status automáticas (veja [Classes de status automáticas](guide/forms/signals/migration#automatic-status-classes)).
 
@@ -170,7 +170,7 @@ export class ContactComponent {
 }
 ```
 
-A regra de validação `email()` usa uma expressão regular de formato de e-mail padrão. Ela aceita endereços como `usuario@exemplo.com`, mas rejeita endereços malformados como `usuario@` ou `@exemplo.com`.
+A regra de validação `email()` usa uma expressão regular de formato de e-mail padrão. Ela aceita endereços como `user@example.com`, mas rejeita endereços malformados como `user@` ou `@example.com`.
 
 ### min() e max() {#min-and-max}
 

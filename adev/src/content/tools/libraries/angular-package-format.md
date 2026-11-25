@@ -17,6 +17,8 @@ Você pode encontrar as versões da especificação anteriores à v13 neste [goo
 No cenário JavaScript atual, desenvolvedores consomem pacotes de muitas maneiras diferentes, usando muitas toolchains diferentes \(webpack, Rollup, Rolldown, esbuild, etc.\).
 Essas ferramentas podem entender e exigir entradas diferentes - algumas podem processar a versão mais recente da linguagem ES, enquanto outras podem se beneficiar do consumo direto de uma versão ES mais antiga.
 
+O formato de distribuição do Angular suporta todas as ferramentas e fluxos de desenvolvimento comumente usados, e dá ênfase a otimizações que resultam em payloads de aplicação menores ou em um ciclo de iteração de desenvolvimento mais rápido (tempo de build).
+
 Desenvolvedores podem contar com o Angular CLI para produzir pacotes no Formato de Pacote Angular.
 Veja o guia [Criando Bibliotecas](tools/libraries/creating-libraries) para mais detalhes.
 
@@ -253,12 +255,12 @@ Ao fazer o build com `@angular/build:library`, o builder adiciona automaticament
 
 ## Exemplos {#examples}
 
-As npm packages do framework Angular são uma boa referência para pacotes de biblioteca compatíveis com APF.
+Os pacotes npm do framework Angular são uma boa referência para pacotes de biblioteca compatíveis com APF.
 Navegue pelo layout de arquivos e pelo pacote npm no UNPKG:
 
 <docs-pill-row>
-  <docs-pill href="https://app.unpkg.com/@angular/core@latest" title="@angular/core package"/>
-  <docs-pill href="https://app.unpkg.com/@angular/material@latest" title="@angular/material package"/>
+  <docs-pill href="https://app.unpkg.com/@angular/core@latest" title="pacote @angular/core"/>
+  <docs-pill href="https://app.unpkg.com/@angular/material@latest" title="pacote @angular/material"/>
 </docs-pill-row>
 
 ## Definição de termos {#definition-of-terms}
