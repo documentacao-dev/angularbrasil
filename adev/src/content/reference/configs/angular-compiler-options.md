@@ -95,8 +95,6 @@ Quando `true`, substitui as propriedades `templateUrl` e `styleUrls` em todos os
 
 Quando habilitado, a saída `.js` do `ngc` não inclui nenhuma URL de template ou estilo carregada sob demanda (lazy loading).
 
-Para projetos de biblioteca criados com o Angular CLI, o padrão da configuração de desenvolvimento é `true`.
-
 ### `flatModuleId`
 
 O ID do módulo a ser usado para importar um módulo flat \(quando `flatModuleOutFile` é `true`\).
@@ -157,8 +155,6 @@ Isso desliga a maior parte do compilador de templates e desabilita o relatório 
 
 Pode ser usado para instruir o compilador de templates a produzir arquivos `.metadata.json` para distribuição com um pacote `npm`. Isso evita a produção de arquivos `.ngfactory.js` e `.ngstyle.js`, que não podem ser distribuídos para o `npm`.
 
-Para projetos de biblioteca criados com o Angular CLI, o padrão da configuração de desenvolvimento é `true`.
-
 ### `strictMetadataEmit`
 
 Quando `true`, reporta um erro no arquivo `.metadata.json` se `"skipMetadataEmit"` for `false`.
@@ -176,8 +172,6 @@ O compilador de templates pode então usar os nós de erro para reportar um erro
 
 Se o cliente de uma biblioteca pretende usar um símbolo em uma anotação, o compilador de templates normalmente não reporta isso. O erro só é reportado depois que o cliente realmente usa o símbolo.
 Esta opção permite detectar esses erros durante a fase de build da biblioteca e é usada, por exemplo, na produção das próprias bibliotecas Angular.
-
-Para projetos de biblioteca criados com o Angular CLI, o padrão da configuração de desenvolvimento é `true`.
 
 ### `strictInjectionParameters`
 

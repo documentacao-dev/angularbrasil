@@ -7,8 +7,8 @@ Esta lição do tutorial demonstra como adicionar property binding a um template
 
 ## O que você vai aprender {#what-youll-learn}
 
-- Sua aplicação tem data bindings no template `Home`.
-- Sua aplicação envia dados do `Home` para o `HousingLocation`.
+- Sua aplicação terá data bindings no template `Home`.
+- Sua aplicação enviará dados do `Home` para o `HousingLocation`.
 
 ## Prévia conceitual de Inputs {#conceptual-preview-of-inputs}
 

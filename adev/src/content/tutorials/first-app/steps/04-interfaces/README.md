@@ -7,8 +7,8 @@ Esta lição do tutorial demonstra como criar uma interface e incluí-la em um c
 
 ## O que você vai aprender {#what-youll-learn}
 
-- Sua aplicação tem uma nova interface que ela pode usar como um tipo de dado.
-- Sua aplicação tem uma instância da nova interface com dados de exemplo.
+- Sua aplicação terá uma nova interface que ela pode usar como um tipo de dado.
+- Sua aplicação terá uma instância da nova interface com dados de exemplo.
 
 ## Prévia conceitual de interfaces {#conceptual-preview-of-interfaces}
 

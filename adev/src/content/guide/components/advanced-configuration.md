@@ -7,15 +7,16 @@ TIP: Este guia pressupõe que você já leu o [Guia de Fundamentos](essentials).
 
 O decorator `@Component` aceita uma opção `changeDetection` que controla o **modo de detecção de mudanças** do component. Há dois modos de detecção de mudanças disponíveis.
 
-**`ChangeDetectionStrategy.Eager`/`Default`** é um modo opcional. Neste modo, o Angular verifica se o DOM do component precisa de uma atualização sempre que alguma atividade possa ter ocorrido em toda a aplicação. Atividades que disparam essa verificação incluem interação do usuário, resposta de rede, timers e outras.
+**`ChangeDetectionStrategy.Eager`** é um modo opcional. Neste modo, o Angular verifica se o DOM do component precisa de uma atualização sempre que alguma atividade possa ter ocorrido em toda a aplicação. Atividades que disparam essa verificação incluem interação do usuário, resposta de rede, timers e outras.
 
 **`ChangeDetectionStrategy.OnPush`** é a estratégia padrão (desde a v22). Este modo reduz a quantidade de verificações que o Angular precisa realizar. Neste modo, o framework verifica se o DOM de um component precisa de uma atualização apenas quando:
 
 - Um input do component sofre mudanças como resultado de um binding em um template, ou
 - Um event listener neste component é executado
 - O component é explicitamente marcado para verificação, via `ChangeDetectorRef.markForCheck` ou algo que o envolva, como o `AsyncPipe`.
+- Um signal lido no template do component sofre mudanças.
 
-Além disso, quando um component OnPush é verificado, o Angular _também_ verifica todos os seus components ancestrais, percorrendo a árvore da aplicação para cima.
+Nos três primeiros casos, o Angular _também_ verifica todos os components ancestrais do component, percorrendo a árvore da aplicação para cima. Quando um signal muda, o Angular atualiza apenas os components cujos templates o leem.
 
 ## PreserveWhitespaces
 

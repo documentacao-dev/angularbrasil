@@ -17,10 +17,10 @@ Para a melhor experiência com este tutorial, revise estes requisitos para ter c
 
 As lições neste tutorial presumem que você tenha experiência com o seguinte:
 
-1. Criou uma página web HTML editando o HTML diretamente.
-1. Programou conteúdo de site web em JavaScript.
-1. Leu conteúdo de Cascading Style Sheet (CSS) e entende como seletores são usados.
-1. Usou instruções de linha de comando para realizar tarefas em seu computador.
+1. Criando páginas web HTML editando o HTML diretamente.
+1. Programando conteúdo de site web em JavaScript.
+1. Lendo conteúdo de Cascading Style Sheet (CSS) e entendendo como seletores são usados.
+1. Usando instruções de linha de comando para realizar tarefas em seu computador.
 
 ### Seu equipamento {#your-equipment}
 
@@ -66,8 +66,8 @@ A partir de uma janela de **Terminal**, execute o seguinte comando: `npm install
 Você é livre para usar qualquer ferramenta que preferir para construir aplicações com Angular. Recomendamos o seguinte:
 
 1. [Visual Studio Code](https://code.visualstudio.com/)
-2. Como um passo opcional, mas recomendado, você pode melhorar ainda mais sua experiência de desenvolvedor instalando o [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
-3. [WebStorm](https://www.jetbrains.com/webstorm/)
+   - Como um passo opcional, mas recomendado, você pode melhorar ainda mais sua experiência de desenvolvedor instalando o [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
+1. [WebStorm](https://www.jetbrains.com/webstorm/)
    </docs-step>
 
 <docs-step title="Opcional: configure seu IDE com IA {#optional-set-up-your-ai-powered-ide}">

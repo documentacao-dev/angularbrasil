@@ -181,6 +181,7 @@ import {platformBrowser} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 @NgModule({
+  declarations: [MyApplication],
   bootstrap: [MyApplication],
 })
 export class MyApplicationModule {}
@@ -188,6 +189,6 @@ export class MyApplicationModule {}
 platformBrowser().bootstrapModule(MyApplicationModule);
 ```
 
-Components listados em `bootstrap` são automaticamente incluídos nas declarations do NgModule.
+Components listados em `bootstrap` também precisam ser declarados em `declarations` do NgModule.
 
 Quando você inicializa uma aplicação a partir de um NgModule, os `providers` coletados desse módulo e todos os `providers` de seus `imports` são carregados antecipadamente e ficam disponíveis para injeção em toda a aplicação.

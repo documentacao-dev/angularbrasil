@@ -27,7 +27,7 @@ Nesta etapa, você atualizará a classe `Home` para armazenar dados em uma nova 
 
 1. A `filteredLocationList` deve conter o conjunto total de valores de locais de moradia por padrão quando a página carregar. Atualize o `constructor` da classe `Home` para definir o valor.
 
-   <docs-code header="Defina o valor de filteredLocationList" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[29,32]"/>
+   <docs-code header="Defina o valor de filteredLocationList" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[30,33]"/>
 
 </docs-step>
 
@@ -58,7 +58,7 @@ O template foi atualizado para vincular a função `filterResults` ao evento `cl
 
     <docs-code header="Adicione a implementação da função filterResults" path="adev/src/content/tutorials/first-app/steps/14-http/src/app/home/home.ts" visibleLines="[35,44]"/>
 
-    Esta função usa a função `filter` de `String` para comparar o valor do parâmetro `text` com a propriedade `housingLocation.city`. Você pode atualizar esta função para corresponder a qualquer propriedade ou múltiplas propriedades como um exercício divertido.
+    Esta função usa a função `filter` de `Array` para comparar o valor do parâmetro `text` com a propriedade `housingLocation.city`. Você pode atualizar esta função para corresponder a qualquer propriedade ou múltiplas propriedades como um exercício divertido.
 
 1.  Salve seu código.
 
@@ -70,7 +70,7 @@ O template foi atualizado para vincular a função `filterResults` ao evento `cl
 
 </docs-workflow>
 
-SUMMARY: Nesta lição, você atualizou sua aplicação para usar variáveis de template para interagir com valores de template, e adicionou funcionalidade de busca usando vinculação de eventos e funções de array.
+SUMMARY: Nesta lição, você usou variáveis de template para interagir com valores de template, e adicionou funcionalidade de busca usando vinculação de eventos e funções de array.
 
 Para mais informações sobre os tópicos abordados nesta lição, visite:
 

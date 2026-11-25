@@ -89,7 +89,7 @@ Para casos de uso avançados, você pode fornecer um arquivo de configuração p
 
 IMPORTANT: Embora o uso de uma configuração personalizada habilite opções avançadas, a equipe do Angular não oferece suporte ao conteúdo do arquivo de configuração nem a quaisquer plugins de terceiros. O CLI também sobrescreverá algumas propriedades (`test.projects`, `test.include`) para garantir a integração adequada.
 
-Você pode criar um arquivo de configuração do Vitest (por exemplo, `vitest-base.config.ts`) e referenciá-lo no seu `angular.json`:
+Você pode criar um arquivo de configuração do Vitest (por exemplo, `vitest-base.config.mts`) e referenciá-lo no seu `angular.json`:
 
 ```json
 {
@@ -99,7 +99,7 @@ Você pode criar um arquivo de configuração do Vitest (por exemplo, `vitest-ba
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runnerConfig": "vitest-base.config.ts"
+            "runnerConfig": "vitest-base.config.mts"
           }
         }
       }
@@ -114,7 +114,7 @@ Você também pode gerar um arquivo de configuração base usando o CLI:
 ng generate config vitest
 ```
 
-Isso cria um arquivo `vitest-base.config.ts` que você pode personalizar.
+Isso cria um arquivo `vitest-base.config.mts` que você pode personalizar.
 
 HELPFUL: Leia mais sobre a configuração do Vitest na [documentação oficial do Vitest](https://vitest.dev/config/).
 

@@ -439,19 +439,26 @@ O formulário raiz também é um campo na árvore de campos. Quando você o cham
 ### Acessando o estado do formulário {#accessing-form-state}
 
 ```angular-ts
+import {Component, signal} from '@angular/core';
+import {FormField, FormRoot, form, required} from '@angular/forms/signals';
+
 @Component({
+  imports: [FormRoot, FormField],
   template: `
-    <form novalidate>
+    <form [formRoot]="loginForm">
       <input [formField]="loginForm.email" />
       <input [formField]="loginForm.password" />
 
-      <button [disabled]="!loginForm().valid()">Entrar</button>
+      <button type="submit" [disabled]="!loginForm().valid()">Entrar</button>
     </form>
   `,
 })
 export class Login {
   loginModel = signal({email: '', password: ''});
-  loginForm = form(this.loginModel);
+  loginForm = form(this.loginModel, (schemaPath) => {
+    required(schemaPath.email);
+    required(schemaPath.password);
+  });
 }
 ```
 
@@ -747,7 +754,7 @@ export class Registration {
 }
 ```
 
-Quando você usa `FormRoot`, enviar o formulário chama automaticamente a função `submit()`, que marca todos os campos como touched (revelando os erros de validação) e executa o callback `action` se o formulário for válido.
+Quando você usa `FormRoot` com um formulário que tem a opção `submission`, enviar o formulário chama automaticamente a função `submit()`, que marca todos os campos como touched (revelando os erros de validação) e executa o callback `action` se o formulário for válido.
 
 Você também pode enviar um formulário manualmente, sem usar a diretiva, chamando `submit(this.registrationForm)`. Ao chamar a função `submit` diretamente dessa forma, você pode passar um `FormSubmitOptions` para substituir a lógica padrão de `submission` do formulário: `submit(this.registrationForm, {action: () => /* ... */ })`.
 
@@ -866,7 +873,7 @@ onSubmit() {
 
 ### Controles personalizados {#custom-controls}
 
-Por padrão, chamar `focusBoundControl()` em um controle personalizado não tem efeito, porque um controle personalizado pode conter vários inputs nativos. Por exemplo, um seletor de data pode conter campos separados para dia, mês e ano. Por isso, o Angular não consegue determinar qual elemento deve receber o foco nem qual ação executar.
+Por padrão, chamar `focusBoundControl()` em um controle personalizado dá foco ao elemento host do controle, que normalmente não pode recebê-lo. Um controle personalizado pode conter vários inputs nativos. Por exemplo, um seletor de data pode conter campos separados para dia, mês e ano. Por isso, o Angular não consegue determinar qual elemento deve receber o foco nem qual ação executar.
 
 Para oferecer suporte a foco programático em um controle personalizado, implemente um método `focus()`. Quando `focusBoundControl()` é chamado no estado do campo associado a um controle personalizado, o Angular chama o método `focus()` do controle, se ele existir.
 
@@ -874,7 +881,7 @@ Considere um campo de senha personalizado:
 
 ```html
 <div class="password-block">
-  <input type="password" #passwordCtrl [value]="value()" (input)="value.set($event.target.value)" />
+  <input type="password" #passwordCtrl [value]="value()" (input)="value.set(passwordCtrl.value)" />
 </div>
 ```
 

@@ -244,11 +244,13 @@ import {TitleStrategy, RouterStateSnapshot} from '@angular/router';
 @Injectable()
 export class AppTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
+  // Read once: getTitle() returns the prefixed title after the first update
+  private readonly defaultTitle = this.title.getTitle();
 
   updateTitle(snapshot: RouterStateSnapshot): void {
     // O PageTitle é igual ao "Title" da rota, se ele estiver definido
-    // Se não estiver definido, usará o "title" fornecido em index.html
-    const pageTitle = this.buildTitle(snapshot) || this.title.getTitle();
+    // Se não estiver definido, usa o "title" fornecido em index.html
+    const pageTitle = this.buildTitle(snapshot) || this.defaultTitle;
     this.title.setTitle(`MyAwesomeApp - ${pageTitle}`);
   }
 }
@@ -330,6 +332,26 @@ Quando você precisa buscar dados para uma rota, o Angular Router oferece suport
 
 - [Busca de dados com recursos](/guide/routing/data-fetching-with-resources): Busca dados de forma reativa usando as APIs `Resource` dos Angular Signals.
 - [Resolvers de dados de rota](/guide/routing/data-resolvers): Busca dados antes da ativação da rota, usando funções resolver.
+
+### Componentes de fallback de erro {#error-fallback-components}
+
+Você pode especificar um `errorComponent` em uma rota para renderizar um componente de fallback dedicado caso o componente da rota lance um erro durante a inicialização ou a renderização:
+
+```ts
+import {Routes} from '@angular/router';
+import {ProductDetails} from './product-details';
+import {ProductErrorFallback} from './product-error-fallback';
+
+export const routes: Routes = [
+  {
+    path: 'product/:id',
+    component: ProductDetails,
+    errorComponent: ProductErrorFallback,
+  },
+];
+```
+
+Para saber mais sobre como configurar fallbacks de erro e tentar novamente rotas que falharam, veja o [guia de error boundaries](/guide/routing/error-boundaries).
 
 ## Rotas aninhadas {#nested-routes}
 

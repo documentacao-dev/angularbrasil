@@ -17,9 +17,9 @@ Você pode encontrar as versões da especificação anteriores à v13 neste [goo
 No cenário JavaScript atual, desenvolvedores consomem pacotes de muitas maneiras diferentes, usando muitas toolchains diferentes \(webpack, Rollup, Rolldown, esbuild, etc.\).
 Essas ferramentas podem entender e exigir entradas diferentes - algumas podem processar a versão mais recente da linguagem ES, enquanto outras podem se beneficiar do consumo direto de uma versão ES mais antiga.
 
-O formato de distribuição Angular oferece suporte a todas as ferramentas e workflows de desenvolvimento comumente usados, e dá ênfase a otimizações que resultam em um tamanho de payload de aplicação menor ou em um ciclo de iteração de desenvolvimento mais rápido \(tempo de build\).
+O formato de distribuição do Angular suporta todas as ferramentas e fluxos de desenvolvimento comumente usados, e dá ênfase a otimizações que resultam em payloads de aplicação menores ou em um ciclo de iteração de desenvolvimento mais rápido (tempo de build).
 
-Desenvolvedores podem contar com o Angular CLI e o [ng-packagr](https://github.com/ng-packagr/ng-packagr) \(uma ferramenta de build que o Angular CLI usa\) para produzir pacotes no Formato de Pacote Angular.
+Desenvolvedores podem contar com o Angular CLI para produzir pacotes no Formato de Pacote Angular.
 Veja o guia [Criando Bibliotecas](tools/libraries/creating-libraries) para mais detalhes.
 
 ## Layout de arquivos {#file-layout}
@@ -105,7 +105,7 @@ Para cada entrypoint, os formatos disponíveis são:
 
 Ferramentas que reconhecem essas chaves podem preferencialmente selecionar um formato de código desejável a partir de `"exports"`.
 
-Bibliotecas podem querer expor arquivos estáticos adicionais que não são capturados pelas exportações dos entry-points baseados em JavaScript, como mixins Sass ou CSS pré-compilado.
+Você também pode querer expor arquivos estáticos adicionais, como mixins Sass ou CSS pré-compilado, que não fazem parte dos entry points baseados em JavaScript.
 
 Para mais informações, veja [Gerenciando assets em uma biblioteca](tools/libraries/creating-libraries#managing-assets-in-a-library).
 
@@ -162,7 +162,7 @@ A maioria das bibliotecas com um único propósito lógico deve ser publicada co
 
 #### Resolução de entry points secundários {#resolution-of-secondary-entry-points}
 
-Entry points secundários podem ser resolvidos pelo campo `"exports"` do `package.json` do pacote.
+Os resolvers de módulo resolvem entry points secundários usando o campo `"exports"` do arquivo `package.json` do pacote.
 
 Para saber como configurar entry points secundários em uma biblioteca, veja [Entry points](tools/libraries/creating-libraries#entry-points).
 
@@ -208,35 +208,15 @@ O Formato de Pacote Angular especifica que o código seja publicado em formato d
 Isso reduz significativamente o tempo de build das aplicações Angular, bem como o tempo de download e parse do bundle final da aplicação.
 Confira o excelente post ["The cost of small modules"](https://nolanlawson.com/2016/08/15/the-cost-of-small-modules), de Nolan Lawson.
 
-O compilador Angular pode gerar arquivos index de ES module. Ferramentas como Rollup / Rolldown podem usar esses arquivos para gerar módulos achatados em um formato de arquivo _Flattened ES Module_ (FESM).
-
 FESM é um formato de arquivo criado ao achatar todos os ES Modules acessíveis a partir de um entrypoint em um único ES Module.
 Ele é formado seguindo todos os imports de um pacote e copiando esse código para um único arquivo, preservando todas as exportações ES públicas e removendo todos os imports privados.
 Em alguns casos, porém, o FESM pode depender de chunks compartilhados entre múltiplos entry points.
 
-O nome abreviado, FESM, pronunciado _fe-som_, pode ser seguido por um número, como em FESM2020.
+O nome abreviado, FESM, pronunciado _fe-som_, pode ser seguido por um número, como em FESM2022.
 O número se refere ao nível de linguagem do JavaScript dentro do módulo.
-Assim, um arquivo FESM2022 seria ESM+ES2022 e incluiria instruções import/export e código-fonte ES2022.
+Assim, um arquivo FESM2022 é ESM+ES2022 e inclui instruções import/export e código-fonte ES2022.
 
-Para gerar um arquivo index de ES Module achatado, use as seguintes opções de configuração no seu arquivo tsconfig.json:
-
-```js
-{
-  "compilerOptions": {
-    …
-    "module": "esnext",
-    "target": "es2022",
-    …
-  },
-  "angularCompilerOptions": {
-    …
-    "flatModuleOutFile": "my-ui-lib.js",
-    "flatModuleId": "my-ui-lib"
-  }
-}
-```
-
-Depois que o arquivo index \(por exemplo, `my-ui-lib.js`\) é gerado pelo ngc, bundlers e otimizadores como Rollup e Rolldown podem ser usados para produzir o arquivo ESM achatado.
+Ao fazer o build com o Angular CLI (`@angular/build:library`), o builder compila sua biblioteca com `ngc` e usa o Rolldown para empacotar cada entry point diretamente em módulos ES2022 achatados no diretório `fesm2022/`.
 
 ### Flag "sideEffects" {#sideeffects-flag}
 
@@ -269,17 +249,18 @@ Isso é desejável e evita a duplicação de tipos.
 
 ### Tslib
 
-A partir do APF v10, é recomendado adicionar o tslib como uma dependência direta do seu entry-point primário.
-Isso ocorre porque a versão do tslib está vinculada à versão do TypeScript usada para compilar sua biblioteca.
+A partir do APF v10, é recomendado listar o `tslib` como uma dependência direta da sua biblioteca sempre que a saída compilada importar helpers de runtime do `tslib`.
+Isso ocorre porque a versão do `tslib` está vinculada à versão do TypeScript usada para compilar sua biblioteca.
+Ao fazer o build com `@angular/build:library`, o builder adiciona automaticamente o `tslib` em `dependencies` no `package.json` gerado, caso o código compilado importe o `tslib`.
 
 ## Exemplos {#examples}
 
-As npm packages do framework Angular são uma boa referência para pacotes de biblioteca compatíveis com APF.
+Os pacotes npm do framework Angular são uma boa referência para pacotes de biblioteca compatíveis com APF.
 Navegue pelo layout de arquivos e pelo pacote npm no UNPKG:
 
 <docs-pill-row>
-  <docs-pill href="https://app.unpkg.com/@angular/core@latest" title="@angular/core package"/>
-  <docs-pill href="https://app.unpkg.com/@angular/material@latest" title="@angular/material package"/>
+  <docs-pill href="https://app.unpkg.com/@angular/core@latest" title="pacote @angular/core"/>
+  <docs-pill href="https://app.unpkg.com/@angular/material@latest" title="pacote @angular/material"/>
 </docs-pill-row>
 
 ## Definição de termos {#definition-of-terms}
@@ -374,4 +355,4 @@ O compilador Ahead of Time para Angular.
 
 ### Flattened type definitions
 
-As definições TypeScript empacotadas, geradas com ferramentas como [API Extractor](https://api-extractor.com) ou [rollup-plugin-dts](https://github.com/Swatinem/rollup-plugin-dts).
+As definições TypeScript empacotadas, geradas com ferramentas como [API Extractor](https://api-extractor.com) ou [`rolldown-plugin-dts`](https://github.com/sxzz/rolldown-plugin-dts).

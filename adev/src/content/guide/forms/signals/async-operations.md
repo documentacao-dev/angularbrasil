@@ -182,7 +182,7 @@ onSuccess: (response: { usernameTaken: boolean; profanity: boolean }) => {
 } // prettier-ignore
 ```
 
-O tipo de `onSuccess` pode ser especificado diretamente no parâmetro ou com a propriedade `parse` das `options` de `validateHttp`:
+O tipo de `onSuccess` pode ser especificado diretamente no parâmetro ou com a propriedade `parse` das `options` de `validateHttp`.
 
 ```ts
 onSuccess: (response: { usernameTaken: boolean; profanity: boolean }) => {
@@ -192,8 +192,8 @@ onSuccess: (response: { usernameTaken: boolean; profanity: boolean }) => {
 // ou
 
 options: {
-  parse: (response) => response as {usernameTaken: boolean; profanity: boolean};
-}
+  parse: (response) => response as {usernameTaken: boolean; profanity: boolean},
+},
 onSuccess: (response) => {
   // ...
 } // prettier-ignore
@@ -241,7 +241,7 @@ validateHttp(schemaPath.field, {
 });
 ```
 
-TIP: Consulte a [documentação da API de httpResource](api/common/http/httpResource) para todas as opções disponíveis.
+TIP: Consulte a [documentação da API de `HttpResourceRequest`](api/common/http/HttpResourceRequest) para todas as propriedades disponíveis da requisição, e a [documentação da API de httpResource](api/common/http/httpResource) para o parâmetro `options`.
 
 ## Validação assíncrona personalizada com validateAsync() {#custom-async-validation-with-validateasync}
 

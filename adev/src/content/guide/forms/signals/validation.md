@@ -61,9 +61,9 @@ Em vez disso, suas regras de validação são executadas inteiramente no Angular
 
 Quando um campo está vinculado a um elemento nativo de formulário, algumas regras de validação embutidas espelham sua restrição no atributo nativo correspondente: `required()`, `min()`, `max()`, `minLength()` e `maxLength()` definem os atributos `required`, `min`, `max`, `minlength` e `maxlength` quando o elemento suporta esses atributos. Uma exceção é `pattern()`, que não define o atributo nativo `pattern`. O Signal Forms define esses atributos para controlar o comportamento da entrada e melhorar a acessibilidade, **e não para acionar a validação nativa**.
 
-NOTE: Há um caso em que o Signal Forms lê o estado de validade nativo: quando o navegador não consegue interpretar o valor de uma entrada nativa (por exemplo, uma data parcialmente digitada). Mesmo nesse caso, o erro aparece pelo signal `errors()` do campo, como qualquer outro erro de validação. Veja [Transformação de valor](guide/forms/signals/custom-controls#value-transformation) para detalhes.
+NOTE: Há um caso em que o Signal Forms lê o estado de validade nativo: quando o navegador não consegue interpretar o valor de uma entrada nativa (por exemplo, uma data parcialmente digitada), o Signal Forms o reporta como um erro de parse. Mesmo nesse caso, o erro aparece pelo signal `errors()` do campo, como qualquer outro erro de validação. Veja [Transformação de valor](guide/forms/signals/custom-controls#value-transformation) para detalhes.
 
-IMPORTANT: Não dependa de recursos de validade nativa, como os pseudo-classes CSS `:valid` e `:invalid`, a propriedade `validity` do elemento ou `validationMessage`. O navegador pode marcar algumas entradas como inválidas como efeito colateral dos atributos espelhados (por exemplo, um input do tipo number com valor abaixo do seu `min`), mas esse comportamento varia conforme a regra de validação e o tipo de entrada, e não é uma forma suportada de observar o estado de validação.
+IMPORTANT: Não dependa de recursos de validade nativa, como as pseudoclasses CSS `:valid` e `:invalid`, a propriedade `validity` do elemento ou `validationMessage`. O navegador pode marcar algumas entradas como inválidas como efeito colateral dos atributos espelhados (por exemplo, um input do tipo number com valor abaixo do seu `min`), mas esse comportamento varia conforme a regra de validação e o tipo de entrada, e não é uma forma suportada de observar o estado de validação.
 
 Para estilizar controles com base no estado de validação, vincule classes aos signals de estado do campo (veja [Gerenciamento de estado do campo](guide/forms/signals/field-state-management#conditional-error-display)) ou configure classes de status automáticas (veja [Classes de status automáticas](guide/forms/signals/migration#automatic-status-classes)).
 
@@ -113,18 +113,18 @@ export class RegistrationComponent {
 
 Um campo é considerado "vazio" quando seu valor é um dos seguintes, e não vazio para qualquer outro valor, incluindo `0` e o array vazio `[]`:
 
-| Condição                    | Exemplo     |
-| --------------------------- | ----------- |
-| O valor é `null`            | `null`      |
-| O valor é `undefined`       | `undefined` |
-| O valor é uma string vazia  | `''`        |
-| O valor é `false`           | `false`     |
-| O valor é `NaN`             | `NaN`       |
+| Condição | Exemplo |
+| ---------------------------- | ------------------------------ |
+| O valor é `null` | `null` |
+| O valor é `undefined` | `undefined` |
+| O valor é uma string vazia | `''` |
+| O valor é `false` | `false` |
+| O valor não é finito | `NaN`, `Infinity`, `-Infinity` |
 
 Os dois últimos merecem destaque:
 
 - `false` é considerado vazio para seguir a semântica nativa de `required` em `<input type="checkbox">`, em que uma caixa desmarcada falha na validação.
-- `NaN` é considerado vazio porque geralmente é resultado de um erro de interpretação e não é um número válido.
+- Valores não finitos (`NaN`, `Infinity`, `-Infinity`) são considerados vazios porque não são números válidos em controles de formulário e limpam controles numéricos nativos.
 
 Para requisitos condicionais, use a opção `when`:
 
@@ -170,7 +170,7 @@ export class ContactComponent {
 }
 ```
 
-A regra de validação `email()` usa uma expressão regular de formato de e-mail padrão. Ela aceita endereços como `usuario@exemplo.com`, mas rejeita endereços malformados como `usuario@` ou `@exemplo.com`.
+A regra de validação `email()` usa uma expressão regular de formato de e-mail padrão. Ela aceita endereços como `user@example.com`, mas rejeita endereços malformados como `user@` ou `@example.com`.
 
 ### min() e max() {#min-and-max}
 
@@ -475,7 +475,7 @@ signupForm = form(this.signupModel, (schemaPath) => {
 });
 ```
 
-Se o campo de e-mail estiver vazio, apenas o erro de `required()` aparece. Se o usuário digitar "a@b", os erros de `email()` e `minLength()` aparecem. Todas as regras de validação são executadas: a validação não para na primeira falha.
+Se o campo de e-mail estiver vazio, apenas o erro de `required()` aparece. Se o usuário digitar "a@", os erros de `email()` e `minLength()` aparecem. Todas as regras de validação são executadas: a validação não para na primeira falha.
 
 TIP: Use o padrão `touched() && invalid()` nos seus templates para evitar que erros apareçam antes de o usuário interagir com um campo. Para orientações completas sobre como exibir erros de validação, veja o [guia de Gerenciamento de estado do campo](guide/forms/signals/field-state-management#conditional-error-display).
 
@@ -792,12 +792,12 @@ const userForm = form(signal({email: '', password: ''}), (schemaPath) => {
 
 ### Schemas dinâmicos {#dynamic-schemas}
 
-Você pode passar um signal em vez de um schema estático, para que o schema de validação seja atualizado automaticamente quando suas dependências mudarem.
+Em vez de um schema estático, você pode passar uma função que retorna o schema. A validação então é atualizada automaticamente quando os signals lidos pela função mudam.
 
 ```angular-ts
 import {Component, computed, signal} from '@angular/core';
 import {form, FormField, validateStandardSchema} from '@angular/forms/signals';
-import z from 'zod';
+import * as z from 'zod';
 
 @Component({/* ... */})
 export class DynamicSchema {

@@ -638,6 +638,8 @@ Por causa da conclusão automática, geralmente não há risco de vazamento de m
 
 TIP: Usar o pipe `async` ou a operação `toSignal` para se inscrever em `Observable`s garante que as inscrições sejam descartadas corretamente.
 
+IMPORTANT: Quando o injector que fornece o `HttpClient` (usando o backend fetch padrão) é destruído, como quando uma requisição de SSR é abortada ou um `EnvironmentInjector` filho é destruído, o Angular aborta as requisições em andamento sem emitir `complete` nem `error`. Se você aguardar uma requisição com `firstValueFrom` ou `lastValueFrom`, a `Promise` retornada fica pendente e qualquer bloco `finally` posterior não será executado. Para evitar vazamentos de recursos externos, como locks ou conexões, registre a limpeza com [`DestroyRef.onDestroy()`](api/core/DestroyRef#onDestroy) ou use o pipe [`takeUntilDestroyed()`](ecosystem/rxjs-interop/take-until-destroyed) antes de converter o `Observable` em `Promise`.
+
 ## Melhores práticas {#best-practices}
 
 Embora o `HttpClient` possa ser injetado e usado diretamente em components, geralmente recomendamos que você crie services reutilizáveis e injetáveis que isolem e encapsulem a lógica de acesso a dados. Por exemplo, este `UserService` encapsula a lógica para solicitar os dados de um usuário pelo seu id:

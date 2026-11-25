@@ -211,12 +211,12 @@ Estes eventos rastreiam o processo principal de navegação, desde o início, pa
 
 ### Eventos de ativação {#activation-events}
 
-Estes eventos ocorrem durante a fase de ativação, quando os components das routes estão sendo instanciados e inicializados. Eventos de ativação disparam para cada route na árvore de routes, incluindo routes pai e filhas.
+Estes eventos disparam para cada route na árvore de routes, incluindo routes pai e filhas. Os eventos de início disparam durante a fase de guards, antes de os guards da route serem executados. Os eventos de fim disparam depois que a route é ativada.
 
 | Evento                                                    | Descrição                                     |
 | --------------------------------------------------------- | --------------------------------------------- |
-| [`ActivationStart`](api/router/ActivationStart)           | Ocorre no início da ativação da route         |
 | [`ChildActivationStart`](api/router/ChildActivationStart) | Ocorre no início da ativação da route filha   |
+| [`ActivationStart`](api/router/ActivationStart)           | Ocorre no início da ativação da route         |
 | [`ActivationEnd`](api/router/ActivationEnd)               | Ocorre no final da ativação da route          |
 | [`ChildActivationEnd`](api/router/ChildActivationEnd)     | Ocorre no final da ativação da route filha    |
 

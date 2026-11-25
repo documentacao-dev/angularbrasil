@@ -383,4 +383,8 @@ IMPORTANT: A estratégia `freshness` geralmente resulta em mais requisições en
 
 ### `applicationMaxAge`
 
-Esta propriedade opcional permite que você configure por quanto tempo o service worker armazenará em cache quaisquer requisições. Dentro do `maxAge`, os arquivos serão servidos do cache. Além disso, todas as requisições serão servidas apenas pela rede, incluindo as requisições de assets e dados.
+Esta propriedade opcional permite que você configure por quanto tempo o service worker serve uma versão da aplicação a partir do seu cache. A idade é medida a partir do momento em que você fez o build da aplicação, e não do momento em que os arquivos foram armazenados no dispositivo.
+
+Dentro do `applicationMaxAge`, o service worker serve os arquivos do cache. Além dele, o service worker envia todas as requisições para a rede, incluindo as requisições de assets e dados, mesmo que nenhuma versão mais nova exista. A aplicação não funciona offline até que um novo build seja implantado e o dispositivo o tenha buscado.
+
+Se você omitir `applicationMaxAge`, não há idade máxima e o service worker serve as versões em cache independentemente de quão antigas elas sejam.

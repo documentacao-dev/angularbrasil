@@ -203,22 +203,29 @@ Veja [Melhorando a verificação de tipos de template para directives customizad
 
 ## Coerção de setter de input {#input-setter-coercion}
 
-Às vezes é desejável que a propriedade `input()` de uma directive ou component altere o valor que é vinculado a ela, normalmente usando uma função `transform` para o input.
+Às vezes é desejável que um input de uma directive ou component altere o valor vinculado a ele, normalmente no setter do input.
 Como exemplo, considere este component de botão customizado:
-
-Considere a seguinte directive:
 
 ```angular-ts
 @Component({
   selector: 'submit-button',
   template: `
     <div class="wrapper">
-      <button [disabled]="disabled()">Submit</button>
+      <button [disabled]="disabled">Submit</button>
     </div>
   `,
 })
 class SubmitButton {
-  disabled = input.required({transform: booleanAttribute});
+  private _disabled = false;
+
+  @Input()
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
+  set disabled(value: boolean) {
+    this._disabled = value;
+  }
 }
 ```
 

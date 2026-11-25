@@ -137,6 +137,37 @@ export const routes: Routes = [
 
 Para saber mais, confira [a documentação da API para RedirectFunction](api/router/RedirectFunction).
 
+## Redirecionando a partir de components e recursos com `RedirectCommand` {#redirecting-from-components-and-resources-with-redirectcommand}
+
+Além de redirecionamentos de route estáticos e baseados em função, components e resources de route podem disparar um redirecionamento de forma imperativa, lançando um `RedirectCommand`. Isso é especialmente útil para redirecionar usuários não autenticados ou tratar verificações de autorização dinâmicas durante a busca de dados:
+
+```angular-ts
+import {Component, inject, resource} from '@angular/core';
+import {Router, RedirectCommand} from '@angular/router';
+
+@Component({
+  selector: 'app-account',
+  template: `<p>Account Details</p>`,
+})
+export class AccountPage {
+  private router = inject(Router);
+
+  accountData = resource({
+    loader: async () => {
+      const response = await fetch('/api/account');
+      if (response.status === 401) {
+        // Redireciona automaticamente para /login quando não autorizado
+        throw new RedirectCommand(this.router.parseUrl('/login'));
+      }
+      return response.json();
+    },
+  });
+}
+```
+
+Quando um `RedirectCommand` é lançado dentro do construtor de um component roteado, de um hook do ciclo de vida ou do loader de um resource de route, o Angular Router intercepta o comando e dispara a navegação para a URL de destino automaticamente.
+
 ## Próximos passos {#next-steps}
 
 Para mais informações sobre a propriedade `redirectTo`, confira a [documentação da API](api/router/Route#redirectTo).
+Para saber mais sobre limites de erro e a captura de falhas de components, confira o [guia de error boundaries](/guide/routing/error-boundaries).

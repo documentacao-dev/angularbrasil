@@ -53,6 +53,8 @@ import {provideExperimentalWebMcpTools} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {AppRoot} from './app-root';
 
+const allProducts: string[] = [/* ... */];
+
 bootstrapApplication(AppRoot, {
   providers: [
     provideExperimentalWebMcpTools([
@@ -74,6 +76,18 @@ bootstrapApplication(AppRoot, {
           required: ['query'],
           additionalProperties: false,
         },
+        outputSchema: {
+          type: 'object',
+          properties: {
+            results: {
+              type: 'array',
+              items: {type: 'string'},
+              description: 'List of matching product names.',
+            },
+          },
+          required: ['results'],
+          additionalProperties: false,
+        },
         execute: ({query, maxResults}) => {
           // Type of `query` is inferred as `string`.
           // Type of `maxResults` is inferred as `number | undefined`.
@@ -84,9 +98,11 @@ bootstrapApplication(AppRoot, {
             throw new Error(`Bad maxResults: ${maxResults}`);
 
           const limit = maxResults ?? 5;
-          return {
-            content: [{type: 'text', text: `Returning up to ${limit} results for "${query}".`}],
-          };
+          const matchingProducts = allProducts
+            .filter((product) => product.includes(query))
+            .slice(0, limit);
+
+          return {results: matchingProducts};
         },
       },
     ]),
@@ -251,6 +267,10 @@ Sempre que possível, prefira colocar as ferramentas nos providers da aplicaçã
 ### Valide as entradas das ferramentas {#validate-tool-inputs}
 
 O Angular não oferece nenhuma validação implícita de que as entradas fornecidas por um agente realmente correspondam ao JSON schema definido. Considere validar explicitamente os argumentos da função `execute` antes de usá-los, para garantir confiabilidade.
+
+### Defina schemas de saída explícitos {#define-explicit-output-schemas}
+
+Para deixar a execução das ferramentas o mais previsível possível para o agente de IA, defina explicitamente um `outputSchema` e garanta que sua função `execute` retorne um objeto que corresponda estritamente a ele. O Angular não valida automaticamente se o conteúdo retornado corresponde ao `outputSchema` definido. Garanta que seus dados correspondam ao `outputSchema` ou considere validá-los em tempo de execução, para evitar confundir o agente com informações inconsistentes.
 
 ### Testes {#testing}
 

@@ -16,7 +16,7 @@ planos de `plan/`, que ficam como histórico.
 
 ## Progresso
 
-- Páginas traduzidas: **394 / 394** (100.0%)
+- Páginas traduzidas: **399 / 399** (100.0%)
 - Linhas pendentes (aprox.): 0
 
 | Seção | Traduzidas | Total |
@@ -40,7 +40,7 @@ planos de `plan/`, que ficam como histórico.
 | `guide/i18n` | 11 | 11 |
 | `guide/ngmodules` | 1 | 1 |
 | `guide/performance` | 1 | 1 |
-| `guide/routing` | 18 | 18 |
+| `guide/routing` | 19 | 19 |
 | `guide/signals` | 5 | 5 |
 | `guide/templates` | 14 | 14 |
 | `guide/testing` | 16 | 16 |
@@ -58,7 +58,7 @@ planos de `plan/`, que ficam como histórico.
 | `tutorials/learn-angular` | 25 | 25 |
 | `tutorials/signal-forms` | 7 | 7 |
 | `tutorials/signals` | 12 | 12 |
-| `reference/errors` | 65 | 65 |
+| `reference/errors` | 69 | 69 |
 | `reference/extended-diagnostics` | 19 | 19 |
 
 ## Páginas por seção
@@ -76,7 +76,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `ai/develop-with-ai.md` (46 linhas)
 - [x] `ai/mcp-server-setup.md` (126 linhas)
 - [x] `ai/overview.md` (120 linhas)
-- [x] `ai/webmcp.md` (257 linhas)
+- [x] `ai/webmcp.md` (277 linhas)
 
 ### `best-practices` (10/10)
 
@@ -85,7 +85,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `best-practices/performance/overview.md` (45 linhas)
 - [x] `best-practices/runtime-performance/overview.md` (14 linhas)
 - [x] `best-practices/runtime-performance/profiling-with-chrome-devtools.md` (112 linhas)
-- [x] `best-practices/runtime-performance/skipping-subtrees.md` (121 linhas)
+- [x] `best-practices/runtime-performance/skipping-subtrees.md` (123 linhas)
 - [x] `best-practices/runtime-performance/slow-computations.md` (27 linhas)
 - [x] `best-practices/runtime-performance/zone-pollution.md` (124 linhas)
 - [x] `best-practices/style-guide.md` (265 linhas)
@@ -106,7 +106,7 @@ planos de `plan/`, que ficam como histórico.
 
 - [x] `ecosystem/service-workers/app-shell.md` (59 linhas)
 - [x] `ecosystem/service-workers/communications.md` (108 linhas)
-- [x] `ecosystem/service-workers/config.md` (386 linhas)
+- [x] `ecosystem/service-workers/config.md` (390 linhas)
 - [x] `ecosystem/service-workers/custom-service-worker-scripts.md` (107 linhas)
 - [x] `ecosystem/service-workers/devops.md` (337 linhas)
 - [x] `ecosystem/service-workers/getting-started.md` (310 linhas)
@@ -127,7 +127,7 @@ planos de `plan/`, que ficam como histórico.
 
 - [x] `guide/drag-drop.md` (366 linhas)
 - [x] `guide/elements.md` (169 linhas)
-- [x] `guide/hydration.md` (235 linhas)
+- [x] `guide/hydration.md` (250 linhas)
 - [x] `guide/image-optimization.md` (487 linhas)
 - [x] `guide/incremental-hydration.md` (218 linhas)
 - [x] `guide/security.md` (519 linhas)
@@ -163,11 +163,11 @@ planos de `plan/`, que ficam como histórico.
 
 ### `guide/components` (13/13)
 
-- [x] `guide/components/advanced-configuration.md` (40 linhas)
+- [x] `guide/components/advanced-configuration.md` (41 linhas)
 - [x] `guide/components/anatomy-of-components.md` (128 linhas)
-- [x] `guide/components/content-projection.md` (258 linhas)
+- [x] `guide/components/content-projection.md` (261 linhas)
 - [x] `guide/components/dom-apis.md` (62 linhas)
-- [x] `guide/components/host-elements.md` (179 linhas)
+- [x] `guide/components/host-elements.md` (180 linhas)
 - [x] `guide/components/inheritance.md` (111 linhas)
 - [x] `guide/components/inputs.md` (398 linhas)
 - [x] `guide/components/lifecycle.md` (291 linhas)
@@ -200,7 +200,7 @@ planos de `plan/`, que ficam como histórico.
 
 - [x] `guide/forms/dynamic-forms.md` (142 linhas)
 - [x] `guide/forms/form-validation.md` (414 linhas)
-- [x] `guide/forms/overview.md` (329 linhas)
+- [x] `guide/forms/overview.md` (328 linhas)
 - [x] `guide/forms/reactive-forms.md` (713 linhas)
 - [x] `guide/forms/signals/async-operations.md` (797 linhas)
 - [x] `guide/forms/signals/comparison.md` (161 linhas)
@@ -209,10 +209,10 @@ planos de `plan/`, que ficam como histórico.
 - [x] `guide/forms/signals/designing-your-form-model.md` (422 linhas)
 - [x] `guide/forms/signals/dynamic-forms-with-json.md` (484 linhas)
 - [x] `guide/forms/signals/field-metadata.md` (399 linhas)
-- [x] `guide/forms/signals/field-state-management.md` (904 linhas)
-- [x] `guide/forms/signals/form-logic.md` (727 linhas)
+- [x] `guide/forms/signals/field-state-management.md` (911 linhas)
+- [x] `guide/forms/signals/form-logic.md` (735 linhas)
 - [x] `guide/forms/signals/form-submission.md` (328 linhas)
-- [x] `guide/forms/signals/migration.md` (531 linhas)
+- [x] `guide/forms/signals/migration.md` (530 linhas)
 - [x] `guide/forms/signals/models.md` (465 linhas)
 - [x] `guide/forms/signals/overview.md` (58 linhas)
 - [x] `guide/forms/signals/schemas.md` (244 linhas)
@@ -225,7 +225,7 @@ planos de `plan/`, que ficam como histórico.
 
 - [x] `guide/http/http-resource.md` (140 linhas)
 - [x] `guide/http/interceptors.md` (292 linhas)
-- [x] `guide/http/making-requests.md` (684 linhas)
+- [x] `guide/http/making-requests.md` (686 linhas)
 - [x] `guide/http/overview.md` (21 linhas)
 - [x] `guide/http/setup.md` (116 linhas)
 - [x] `guide/http/testing.md` (229 linhas)
@@ -246,27 +246,28 @@ planos de `plan/`, que ficam como histórico.
 
 ### `guide/ngmodules` (1/1)
 
-- [x] `guide/ngmodules/overview.md` (193 linhas)
+- [x] `guide/ngmodules/overview.md` (194 linhas)
 
 ### `guide/performance` (1/1)
 
 - [x] `guide/performance/overview.md` (12 linhas)
 
-### `guide/routing` (18/18)
+### `guide/routing` (19/19)
 
 - [x] `guide/routing/common-router-tasks.md` (240 linhas)
 - [x] `guide/routing/customizing-route-behavior.md` (692 linhas)
 - [x] `guide/routing/data-fetching-with-resources.md` (376 linhas)
 - [x] `guide/routing/data-resolvers.md` (357 linhas)
-- [x] `guide/routing/define-routes.md` (382 linhas)
+- [x] `guide/routing/define-routes.md` (404 linhas)
+- [x] `guide/routing/error-boundaries.md` (184 linhas)
 - [x] `guide/routing/lifecycle-and-events.md` (244 linhas)
 - [x] `guide/routing/loading-strategies.md` (98 linhas)
 - [x] `guide/routing/navigate-to-routes.md` (274 linhas)
 - [x] `guide/routing/overview.md` (35 linhas)
 - [x] `guide/routing/read-route-state.md` (356 linhas)
-- [x] `guide/routing/redirecting-routes.md` (142 linhas)
+- [x] `guide/routing/redirecting-routes.md` (173 linhas)
 - [x] `guide/routing/rendering-strategies.md` (140 linhas)
-- [x] `guide/routing/route-guards.md` (231 linhas)
+- [x] `guide/routing/route-guards.md` (233 linhas)
 - [x] `guide/routing/route-transition-animations.md` (217 linhas)
 - [x] `guide/routing/router-reference.md` (120 linhas)
 - [x] `guide/routing/routing-with-urlmatcher.md` (117 linhas)
@@ -275,7 +276,7 @@ planos de `plan/`, que ficam como histórico.
 
 ### `guide/signals` (5/5)
 
-- [x] `guide/signals/debounced.md` (86 linhas)
+- [x] `guide/signals/debounced.md` (88 linhas)
 - [x] `guide/signals/effect.md` (208 linhas)
 - [x] `guide/signals/linked-signal.md` (198 linhas)
 - [x] `guide/signals/overview.md` (284 linhas)
@@ -291,7 +292,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `guide/templates/expression-syntax.md` (149 linhas)
 - [x] `guide/templates/ng-container.md` (116 linhas)
 - [x] `guide/templates/ng-content.md` (30 linhas)
-- [x] `guide/templates/ng-template.md` (350 linhas)
+- [x] `guide/templates/ng-template.md` (348 linhas)
 - [x] `guide/templates/overview.md` (49 linhas)
 - [x] `guide/templates/pipes.md` (384 linhas)
 - [x] `guide/templates/two-way-binding.md` (135 linhas)
@@ -340,8 +341,8 @@ planos de `plan/`, que ficam como histórico.
 
 ### `reference/configs` (4/4)
 
-- [x] `reference/configs/angular-compiler-options.md` (221 linhas)
-- [x] `reference/configs/file-structure.md` (152 linhas)
+- [x] `reference/configs/angular-compiler-options.md` (215 linhas)
+- [x] `reference/configs/file-structure.md` (150 linhas)
 - [x] `reference/configs/npm-packages.md` (42 linhas)
 - [x] `reference/configs/workspace-config.md` (589 linhas)
 
@@ -383,7 +384,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `tools/cli/schematics.md` (124 linhas)
 - [x] `tools/cli/serve.md` (76 linhas)
 - [x] `tools/cli/setup-local.md` (181 linhas)
-- [x] `tools/cli/template-typecheck.md` (297 linhas)
+- [x] `tools/cli/template-typecheck.md` (304 linhas)
 
 ### `tools/devtools` (6/6)
 
@@ -396,8 +397,8 @@ planos de `plan/`, que ficam como histórico.
 
 ### `tools/libraries` (4/4)
 
-- [x] `tools/libraries/angular-package-format.md` (377 linhas)
-- [x] `tools/libraries/creating-libraries.md` (425 linhas)
+- [x] `tools/libraries/angular-package-format.md` (356 linhas)
+- [x] `tools/libraries/creating-libraries.md` (460 linhas)
 - [x] `tools/libraries/overview.md` (35 linhas)
 - [x] `tools/libraries/using-libraries.md` (170 linhas)
 
@@ -416,7 +417,7 @@ planos de `plan/`, que ficam como histórico.
 ### `tutorials/first-app` (15/15)
 
 - [x] `tutorials/first-app/intro/README.md` (87 linhas)
-- [x] `tutorials/first-app/steps/01-hello-world/README.md` (124 linhas)
+- [x] `tutorials/first-app/steps/01-hello-world/README.md` (123 linhas)
 - [x] `tutorials/first-app/steps/02-Home/README.md` (146 linhas)
 - [x] `tutorials/first-app/steps/03-HousingLocation/README.md` (80 linhas)
 - [x] `tutorials/first-app/steps/04-interfaces/README.md` (100 linhas)
@@ -424,9 +425,9 @@ planos de `plan/`, que ficam como histórico.
 - [x] `tutorials/first-app/steps/06-property-binding/README.md` (51 linhas)
 - [x] `tutorials/first-app/steps/07-dynamic-template-values/README.md` (61 linhas)
 - [x] `tutorials/first-app/steps/08-ngFor/README.md` (67 linhas)
-- [x] `tutorials/first-app/steps/09-services/README.md` (111 linhas)
+- [x] `tutorials/first-app/steps/09-services/README.md` (110 linhas)
 - [x] `tutorials/first-app/steps/10-routing/README.md` (90 linhas)
-- [x] `tutorials/first-app/steps/11-details-page/README.md` (139 linhas)
+- [x] `tutorials/first-app/steps/11-details-page/README.md` (136 linhas)
 - [x] `tutorials/first-app/steps/12-forms/README.md` (107 linhas)
 - [x] `tutorials/first-app/steps/13-search/README.md` (80 linhas)
 - [x] `tutorials/first-app/steps/14-http/README.md` (208 linhas)
@@ -484,7 +485,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `tutorials/signals/steps/8-using-signals-with-directives/README.md` (105 linhas)
 - [x] `tutorials/signals/steps/9-query-child-elements-with-signal-queries/README.md` (67 linhas)
 
-### `reference/errors` (65/65)
+### `reference/errors` (69/69)
 
 - [x] `reference/errors/NG0100.md` (21 linhas)
 - [x] `reference/errors/NG01002.md` (48 linhas)
@@ -498,7 +499,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `reference/errors/NG0203.md` (64 linhas)
 - [x] `reference/errors/NG0204.md` (61 linhas)
 - [x] `reference/errors/NG0205.md` (72 linhas)
-- [x] `reference/errors/NG0207.md` (77 linhas)
+- [x] `reference/errors/NG0207.md` (75 linhas)
 - [x] `reference/errors/NG0209.md` (4 linhas)
 - [x] `reference/errors/NG02200.md` (10 linhas)
 - [x] `reference/errors/NG02800.md` (12 linhas)
@@ -510,7 +511,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `reference/errors/NG0318.md` (24 linhas)
 - [x] `reference/errors/NG0401.md` (19 linhas)
 - [x] `reference/errors/NG0403.md` (42 linhas)
-- [x] `reference/errors/NG0500.md` (42 linhas)
+- [x] `reference/errors/NG0500.md` (46 linhas)
 - [x] `reference/errors/NG05000.md` (12 linhas)
 - [x] `reference/errors/NG0501.md` (57 linhas)
 - [x] `reference/errors/NG0502.md` (8 linhas)
@@ -519,10 +520,12 @@ planos de `plan/`, que ficam como histórico.
 - [x] `reference/errors/NG0505.md` (25 linhas)
 - [x] `reference/errors/NG0506.md` (81 linhas)
 - [x] `reference/errors/NG0507.md` (11 linhas)
+- [x] `reference/errors/NG0509.md` (16 linhas)
 - [x] `reference/errors/NG05101.md` (19 linhas)
 - [x] `reference/errors/NG05102.md` (45 linhas)
 - [x] `reference/errors/NG05104.md` (34 linhas)
 - [x] `reference/errors/NG05106.md` (42 linhas)
+- [x] `reference/errors/NG0512.md` (18 linhas)
 - [x] `reference/errors/NG05201.md` (44 linhas)
 - [x] `reference/errors/NG05703.md` (26 linhas)
 - [x] `reference/errors/NG0600.md` (60 linhas)
@@ -538,6 +541,7 @@ planos de `plan/`, que ficam como histórico.
 - [x] `reference/errors/NG0951.md` (23 linhas)
 - [x] `reference/errors/NG0955.md` (44 linhas)
 - [x] `reference/errors/NG0956.md` (58 linhas)
+- [x] `reference/errors/NG0957.md` (35 linhas)
 - [x] `reference/errors/NG0991.md` (82 linhas)
 - [x] `reference/errors/NG1001.md` (32 linhas)
 - [x] `reference/errors/NG2003.md` (11 linhas)
@@ -548,9 +552,10 @@ planos de `plan/`, que ficam como histórico.
 - [x] `reference/errors/NG8002.md` (19 linhas)
 - [x] `reference/errors/NG8003.md` (30 linhas)
 - [x] `reference/errors/NG8011.md` (86 linhas)
+- [x] `reference/errors/NG8022.md` (76 linhas)
 - [x] `reference/errors/NG8023.md` (48 linhas)
 - [x] `reference/errors/NG8024.md` (52 linhas)
-- [x] `reference/errors/overview.md` (73 linhas)
+- [x] `reference/errors/overview.md` (77 linhas)
 
 ### `reference/extended-diagnostics` (19/19)
 

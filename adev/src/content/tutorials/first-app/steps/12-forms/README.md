@@ -13,8 +13,8 @@ IMPORTANT: Recomendamos usar seu ambiente local para este passo do tutorial.
 
 ## O que você vai aprender {#what-youll-learn}
 
-- Sua aplicação tem um formulário no qual usuários podem inserir dados que são enviados ao service da sua aplicação.
-- O service escreve os dados do formulário no log do console do browser.
+- Sua aplicação terá um formulário no qual usuários podem inserir dados que são enviados ao service da sua aplicação.
+- O service escreverá os dados do formulário no log do console do browser.
 
 <docs-workflow>
 
@@ -24,9 +24,9 @@ Neste exemplo, o método escreve os dados do formulário no log do console do br
 
 No painel **Edit** do seu IDE:
 
-1.  Em `src/app/housing.service.ts`, dentro da classe `HousingService`, cole este método no final da definição da classe.
+1.  Em `src/app/housing-service.ts`, dentro da classe `HousingService`, cole este método no final da definição da classe.
 
-       <docs-code header="Método submit em src/app/housing.service.ts" path="adev/src/content/tutorials/first-app/steps/13-search/src/app/housing.service.ts" visibleLines="[118,122]"/>
+       <docs-code header="Método submit em src/app/housing-service.ts" path="adev/src/content/tutorials/first-app/steps/13-search/src/app/housing-service.ts" visibleLines="[119,123]"/>
 
 1.  Confirme que a aplicação builda sem erro.
     Corrija quaisquer erros antes de continuar para o próximo passo.
@@ -97,7 +97,7 @@ Este passo testa o novo formulário para ver que quando os dados do formulário 
 
 </docs-workflow>
 
-SUMMARY: Nesta lição, você atualizou sua aplicação para adicionar um formulário usando o recurso de formulários do Angular, e conectou os dados capturados no formulário a um component usando um manipulador de evento.
+SUMMARY: Nesta lição, você adicionou um formulário usando o recurso de formulários do Angular, e conectou os dados capturados no formulário a um component usando um manipulador de evento.
 
 Para mais informações sobre os tópicos cobertos nesta lição, visite:
 

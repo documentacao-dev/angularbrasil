@@ -230,6 +230,21 @@ Há várias bibliotecas de terceiros que dependem de manipulação do DOM para c
 
 Muitos scripts de terceiros, como rastreadores de anúncios e ferramentas de análise, modificam o DOM antes que a hydration possa ocorrer. Esses scripts podem causar erros de hydration porque a página não corresponde mais à estrutura esperada pelo Angular. Prefira adiar esse tipo de script até depois da hydration sempre que possível. Considere usar o [`AfterNextRender`](api/core/afterNextRender) para atrasar o script até que os processos pós-hydration tenham ocorrido.
 
+### CDNs e extensões do navegador {#cdns-and-browser-extensions}
+
+Código fora da sua aplicação pode mudar o HTML do servidor antes de a hidratação começar. Muitas vezes você não vê esses erros no seu computador, porque eles não acontecem no seu servidor local.
+
+**CDNs que alteram o HTML.** Alguns recursos de CDNs mudam o HTML no caminho até o navegador. Por exemplo, alguns recursos removem comment nodes e espaços em branco, mas a hidratação precisa deles. Outro exemplo é o Email Address Obfuscation da Cloudflare, que vem ativado por padrão. Esse recurso troca endereços de e-mail por elementos como `<span class="__cf_email__" data-cfemail="...">`. Ele também altera os links `mailto:` e adiciona um script que restaura o conteúdo. Se esse script não rodar antes de a hidratação começar, o Angular encontra um elemento onde espera texto. Seu servidor local não usa a CDN, então sua aplicação funciona no seu computador e falha só em produção.
+
+**Extensões do navegador.** Algumas extensões do navegador alteram a página antes de a hidratação começar. Exemplos são ferramentas de click-to-call, tradutores e gerenciadores de senhas. Você não controla essas extensões. Só os usuários que as instalam têm o problema, então você pode ver erros de apenas alguns usuários.
+
+Para corrigir esses erros:
+
+- Adicione `ngSkipHydration` ao host do component em volta do conteúdo alterado. Adicione no template onde você escreve esse conteúdo, assim: `<app-contact ngSkipHydration><a href="tel:...">...</a></app-contact>`. Assim o Angular renderiza esse conteúdo de novo no navegador, e isso remove as alterações. Você só pode usar esse atributo em elementos host de components, então não pode adicioná-lo ao elemento `<a>`. Saiba mais em [como pular a hidratação](#how-to-skip-hydration-for-particular-components).
+- Desative o recurso da CDN na sua aplicação. No Cloudflare, desative o [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) nas configurações de segurança, ou use uma [Configuration Rule](https://developers.cloudflare.com/rules/configuration-rules/settings/) para desativá-lo nos hostnames da sua aplicação.
+
+NOTE: Os comentários `<!--email_off-->` da Cloudflare não ajudam em templates do Angular, porque o compilador remove comentários dos templates.
+
 ## Hydration incremental {#incremental-hydration}
 
 Hydration incremental é uma forma avançada de hydration que permite um controle mais granular sobre quando a hydration acontece. Veja o [guia de hydration incremental](guide/incremental-hydration) para mais informações.

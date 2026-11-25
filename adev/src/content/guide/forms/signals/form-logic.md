@@ -263,7 +263,7 @@ export class Profile {
 
 ## Exibindo campos não editáveis com `readonly()` {#display-uneditable-fields-with-readonly}
 
-A regra `readonly()` impede que o usuário altere um campo. A diretiva `[FormField]` vincula automaticamente esse estado ao atributo HTML `readonly`, que impede a edição, mas ainda permite que o usuário foque o campo e selecione o texto.
+A regra `readonly()` impede que o usuário altere um campo. A diretiva `FormField` vincula automaticamente esse estado ao atributo HTML `readonly`, que impede a edição, mas ainda permite que o usuário foque o campo e selecione o texto.
 
 NOTE: Campos somente leitura ignoram a [validação](guide/forms/signals/validation).
 
@@ -302,7 +302,7 @@ export class Account {
 }
 ```
 
-A diretiva `[FormField]` vincula automaticamente o atributo `readonly` com base no estado do campo.
+A diretiva `FormField` vincula automaticamente o atributo `readonly` com base no estado do campo.
 
 ### Somente leitura condicional {#conditional-readonly}
 
@@ -458,10 +458,18 @@ export class Search {
   });
 
   searchForm = form(this.searchModel, (schemaPath) => {
-    debounce(schemaPath.query, () => {
-      // Retorna uma promise que é resolvida após 500 ms
+    debounce(schemaPath.query, (context, abortSignal) => {
+      // Retorna uma promise que é resolvida após 500 ms, ou imediatamente quando o debounce é abortado
       return new Promise<void>((resolve) => {
-        setTimeout(() => resolve(), 500);
+        const timeoutId = setTimeout(resolve, 500);
+        abortSignal.addEventListener(
+          'abort',
+          () => {
+            clearTimeout(timeoutId);
+            resolve();
+          },
+          {once: true},
+        );
       });
     });
   });

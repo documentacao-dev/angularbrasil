@@ -7,8 +7,7 @@ Esta lição do tutorial demonstra como criar um service Angular e usar injeçã
 
 ## O que você vai aprender {#what-youll-learn}
 
-Sua aplicação tem um service para fornecer os dados à sua aplicação.
-No final desta lição, o service lê dados de dados locais e estáticos.
+Sua aplicação terá um service que lê dados locais e estáticos e os entrega à aplicação.
 Em uma lição posterior, você atualizará o service para obter dados de um web service.
 
 ## Prévia conceitual de services {#conceptual-preview-of-services}
@@ -37,7 +36,7 @@ No painel **Terminal** do seu IDE:
 1. No diretório `first-app`, execute este comando para criar o novo service.
 
    ```shell
-   ng generate service housing --skip-tests
+   ng generate service housingService --skip-tests
    ```
 
 1. Execute `ng serve` para buildar a aplicação e servi-la em `http://localhost:4200`.
@@ -53,18 +52,18 @@ Por enquanto, o novo service da sua aplicação usa os dados que foram, até ago
 No painel **Edit** do seu IDE:
 
 1. Em `src/app/home/home.ts`, de `Home`, copie a variável `baseUrl` e a variável `housingLocationList` com seu valor de array.
-1. Em `src/app/housing.service.ts`:
+1. Em `src/app/housing-service.ts`:
    1. Dentro da classe `HousingService`, cole as variáveis que você copiou de `Home` no passo anterior.
    1. Dentro da classe `HousingService`, cole estas funções após os dados que você acabou de copiar.
       Estas funções permitem que dependências acessem os dados do service.
 
-      <docs-code header="Funções do service em src/app/housing.service.ts" path="adev/src/content/tutorials/first-app/steps/10-routing/src/app/housing.service.ts" visibleLines="[110,116]"/>
+      <docs-code header="Funções do service em src/app/housing-service.ts" path="adev/src/content/tutorials/first-app/steps/10-routing/src/app/housing-service.ts" visibleLines="[111,117]"/>
 
       Você precisará destas funções em uma lição futura. Por enquanto, é suficiente entender que essas funções retornam ou um `HousingLocation` específico por id ou a lista inteira.
 
    1. Adicione um import no nível do arquivo para o `HousingLocation`.
 
-      <docs-code header="Importe o tipo HousingLocation em src/app/housing.service.ts" path="adev/src/content/tutorials/first-app/steps/10-routing/src/app/housing.service.ts" visibleLines="[2]"/>
+      <docs-code header="Importe o tipo HousingLocation em src/app/housing-service.ts" path="adev/src/content/tutorials/first-app/steps/10-routing/src/app/housing-service.ts" visibleLines="[2]"/>
 
 1. Confirme que a aplicação builda sem erro.
    Corrija quaisquer erros antes de continuar para o próximo passo.

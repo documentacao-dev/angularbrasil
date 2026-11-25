@@ -7,7 +7,7 @@ Esta lição do tutorial demonstra como criar um novo [component](guide/componen
 
 ## O que você aprenderá {#what-youll-learn}
 
-Sua aplicação tem um novo component: `Home`.
+Sua aplicação terá um novo component: `Home`.
 
 ## Pré-visualização conceitual de components Angular {#conceptual-preview-of-angular-components}
 
@@ -21,7 +21,7 @@ Quando você cria seu `Home`, você usa essas propriedades:
 - `selector`: para descrever como o Angular se refere ao component em templates.
 - `imports`: para descrever as dependências do component.
 - `template`: para descrever a marcação HTML e layout do component.
-- `styleUrls`: para listar as URLs dos arquivos CSS que o component usa em um array.
+- `styleUrl`: para especificar a URL do arquivo CSS que o component usa.
 
 <docs-pill-row>
   <docs-pill href="api/core/Component" title="Saiba mais sobre Components"/>

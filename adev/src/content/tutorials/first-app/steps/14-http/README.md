@@ -151,19 +151,19 @@ Se você tiver algum problema com sua configuração, pode encontrar mais detalh
 <docs-step title="Atualize o service para usar o web server em vez do array local {#update-service-to-use-web-server-instead-of-local-array}">
 A fonte de dados foi configurada. O próximo passo é atualizar sua aplicação web para se conectar a ela e usar os dados.
 
-1.  Em `src/app/housing.service.ts`, faça as seguintes alterações:
+1.  Em `src/app/housing-service.ts`, faça as seguintes alterações:
 
 1.  Atualize o código para remover a propriedade `housingLocationList`, o array que contém os dados e a propriedade `baseUrl`.
 
 1.  Adicione uma propriedade string chamada `url` e defina seu valor como `'http://localhost:3000/locations'`
 
-    <docs-code header="Adicione a propriedade url ao housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[6]"/>
+    <docs-code header="Adicione a propriedade url ao housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[6]"/>
 
     Este código resultará em erros no restante do arquivo porque depende da propriedade `housingLocationList`. Vamos atualizar os métodos do service em seguida.
 
 1.  Atualize a função `getAllHousingLocations` para fazer uma chamada ao web server que você configurou.
 
-     <docs-code header="Atualize o método getAllHousingLocations em housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[8,11]"/>
+     <docs-code header="Atualize o método getAllHousingLocations em housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[8,11]"/>
 
     O código agora usa código assíncrono para fazer uma requisição **GET** via HTTP.
 
@@ -173,11 +173,11 @@ A fonte de dados foi configurada. O próximo passo é atualizar sua aplicação 
 
     HELPFUL: Observe que a URL do `fetch` agora anexa o `id` como segmento de caminho (`${this.url}/${id}`) para requisitar a location com um valor de propriedade `id` correspondente.
 
-     <docs-code header="Atualize o método getHousingLocationById em housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[13,17]"/>
+     <docs-code header="Atualize o método getHousingLocationById em housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[13,17]"/>
 
 1.  Quando todas as atualizações estiverem concluídas, seu service deve corresponder ao seguinte código.
 
-     <docs-code header="Versão final de housing.service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing.service.ts" visibleLines="[1,23]" />
+     <docs-code header="Versão final de housing-service.ts" path="adev/src/content/tutorials/first-app/steps/14-http/src-final/app/housing-service.ts" visibleLines="[1,23]" />
 
 </docs-step>
 

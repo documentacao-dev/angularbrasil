@@ -101,28 +101,29 @@ export class CustomSlider {
 
 ## Colisões de binding {#binding-collisions}
 
-Quando você usa um component em um template, pode adicionar bindings ao elemento dessa instância do component. O component também pode definir bindings de host para as mesmas propriedades ou atributos.
+Quando você usa um component em um template, pode aplicar bindings ao elemento desse component. O component (ou as directives aplicadas a ele) também pode definir bindings de host para as mesmas propriedades, atributos, classes ou estilos.
 
-```angular-ts
-@Component({
-  ...,
-  host: {
-    'role': 'presentation',
-    '[id]': 'id',
-  }
-})
-export class ProfilePhoto { /* ... */ }
-```
+Como o Angular trata essas colisões depende do tipo de binding:
 
-```angular-html
-<profile-photo role="group" [id]="otherId" />
-```
+### Bindings de class e style {#class-and-style-bindings}
 
-Nesses casos, as seguintes regras determinam qual valor prevalece:
+Bindings de class e style têm uma ordem de precedência definida. Bindings definidos no template têm prioridade sobre os bindings de host definidos em directives ou components:
 
-- Se ambos os valores forem estáticos, o binding da instância prevalece.
-- Se um valor for estático e o outro dinâmico, o valor dinâmico prevalece.
-- Se ambos os valores forem dinâmicos, o binding de host do component prevalece.
+1. **Bindings do template** (por exemplo, `[class.active]` ou `[style.color]`)
+2. **Valores estáticos do template** (por exemplo, `class="..."` ou `style="..."` no template)
+3. **Bindings de host de directives**
+4. **Bindings de host de components**
+5. **Valores estáticos de host** (por exemplo, `host: {class: '...'}`)
+
+Se o valor de um binding for `undefined`, o Angular recorre ao próximo nível. Um valor `null` remove a class ou o style sem recorrer ao nível seguinte.
+
+### Colisões de propriedades e atributos {#property-and-attribute-collisions}
+
+Para propriedades e atributos que não são de estilo (como `id`, `role` ou `[attr.aria-*]`):
+
+- **Atributos estáticos:** Se o template e o component declararem um atributo estático (por exemplo, `<my-cmp id="parent">` e `host: {id: 'child'}`), o atributo definido no template prevalece.
+- **Estático e dinâmico:** Se um valor for estático e o outro dinâmico, o valor dinâmico prevalece.
+- **Bindings dinâmicos:** Evite fazer binding na mesma propriedade ou atributo do DOM tanto no template quanto por meio de bindings de host. O Angular não concilia bindings de propriedade duplicados; bindings dinâmicos sobrepostos podem levar a sobrescritas inesperadas, conforme a ordem de execução da detecção de mudanças.
 
 ## Estilização com propriedades personalizadas CSS {#styling-with-css-custom-properties}
 

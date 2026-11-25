@@ -32,11 +32,13 @@ export class Search {
 }
 ```
 
-`debounced` recebe o signal de origem e uma duração de espera em milissegundos. O `value()` do resource retornado sempre contém o último valor estabilizado, e `status()` informa se um novo valor ainda está pendente.
+`debounced` recebe o signal de origem e uma duração de espera em milissegundos. O `value()` do resource retornado contém o último valor estabilizado, e `status()` informa se um novo valor ainda está pendente.
 
 ## Status durante o debounce {#status-during-debounce}
 
-Enquanto o timer de debounce está em contagem regressiva, `status()` é `'loading'` e `value()` retorna o valor resolvido anteriormente. Quando o timer expira, o resource se estabiliza em `'resolved'`. Se o signal de origem lançar um erro, o resource entra imediatamente em `'error'`; nenhum timer é executado.
+Enquanto o timer de debounce está em contagem regressiva depois de um valor resolvido, `status()` é `'loading'` e `value()` retorna o valor resolvido anteriormente. Quando o timer expira, o resource se estabiliza em `'resolved'`.
+
+Se o signal de origem lançar um erro, o resource entra imediatamente em `'error'`, `value()` lança uma exceção e nenhum timer é executado. Depois que o signal de origem para de lançar erros, o resource permanece em `'error'` até que a nova espera se estabilize, e então passa para `'resolved'`.
 
 Veja [Status do resource](/guide/signals/resource#resource-status) para a lista completa de status e o comportamento de `value()` em cada um deles.
 

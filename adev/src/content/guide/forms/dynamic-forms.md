@@ -23,7 +23,7 @@ O tutorial orienta você através das seguintes etapas.
 1. Desenvolver um component para criar controles de formulário dinamicamente.
 
 O formulário que você cria usa validação de entrada e estilização para melhorar a experiência do usuário.
-Ele tem um botão Submit que só é habilitado quando toda a entrada do usuário é válida, e sinaliza entrada inválida com codificação de cores e mensagens de erro.
+Ele tem um botão Save que só é habilitado quando toda a entrada do usuário é válida, e sinaliza entrada inválida com codificação de cores e mensagens de erro.
 
 A versão básica pode evoluir para suportar uma variedade mais rica de perguntas, renderização mais elegante e experiência de usuário superior.
 
@@ -66,7 +66,7 @@ O tipo de controle `DropdownQuestion` apresenta uma lista de escolhas em uma cai
 ### Compor grupos de formulário {#compose-form-groups}
 
 Um formulário dinâmico usa um service para criar conjuntos agrupados de controles de entrada, baseados no modelo de formulário.
-O seguinte `QuestionControlService` coleta um conjunto de instâncias `FormGroup` que consomem os metadados do modelo de pergunta.
+O seguinte `QuestionControlService` constrói um `FormGroup` de instâncias de `FormControl` a partir dos metadados do modelo de pergunta.
 Você pode especificar valores padrão e regras de validação.
 
 <docs-code header="question-control.service.ts" path="adev/src/content/examples/dynamic-form/src/app/question-control.service.ts"/>
@@ -78,7 +78,7 @@ Cada pergunta é representada no template do component do formulário por uma ta
 
 O `DynamicFormQuestionComponent` é responsável por renderizar os detalhes de uma pergunta individual com base nos valores no objeto de pergunta vinculado aos dados.
 O formulário depende de uma [directive `[formGroup]`](api/forms/FormGroupDirective 'API reference') para conectar o HTML do template aos objetos de controle subjacentes.
-O `DynamicFormQuestionComponent` cria grupos de formulário e os preenche com controles definidos no modelo de pergunta, especificando regras de exibição e validação.
+O `DynamicFormQuestionComponent` recebe o grupo de formulário construído pelo `QuestionControlService` e renderiza o controle da sua pergunta, exibindo o estado de validação com base nas regras definidas ali.
 
 <docs-code-multifile>
   <docs-code header="dynamic-form-question.component.html" path="adev/src/content/examples/dynamic-form/src/app/dynamic-form-question.component.html"/>

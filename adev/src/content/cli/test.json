@@ -3,7 +3,7 @@
   "command": "ng test [project]",
   "shortDescription": "Runs unit tests in a project.",
   "longDescriptionRelativePath": "@angular/cli/src/commands/test/long-description.md",
-  "longDescription": "Takes the name of the project, as specified in the `projects` section of the `angular.json` workspace configuration file.\nWhen a project name is not supplied, it will execute for all projects.\n",
+  "longDescription": "Takes the name of the project, as specified in the `projects` section of the `angular.json` workspace configuration file.\nWhen a project name is not supplied, it will execute for all projects.\n\nArguments following `--` are forwarded directly to the test runner when supported by the configured builder (for example, `ng test -- --update`).\n",
   "aliases": [
     "t"
   ],
@@ -158,6 +158,11 @@
             "vitest"
           ],
           "description": "Specifies the test runner to use for test execution."
+        },
+        {
+          "name": "runner-args",
+          "type": "array",
+          "description": "Additional command line arguments to provide to the test runner. Each argument must be a separate value, for example `--runner-args=--update --runner-args=--bail=1`. This option is only available for the Vitest runner and only a subset of the Vitest command line options is supported. Options that have an equivalent builder option, such as `--reporter` or `--coverage`, must be configured with the builder option."
         },
         {
           "name": "runner-config",

@@ -27,6 +27,8 @@
 | `NG0505`  | [Sem informação de hidratação na resposta do servidor](errors/NG0505)                      |
 | `NG0506`  | [NgZone permanece instável](errors/NG0506)                                                  |
 | `NG0507`  | [Conteúdo HTML foi alterado após SSR](errors/NG0507)                                        |
+| `NG0509`  | [Node Ausente no Caminho da Hidratação](errors/NG0509)                              |
+| `NG0512`  | [Texto Ausente na Hidratação](errors/NG0512)                                        |
 | `NG0600`  | [Escrita de signal em contexto não permitido](errors/NG0600)                                |
 | `NG0602`  | [Chamada de função não permitida dentro de contexto reativo](errors/NG0602)                 |
 | `NG0750`  | [Dependências de @defer falharam ao carregar](errors/NG0750)                                |
@@ -40,6 +42,7 @@
 | `NG0951`  | [Resultado de query de filho é obrigatório, mas nenhum valor está disponível](errors/NG0951) |
 | `NG0955`  | [Expressão de track resultou em chaves duplicadas para uma coleção](errors/NG0955)         |
 | `NG0956`  | [Expressão de tracking causou recriação da estrutura DOM](errors/NG0956)                   |
+| `NG0957`  | [Coleção Usada em @for Não É Iterável](errors/NG0957)                               |
 | `NG0991`  | [Resource concluído antes de produzir um valor](errors/NG0991)                              |
 | `NG01002` | [Valor de controle ausente](errors/NG01002)                                                 |
 | `NG01055` | [Controle ausente para `formControlName`](errors/NG01055)                                   |
@@ -69,5 +72,6 @@
 | `NG8002` | [Atributo Inválido](errors/NG8002)                          |
 | `NG8003` | [Alvo de Referência Ausente](errors/NG8003)                 |
 | `NG8011` | [Control Flow Impedindo Projeção de Conteúdo](errors/NG8011) |
+| `NG8022` | [Binding Não Suportado em Campo de Formulário](errors/NG8022)                       |
 | `NG8023` | [Múltiplos Components Correspondem ao Mesmo Elemento](errors/NG8023) |
 | `NG8024` | [Binding de Host Directive Conflitante](errors/NG8024)      |

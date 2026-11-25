@@ -120,7 +120,7 @@ provideRouter(routes, withRouterConfig({urlUpdateStrategy: 'eager'}));
 
 ### Escolher o tratamento padrão de parâmetros de consulta {#choose-default-query-parameter-handling}
 
-`defaultQueryParamsHandling` define o comportamento de fallback para `Router.createUrlTree` quando a chamada não especifica `queryParamsHandling`. `'replace'` é o padrão e substitui a query string existente. `'merge'` combina os valores fornecidos com os atuais, e `'preserve'` mantém os parâmetros de consulta existentes, a menos que você forneça novos explicitamente.
+`defaultQueryParamsHandling` define o comportamento de fallback para `Router.createUrlTree` quando a chamada não especifica `queryParamsHandling`. `'replace'` é o padrão e substitui a query string existente. `'merge'` combina os valores fornecidos com os atuais, e `'preserve'` mantém os parâmetros de consulta existentes e ignora quaisquer `queryParams` que você passar na chamada.
 
 ```ts
 provideRouter(routes, withRouterConfig({defaultQueryParamsHandling: 'merge'}));
@@ -557,7 +557,7 @@ export const routes: Routes = [
 ];
 ```
 
-O componente recebe os parâmetros extraídos por meio de inputs de rota:
+Se você habilitar o [`withComponentInputBinding`](api/router/withComponentInputBinding), o componente recebe os parâmetros extraídos por meio de inputs de rota:
 
 ```angular-ts
 import {Component, input, inject, resource} from '@angular/core';
@@ -575,7 +575,7 @@ import {Component, input, inject, resource} from '@angular/core';
   `,
 })
 export class Documentation {
-  // Os parâmetros de rota são vinculados automaticamente a signal inputs
+  // O router define estes inputs a partir dos parâmetros de rota
   version = input.required<string>(); // Recebe o parâmetro version
   section = input.required<string>(); // Recebe o parâmetro section
 

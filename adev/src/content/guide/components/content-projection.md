@@ -129,6 +129,9 @@ export class App {}
 
 O espaço reservado `<ng-content>` suporta os mesmos seletores CSS que os [seletores de components](guide/components/selectors).
 
+IMPORTANT: se estiver usando um seletor de atributo ou de classe, ele deve ser definido estaticamente, por exemplo `class="within"`.
+Bindings dinâmicos como `[class.within]="isWithin()"` não são vistos pelo seletor `select`.
+
 Se você incluir um ou mais espaços reservados `<ng-content>` com um atributo `select` e um espaço reservado `<ng-content>` sem atributo `select`, este último captura todos os elementos que não corresponderam a nenhum atributo `select`:
 
 ```angular-html

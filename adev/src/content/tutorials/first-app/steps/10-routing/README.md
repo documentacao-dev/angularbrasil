@@ -45,11 +45,11 @@ Nesta lição, você habilitará routing na sua aplicação para navegar até a 
           <docs-code header="Adicione configuração de router em src/main.ts" path="adev/src/content/tutorials/first-app/steps/11-details-page/src/main.ts" visibleLines="[6,8]"/>
 
 3.  Em `src/app/app.ts`, atualize o component para usar routing:
-    1.  Adicione imports no nível do arquivo para as directives de router `RouterOutlet` e `RouterLink`:
+    1.  Adicione imports no nível do arquivo para as directives de router `RouterLink` e `RouterOutlet`:
 
-          <docs-code language="angular-ts" header="Importe directives de router em src/app/app.ts" path="adev/src/content/tutorials/first-app/steps/11-details-page/src/app/app.ts" visibleLines="[3]"/>
+          <docs-code language="angular-ts" header="Importe directives de router em src/app/app.ts" path="adev/src/content/tutorials/first-app/steps/11-details-page/src/app/app.ts" visibleLines="[2]"/>
 
-    1.  Adicione `RouterOutlet` e `RouterLink` aos imports dos metadados do `@Component`
+    1.  Nos imports dos metadados do `@Component`, substitua `Home` por `RouterLink` e `RouterOutlet`:
 
           <docs-code language="angular-ts" header="Adicione directives de router aos imports do component em src/app/app.ts" path="adev/src/content/tutorials/first-app/steps/11-details-page/src/app/app.ts" visibleLines="[6]"/>
 

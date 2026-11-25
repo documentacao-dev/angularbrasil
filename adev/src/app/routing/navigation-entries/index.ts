@@ -413,6 +413,12 @@ export const DOCS_SUB_NAVIGATION_DATA: NavigationItem[] = [
             status: 'new',
           },
           {
+            label: 'Error boundaries',
+            path: 'guide/routing/error-boundaries',
+            contentPath: 'guide/routing/error-boundaries',
+            status: 'new',
+          },
+          {
             label: 'Lifecycle e eventos',
             path: 'guide/routing/lifecycle-and-events',
             contentPath: 'guide/routing/lifecycle-and-events',
@@ -1558,6 +1564,10 @@ export const REFERENCE_SUB_NAVIGATION_DATA: NavigationItem[] = [
           {
             label: 'directive',
             path: 'cli/generate/directive',
+          },
+          {
+            label: 'entry-point',
+            path: 'cli/generate/entry-point',
           },
           {
             label: 'enum',

@@ -9,7 +9,7 @@ NOTE: Este vídeo reflete uma sintaxe mais antiga, mas os conceitos principais p
 
 ## O que você vai aprender {#what-youll-learn}
 
-O template `HousingLocation` da sua aplicação tem uma propriedade `HousingLocation` para receber input.
+O template `HousingLocation` da sua aplicação terá uma propriedade `HousingLocation` para receber input.
 
 ## Prévia conceitual de Inputs {#conceptual-preview-of-inputs}
 

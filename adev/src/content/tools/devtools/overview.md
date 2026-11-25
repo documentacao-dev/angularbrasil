@@ -25,7 +25,7 @@ Quando você abrir a extensão, verá quatro abas adicionais:
 | [Injector Tree](tools/devtools/injectors) | Permite visualizar a hierarquia de injectors de Environment e de Element.                                                                      |
 | [Router Tree](tools/devtools/router)      | Permite visualizar a árvore de rotas da sua aplicação.                                                                                         |
 
-Outras abas, como `Transfer State`, são experimentais, podem ser habilitadas nas configurações do devtools e ainda não estão documentadas.
+Uma aba `Transfer State` também aparece quando a aplicação usa hydration.
 
 HELPFUL: Para usuários de navegadores baseados em Chromium, pode ser interessante conhecer a [integração com o painel Performance](/best-practices/profiling-with-chrome-devtools).
 

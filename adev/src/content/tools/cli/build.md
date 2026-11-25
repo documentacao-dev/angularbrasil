@@ -10,12 +10,12 @@ O Angular CLI inclui quatro builders normalmente usados como targets de `build`:
 | Builder                                         | Propósito                                                                                                                                                                                                                                        |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@angular/build:application`                    | Faz o build de uma aplicação com um bundle client-side, um servidor Node e rotas pré-renderizadas em tempo de build com [esbuild](https://esbuild.github.io/).                                                                                  |
+| `@angular/build:library`                        | Faz o build de uma library Angular seguindo o [Angular Package Format](tools/libraries/angular-package-format).                                                                                                                                        |
 | `@angular-devkit/build-angular:browser-esbuild` | Faz o bundle de uma aplicação client-side para uso em um browser com [esbuild](https://esbuild.github.io/). Veja a [documentação do `browser-esbuild`](tools/cli/build-system-migration#manual-migration-to-the-compatibility-builder) para mais informações. |
 | `@angular-devkit/build-angular:browser`         | Faz o bundle de uma aplicação client-side para uso em um browser com [webpack](https://webpack.js.org/).                                                                                                                                                |
-| `@angular/build:ng-packagr`                     | Faz o build de uma library Angular seguindo o [Angular Package Format](tools/libraries/angular-package-format).                                                                                                                                        |
 
 Aplicações geradas por `ng new` usam `@angular/build:application` por padrão.
-Libraries geradas por `ng generate library` usam `@angular/build:ng-packagr` por padrão.
+Libraries geradas por `ng generate library` usam `@angular/build:library` por padrão.
 
 Você pode determinar qual builder está sendo usado para um projeto específico consultando o target `build` desse projeto.
 

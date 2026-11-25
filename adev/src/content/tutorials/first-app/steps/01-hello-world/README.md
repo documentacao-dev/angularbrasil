@@ -70,9 +70,8 @@ No painel **Explorer** do seu IDE:
       1. Novos components são adicionados a este diretório.
 
    1. No explorador de arquivos, encontre o diretório de imagens (`/public`) que contém imagens usadas pela aplicação.
-   1. No explorador de arquivos, encontre os arquivos e diretórios que uma aplicação Angular precisa para construir e rodar, mas não são arquivos com os quais você normalmente interage.
+   1. No explorador de arquivos, encontre os arquivos e diretórios que uma aplicação Angular precisa para construir e rodar. Eles não são arquivos com os quais você normalmente interage.
       1. `.angular` tem arquivos necessários para construir a aplicação Angular.
-      1. `.e2e` tem arquivos usados para testar a aplicação.
       1. `.node_modules` tem os pacotes node.js que a aplicação usa.
       1. `angular.json` descreve a aplicação Angular para as ferramentas de construção da aplicação.
       1. `package.json` é usado pelo `npm` (o gerenciador de pacotes node) para rodar a aplicação finalizada.

@@ -489,7 +489,7 @@ CRITICAL: Durante o SSR, a implementação de Fetch lê o corpo inteiro da respo
 Você pode personalizar como o Angular faz cache das respostas HTTP durante a renderização no servidor (SSR) e as reutiliza durante a hydration, configurando `HttpTransferCacheOptions`.  
 Essa configuração é fornecida globalmente usando `withHttpTransferCacheOptions` dentro de `provideClientHydration()`.
 
-Por padrão, `HttpClient` faz cache de todas as requisições `HEAD` e `GET` que não contêm os headers `Authorization`, `Proxy-Authorization` ou `Cookie` e que não são enviadas com `withCredentials` ou com os modos de `credentials` da Fetch API que podem enviar credenciais. O Angular também ignora o transfer cache quando a requisição ou a resposta inclui diretivas de `Cache-Control` que proíbem o cache (`no-store`, `no-cache` ou `private`), ou quando a opção `cache` da Fetch API está definida como `no-store` ou `no-cache`. Respostas que carregam um header `Set-Cookie` também são ignoradas. Você pode sobrescrever as configurações de filtragem de requisições usando `withHttpTransferCacheOptions` na configuração de hydration.
+Por padrão, `HttpClient` faz cache de todas as requisições `HEAD`, `QUERY` e `GET` que não contêm os headers `Authorization`, `Proxy-Authorization` ou `Cookie` e que não são enviadas com `withCredentials` ou com os modos de `credentials` da Fetch API que podem enviar credenciais. O Angular também ignora o transfer cache quando a requisição ou a resposta inclui diretivas de `Cache-Control` que proíbem o cache (`no-store`, `no-cache` ou `private`), ou quando a opção `cache` da Fetch API está definida como `no-store` ou `no-cache`. Respostas que carregam um header `Set-Cookie` também são ignoradas. Você pode sobrescrever as configurações de filtragem de requisições usando `withHttpTransferCacheOptions` na configuração de hydration.
 
 ```ts
 import {
@@ -529,7 +529,7 @@ Incluir `Cache-Control` em `includeHeaders` apenas torna esse header disponível
 
 ### `includePostRequests`
 
-Por padrão, somente requisições `GET` e `HEAD` são armazenadas em cache.  
+Por padrão, somente requisições `GET`, `QUERY` e `HEAD` são armazenadas em cache.  
 Você pode habilitar o cache para requisições `POST` quando elas são usadas como operações de leitura, como queries GraphQL.
 
 ```ts

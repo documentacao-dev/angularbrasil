@@ -144,9 +144,7 @@ Dentro da pasta `projects/`, a pasta `my-lib` contém o código da sua bibliotec
 | Arquivos de origem da biblioteca | Propósito |
 | :------------------------------- | :-------- |
 | `src/lib`                        | Contém a lógica e os dados do seu projeto de biblioteca. Como um projeto de aplicação, um projeto de biblioteca pode conter components, services, módulos, diretivas e pipes. |
-| `src/public-api.ts`              | Especifica todos os arquivos que são exportados da sua biblioteca. |
-| `ng-package.json`                | Arquivo de configuração usado pelo [ng-packagr](https://github.com/ng-packagr/ng-packagr) para construir sua biblioteca. |
-| `package.json`                   | Configura [dependências de pacotes npm](reference/configs/npm-packages) que são necessárias para esta biblioteca. |
+| `src/public-api.ts`              | Especifica todos os arquivos que são exportados da sua biblioteca, a partir do seu entry point principal. |
+| `package.json`                   | Configura [dependências de pacotes npm](reference/configs/npm-packages) e os entry points (`exports`) desta biblioteca. |
 | `tsconfig.lib.json`              | Configuração do [TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) específica da biblioteca, incluindo [opções do compilador Angular](reference/configs/angular-compiler-options). |
-| `tsconfig.lib.prod.json`         | Configuração do [TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) específica da biblioteca que é usada ao construir a biblioteca em modo de produção. |
 | `tsconfig.spec.json`             | Configuração do [TypeScript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) para os testes unitários da biblioteca. |

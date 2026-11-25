@@ -86,9 +86,9 @@ O diagrama a seguir representa a relação entre o `ModuleInjector` `root` e seu
 
 ```mermaid
 stateDiagram-v2
-    elementInjector: EnvironmentInjector<br>(configurado pelo Angular)<br>tem coisas especiais como DomSanitizer => providedIn 'platform'
-    rootInjector: EnvironmentInjector root<br>(configurado pelo AppConfig)<br>tem coisas da sua aplicação => bootstrapApplication(..., AppConfig)
-    nullInjector: NullInjector<br>sempre lança um erro a menos que<br>você use @Optional()
+    elementInjector: EnvironmentInjector<br>(configured by Angular)<br>has special things like PlatformLocation => providedIn 'platform'
+    rootInjector: root EnvironmentInjector<br>(configured by AppConfig)<br>has things for your app => bootstrapApplication(..., AppConfig)
+    nullInjector: NullInjector<br>always throws an error unless<br>you use @Optional()
 
     direction BT
     rootInjector --> elementInjector
@@ -399,11 +399,9 @@ A view renderizada mais básica se pareceria com elementos HTML aninhados, como 
 No entanto, nos bastidores, o Angular usa uma representação lógica da view da seguinte forma ao resolver requisições de injeção:
 
 ```html
-<app-root @ApplicationConfig
-        @Inject(FlowerService) flower=>"🌺">
+<app-root> <!-- App selector -->
   <#VIEW>
-    <p>Emoji from FlowerService: {{flower.emoji}} (🌺)</p>
-    <app-child>
+    <app-child> <!-- Child selector -->
       <#VIEW>
       </#VIEW>
     </app-child>

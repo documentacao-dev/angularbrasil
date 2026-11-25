@@ -295,7 +295,7 @@ Aqui estão as etapas realizadas no teste view to model.
 
 1. Consulta a view pelo elemento de entrada de formulário e cria um evento "input" personalizado para o teste.
 1. Define o novo valor para a entrada como _Red_ e despacha o evento "input" no elemento de entrada de formulário.
-1. Executa a detecção de mudanças através do test fixture.
+1. Usa `await fixture.whenStable()` para aguardar o update ser processado.
 1. Afirma que o valor da propriedade `favoriteColor` do component corresponde ao valor da entrada.
 
 O teste a seguir verifica o fluxo de dados do model para a view.
@@ -305,7 +305,6 @@ O teste a seguir verifica o fluxo de dados do model para a view.
 Aqui estão as etapas realizadas no teste model to view.
 
 1. Usa a instância do component para definir o valor da propriedade `favoriteColor`.
-1. Executa a detecção de mudanças através do test fixture.
 1. Usa `await fixture.whenStable()` para aguardar a próxima renderização.
 1. Consulta a view pelo elemento de entrada de formulário.
 1. Afirma que o valor da entrada corresponde ao valor da propriedade `favoriteColor` na instância do component.

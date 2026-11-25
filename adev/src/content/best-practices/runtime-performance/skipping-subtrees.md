@@ -11,6 +11,8 @@ OnPush é a estratégia de change detection padrão no Angular (desde a v22). El
 
 - O component raiz da subárvore recebe novos inputs como resultado de um template binding. O Angular compara o valor atual e o valor anterior do input com `Object.is`.
 - O Angular trata um evento _(por exemplo, usando event binding, output binding ou `@HostListener`)_ no component raiz da subárvore ou em qualquer um de seus filhos, estejam eles usando change detection OnPush ou não.
+- Um component na subárvore é marcado para verificação, por exemplo com `ChangeDetectorRef.markForCheck` ou pelo `AsyncPipe`.
+- Um signal lido no template de um component da subárvore muda. Então, o Angular atualiza apenas os components que leem o signal.
 
 ## Cenários comuns de change detection {#common-change-detection-scenarios}
 

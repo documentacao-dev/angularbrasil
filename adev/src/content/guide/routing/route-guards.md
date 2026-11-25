@@ -28,7 +28,9 @@ Todos os route guards compartilham os mesmos tipos de retorno possíveis. Isso o
 | `UrlTree` ou `RedirectCommand`  | Redireciona para outra route em vez de bloquear                                                            |
 | `Promise<T>` ou `Observable<T>` | O router usa o primeiro valor emitido e, em seguida, cancela a subscription                                |
 
-NOTE: `CanMatch` se comporta de forma diferente: quando retorna `false`, o Angular tenta outras routes correspondentes em vez de bloquear completamente a navegação.
+NOTE: Um route guard precisa emitir um valor. Um `Observable` que completa sem emitir, como `EMPTY` ou qualquer `Observable<never>`, deixa o router sem resultado, e a navegação falha com um `EmptyError` do RxJS. Isso costuma acontecer quando uma requisição é cancelada por um interceptor. Se a sua fonte pode completar vazia, dê a ela um valor com `defaultIfEmpty(false)`.
+
+NOTE: `CanMatch` é diferente. Quando retorna `false`, o Angular tenta outras routes correspondentes em vez de bloquear a navegação.
 
 ## Tipos de route guards {#types-of-route-guards}
 
@@ -50,7 +52,7 @@ O guard `CanActivate` determina se um usuário pode acessar uma route. Ele é ma
 Ele tem acesso aos seguintes argumentos padrão:
 
 - `route`: `ActivatedRouteSnapshot`: contém informações sobre a route que está sendo ativada
-- `state`: `RouterStateSnapshot`: contém o estado atual do router
+- `state`: `RouterStateSnapshot`: contém o estado para o qual o router está navegando, e não o estado atual (use `Router.routerState` para isso)
 
 Ele pode retornar os [tipos de retorno padrão dos guards](#route-guard-return-types).
 
@@ -75,7 +77,7 @@ O guard `CanActivateChild` determina se um usuário pode acessar as routes filha
 Ele tem acesso aos seguintes argumentos padrão:
 
 - `childRoute`: `ActivatedRouteSnapshot`: contém informações sobre o snapshot "futuro" (ou seja, o estado para o qual o router está tentando navegar) da route filha que está sendo ativada
-- `state`: `RouterStateSnapshot`: contém o estado atual do router
+- `state`: `RouterStateSnapshot`: contém o estado para o qual o router está navegando, e não o estado atual (use `Router.routerState` para isso)
 
 Ele pode retornar os [tipos de retorno padrão dos guards](#route-guard-return-types).
 

@@ -141,7 +141,7 @@ req.flush('Failed!', {status: 500, statusText: 'Internal Server Error'});
 
 ### Erros de rede {#network-errors}
 
-Requisições também podem falhar devido a erros de rede, que aparecem como erros `ProgressEvent`. Eles podem ser entregues com o método `error()`:
+Requisições também podem falhar devido a erros de rede, que o `HttpClient` informa como um `HttpErrorResponse` com `status` igual a `0`. Eles podem ser simulados com o método `error()`, que envolve o `ProgressEvent` informado em uma resposta desse tipo:
 
 ```ts
 const req = httpTesting.expectOne('/api/config');
